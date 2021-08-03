@@ -7,6 +7,7 @@
 ```
 - Front-End : HTML, CSS, React.JS
 - Back-End : Java(Spring Boot Framework)
+- Dev Tool : VSC(유대선)
 ```   
 ***
 ## 2. 개발 회차별 계획
