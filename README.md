@@ -22,7 +22,9 @@
 ### 3회차 : 커뮤니티 생성 및 회원가입, 로그인 구현
 ```
 ```
-
+### 4회차 : 배포 및 테스트
+- 배포 : 도메인(카페 24 예정), 서버(AWS LightSail 예정),
+- 테스트 : APM Monitoring, Slow Query, Big Traffic, Err Logging, Lock Management
 ***
 
 
