@@ -1,4 +1,4 @@
-## Work Recoding(8.8)
+## Work Recoding Written by Yoo DaeSun(2021-08-09 ~ )
 ***
 - 2021-08-09
     + thymeleaf 템플릿 사용가능(Dependency 추가)
