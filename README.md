@@ -10,6 +10,7 @@
   - 테스트 서버(유대선)
     + 3.37.221.165:9004 (Mongo DB)
 
+
    
 ***
 ## 1. 개발 이용 스택
@@ -17,6 +18,7 @@
 - Front-End : HTML, CSS, React.JS
 - Back-End : Java(Spring Boot Framework)
 - Dev Tool : VSC(유대선)
+- Log Lib : logback
 ```   
 ***
 ## 2. 개발 회차별 계획

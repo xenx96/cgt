@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "demo"
-    ]
+        "cgt_prj"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
