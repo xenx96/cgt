@@ -7,3 +7,4 @@
     + HomeController.java 생성.
     + RestController 사용.
     + 웹서버 작동후 접속시, main 글자 출력완료.
+    + view/main.html 생성, templates/main.html 생성(데이터 전송 확인용) 
