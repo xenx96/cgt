@@ -8,3 +8,10 @@
     + RestController 사용.
     + 웹서버 작동후 접속시, main 글자 출력완료.
     + view/main.html 생성, templates/main.html 생성(데이터 전송 확인용) 
+
+- 2021-08-10
+    + html과 JavaSpringBoot연결에 관하여, GetMapping 으로 연결 가능하다.
+    + 연결 방식은 HomeController.Java 참고.
+    + @RestController === @Controller + @Responsebody 이다. 따라서 RestController 사용 지향.(우리는 RestFulAPI 개발.)
+    + 해당 차이는 https://devham76.github.io/spring/Spring-controllerRestController/ 참고.
+    + Return 되는 ClassPath는 resource/templates/... 으로 할당된다. 따라서 View파일은 Templates밑으로 할당 할 것.
