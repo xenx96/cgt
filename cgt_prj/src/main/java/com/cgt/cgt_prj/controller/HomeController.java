@@ -1,15 +1,22 @@
 package com.cgt.cgt_prj.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
+
+//Static에 있는 index.html === /하나만 붙인것과 동일하다.
+// http://~~~/index 와 main에 관하여 아래와같이 설정할 수 있다..
+@Controller
 public class HomeController {
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String main(Model model) {
-        return "main";
+    @GetMapping("/index")
+    public String indexView(Model model){
+        return "index";
     }
+    @GetMapping("/main")
+    public String mainView(Model model){
+        model.addAttribute("data", "yds");
+        return "view/main";
+    }
+
 }
