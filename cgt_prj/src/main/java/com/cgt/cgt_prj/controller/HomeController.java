@@ -22,7 +22,7 @@ public class HomeController {
     public ModelAndView mainView(){
         ModelAndView mav = new ModelAndView();
         mav.setViewName("view/main"); //ViewFile = main.html
-        mav.addObject("data", "YDS");
+        mav.addObject("data", "YDS"); //addObject로  data 송신이 가능하다.
         return mav;
     }
     //etc,,
