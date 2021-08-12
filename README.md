@@ -36,7 +36,7 @@
 ### 4회차 : 배포 및 테스트
 ```
 - 배포 : 도메인(카페 24 예정), 서버(AWS LightSail 예정),
-- 테스트 : APM Monitoring, Slow Query, Big Traffic, Err Logging, Lock Management, 장애 요인 파악
+- 테스트 : APM Monitoring, Slow Query, Big Traffic, Err Logging, Lock Management,locust, 장애 요인 파악
 ```
 ***
 
