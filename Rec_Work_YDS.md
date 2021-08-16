@@ -15,3 +15,9 @@
     + @RestController === @Controller + @Responsebody 이다. 따라서 RestController 사용 지향.(우리는 RestFulAPI 개발.)
     + 해당 차이는 https://devham76.github.io/spring/Spring-controllerRestController/ 참고.
     + Return 되는 ClassPath는 resource/templates/... 으로 할당된다. 따라서 View파일은 Templates밑으로 할당 할 것.
+
+- 2021-08-16
+    + ReactJS 서버 추가 완료.
+    + 테스팅 미정
+    + Readme.md 각각 폴더에 생성 및 Main Readme.md파일에 각각 폴더 위치 추가.
+    + Branch 추가 및 변경사항 논의 없음.
