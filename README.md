@@ -3,9 +3,9 @@
 - 참여 목적 : OP.GG와 같은 리그 오브 레전드(League of Legends 이하 "롤")의 전적 검색 웹사이트 개발   
 * Folder 
   - Front-End
-    + http://github.com/xenx96/cgt/cgt_react (ReactJS)
+    + https://github.com/xenx96/cgt/tree/main/cgt_react (ReactJS)
   - Back-End
-    + http://github.com/xenx96/cgt/cgt_prj (JavaSpringBoot)
+    + https://github.com/xenx96/cgt/tree/main/cgt_prj (JavaSpringBoot)
     
 ***
 ## 개발 서버 현황
