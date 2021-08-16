@@ -1,4 +1,4 @@
-# Project CGT(초보 개발자 팀) - JavaSpringBoot(Back-End) 서버 개발
+# Project CGT(초보 개발자 팀) - Server Dev
 - 참여 인원 : 박보민, 유대선, 이동복
 - 참여 목적 : OP.GG와 같은 리그 오브 레전드(League of Legends 이하 "롤")의 전적 검색 웹사이트 개발   
 ***
