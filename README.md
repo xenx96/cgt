@@ -5,7 +5,7 @@
   - Front-End
     + http://github.com/xenx96/cgt/cgt_react (ReactJS)
   - Back-End
-    + http://github.com/xenx96/cgt/cgt (JavaSpringBoot)
+    + http://github.com/xenx96/cgt/cgt_prj (JavaSpringBoot)
     
 ***
 ## 개발 서버 현황
