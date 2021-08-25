@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Search from './search.js';
+import User from './user.js';
 import './index.css';
-import App from './App';
+import {BrowserRouter, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Search/>
+    {/*Search 컴포넌트 실행*/}
+    <BrowserRouter>
+      <Route path="/user/:summoner" component={User} />
+    </BrowserRouter>
+    {/*소환사이름 넘기기 위해 react router dom 사용
+     주소/: 사용하면 변수를 넘길수 있음
+    실제로 바로넘어가는 형식이 아니라 path값으로 이동했을 때 component 실행*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
