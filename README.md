@@ -32,7 +32,11 @@
 ### 1회차 : 롤 전전 검색 API 구현
 ```
 - 개발 기간 : 2021-08-08 ~
-- 세부 계획 및 기능 : ???
+- 세부 계획 및 기능 : 
+  1. Riot API(React)추가 - 이동복 2021-08-25
+  2. Riot API Components 분리 및 Async Function 변경 - 유대선 2021-08-26
+  3. JavaSpringBoot MongoDB 'User'Document Connection - 유대선 2021-08-26
+  4. MongoDB Schema 1차 작성 - 유대선 2021-08-26
 ```
 ### 2회차 : 챔피언, 아이템, 특성 정보 및 DB 구축
 ```
