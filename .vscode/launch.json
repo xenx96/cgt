@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CgtPrjApplication<cgt_prj>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cgt.cgt_prj.CgtPrjApplication",
+            "projectName": "cgt_prj",
+            "args": ""
+        }
+    ]
+}

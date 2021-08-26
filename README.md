@@ -10,12 +10,12 @@
 ***
 ## 개발 서버 현황
 * Dev Web 
-  - 테스트 서버(유대선)
-    + http://3.37.221.165:8080 (JavaSpringBoot-Back-Web)
-    + http://3.37.221.165:3000 (React.js-Front-Web)
+  - 테스트 서버
+    + http://localhost:8080 (JavaSpringBoot-Back-Web)
+    + http://localhost:3000 (React.js-Front-Web)
 * DataBase
-  - 테스트 서버(유대선)
-    + 3.37.221.165:9004 (Mongo DB)
+  - 테스트 서버
+    + 3.37.221.165:27017 (MongoDB)
 
 
    

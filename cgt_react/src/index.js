@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Search from './search.js';
-import User from './user.js';
-import './index.css';
+import Search from './components/search';
+import User from './components/user';
 import {BrowserRouter, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
