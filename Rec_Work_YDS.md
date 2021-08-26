@@ -21,3 +21,13 @@
     + 테스팅 미정
     + Readme.md 각각 폴더에 생성 및 Main Readme.md파일에 각각 폴더 위치 추가.
     + Branch 추가 및 변경사항 논의 없음.
+
+- 2021-08-26
+    + Dongbok Lee가 만든 RiotAPI(React)항목을 Components 항목으로 정리
+    + Promise/Then 으로 짜여있는 Code AsyncFunction으로 정리.
+        - Async(){UseEffect}는 작동하지 않음. UseEffect Async사용시, UseEffect(()=>{async()=>{} })로 작성 해야함.
+    + User 및 Board, Reply DB Schema 작성 완료.
+    + JavaSpringBoot MongoDB Connection 완료.
+    + 현재 CRUD 몽고DB 테스팅과정중.
+
+
