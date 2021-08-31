@@ -21,7 +21,7 @@ public class UserDTO {
     @NonNull
     private String _id;
     @NonNull
-    private String NA;
+    private String NM;
     @NonNull
     private String PW;
     @NonNull
@@ -41,11 +41,11 @@ public class UserDTO {
 
 
     
-    public UserDTO(String _id, String PW, String NA, String EA, Number MN, Number SX, String ADR,String CA){
+    public UserDTO(String _id, String PW, String NM, String EA, Number MN, Number SX, String ADR,String CA){
         super();
         this._id = _id;
         this.PW = PW;
-        this.NA = NA;
+        this.NM = NM;
         this.MN = MN;
         this.SX = SX;
         this.EA = EA;

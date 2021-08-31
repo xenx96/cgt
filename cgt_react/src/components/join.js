@@ -23,13 +23,14 @@ const Join = () =>{
 
   return (
     
-    <div>
-      <form>
-      <input type= "text" name= "TT">Testing</input>
-      </form>
+ 
+
     <form onSubmit = {handleSubmit} id ="userfrm">
         <div>
             ID <input type = "text" name = "ID"/>
+        </div>
+        <div>
+            Name <input type = "text" name = "NM"/>
         </div>
         <div>
             PW1 <input type = "text" name = "PW"/>
@@ -45,7 +46,7 @@ const Join = () =>{
         </div>
      <button>회원 가입</button>
     </form>
-    </div>
+
   )
 }
 
