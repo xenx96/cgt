@@ -37,6 +37,7 @@
   2. Riot API Components 분리 및 Async Function 변경 - 유대선 2021-08-26
   3. JavaSpringBoot MongoDB 'User'Document Connection - 유대선 2021-08-26
   4. MongoDB Schema 1차 작성 - 유대선 2021-08-26
+  5. Riot Search 페이지 추가 및 summoner_tier 이미지 추가 - 이동복 2021-08-31
 ```
 ### 2회차 : 챔피언, 아이템, 특성 정보 및 DB 구축
 ```
