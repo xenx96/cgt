@@ -6,7 +6,7 @@ function SummonerCard(props){
     <div className = "top_content">
       <div className = "sum_card">
         <div className = "profile_icon" style={{      background: `url(img/${props.leaguedata[0].tier}.png)`,      }}>
-          <img className = "sum_icon"  src={`http://ddragon.leagueoflegends.com/cdn/10.11.1/img/profileicon/${props.sumdata.profileIconId}.png`} alt=""/>
+          <img className = "sum_icon"  src={`http://ddragon.leagueoflegends.com/cdn/11.16.1/img/profileicon/${props.sumdata.profileIconId}.png`} alt=""/>
           <span  className = "level-box" style={{      background: `url(img/bg-levelbox.png)`,      }}>{props.sumdata.summonerLevel}</span>
         </div>
         <div className = "sum_info">
