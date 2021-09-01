@@ -5,6 +5,9 @@ import Footer from './components/footer';
 import Contents from './components/contents';
 import {BrowserRouter, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import Join from './components/join';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,6 +15,8 @@ ReactDOM.render(
     {/*Search 컴포넌트 실행*/}
     <BrowserRouter>
       <Route path="/:summoner" component={Contents} />
+      <Route path="/join" component={Join} />
+
     </BrowserRouter>
     {/*소환사이름 넘기기 위해 react router dom 사용
      주소/: 사용하면 변수를 넘길수 있음
