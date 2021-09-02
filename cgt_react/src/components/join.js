@@ -8,13 +8,17 @@ const Join = () =>{
     var userfrm = {
     ID : event.target.ID.value,
     PW : event.target.PW.value,
+    NM : event.target.NM.value,
     ADR : event.target.ADR.value,
-    EA :  event.target.EA.value,}
-
-    await alert(userfrm.ID);
+    EA :  event.target.EA.value,
+    MN : event.target.MN.value}
+    userfrm = JSON.stringify(userfrm);
+    await alert(userfrm);
      
  
-      await Axios.post('/api/join',userfrm);
+      await Axios.post('/api/join',userfrm,{
+      headers: { "Content-Type": `application/json`}
+      });
       alert('Success.!')
     }catch(err){
       console.log(err);
@@ -25,7 +29,7 @@ const Join = () =>{
     
  
 
-    <form onSubmit = {handleSubmit} id ="userfrm">
+    <form onSubmit = {handleSubmit} id ="userfrm" method = "POST">
         <div>
             ID <input type = "text" name = "ID"/>
         </div>
@@ -33,16 +37,19 @@ const Join = () =>{
             Name <input type = "text" name = "NM"/>
         </div>
         <div>
-            PW1 <input type = "text" name = "PW"/>
+            PW1 <input type = "password" name = "PW"/>
         </div>
         <div>
-            PW2 <input type = "text" name = "PW2"/>
+            PW2 <input type = "password" name = "PW2"/>
         </div>
         <div>
             ADR <input type = "text" name = "ADR"/>
         </div>
         <div>
             EA <input type = "text" name = "EA"/>
+        </div>
+        <div>
+            Mobile-Number<input type = 'number' name = 'MN'/>
         </div>
      <button>회원 가입</button>
     </form>
