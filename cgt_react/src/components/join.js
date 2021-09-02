@@ -6,12 +6,18 @@ const Join = () =>{
     try{  
     event.preventDefault(); 
     var userfrm = {
-    ID : event.target.ID.value,
+    _id : event.target.ID.value,
     PW : event.target.PW.value,
+    SX : event.target.SX.value,
+    BT : event.target.BT.value,
     NM : event.target.NM.value,
     ADR : event.target.ADR.value,
     EA :  event.target.EA.value,
-    MN : event.target.MN.value}
+    MN : event.target.MN.value,
+    CA : new Date(),
+
+  }
+    
     userfrm = JSON.stringify(userfrm);
     await alert(userfrm);
      
@@ -31,25 +37,34 @@ const Join = () =>{
 
     <form onSubmit = {handleSubmit} id ="userfrm" method = "POST">
         <div>
-            ID <input type = "text" name = "ID"/>
+            아이디 <input type = "text" name = "ID"/>
         </div>
         <div>
-            Name <input type = "text" name = "NM"/>
+            이름 <input type = "text" name = "NM"/>
         </div>
         <div>
-            PW1 <input type = "password" name = "PW"/>
+            비밀번호 <input type = "password" name = "PW"/>
         </div>
         <div>
-            PW2 <input type = "password" name = "PW2"/>
+            비밀번호 확인 <input type = "password" name = "PW2"/>
         </div>
         <div>
-            ADR <input type = "text" name = "ADR"/>
+            주소 <input type = "text" name = "ADR"/>
         </div>
         <div>
-            EA <input type = "text" name = "EA"/>
+            이메일 <input type = "text" name = "EA"/>
         </div>
         <div>
-            Mobile-Number<input type = 'number' name = 'MN'/>
+            전화 번호<input type = 'number' name = 'MN'/>
+        </div>
+        <div>
+            성별<select name = 'SX'>
+              <option value = '1' >남자 </option>
+              <option value = '2' >여자 </option>
+            </select>
+        </div>
+        <div>
+            생년월일<input type = 'date' name = 'BT'/>
         </div>
      <button>회원 가입</button>
     </form>

@@ -35,13 +35,13 @@ public class UserDTO {
     @Nullable
     private String ADR;
     @NonNull
-    private String CA;
+    private Date CA;
     //private Date UA;
 
 
 
     
-    public UserDTO(String _id, String PW, String NM, String EA, Number MN, Number SX, String ADR,String CA){
+    public UserDTO(String _id, String PW, String NM, String EA, Number MN, Number SX, String ADR,Date CA, Date BT){
         super();
         this._id = _id;
         this.PW = PW;
@@ -51,6 +51,7 @@ public class UserDTO {
         this.EA = EA;
         this.ADR = ADR;
         this.CA = CA;
+        this.BT = BT;
     }
 
 
