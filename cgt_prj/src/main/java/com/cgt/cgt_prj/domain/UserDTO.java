@@ -2,10 +2,11 @@ package com.cgt.cgt_prj.domain;
 
 import java.sql.Date;
 
+
 import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
 
-import lombok.Data;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -14,7 +15,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 /*@AllArgsConstructor*/
 @Getter
@@ -61,7 +62,6 @@ public class UserDTO {
         this.CA = CA;
         this.BT = BT;
     }
-
 
 
 }

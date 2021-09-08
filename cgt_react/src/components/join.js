@@ -5,7 +5,6 @@ class Join extends React.Component{
 
   handleSubmit = async(e) => {
     const {ID, PW, SX, BT, NM, ADR, EA, MN, PW2} = e.target;
-
     const CA = new Date();
     try{  
        
@@ -28,8 +27,6 @@ class Join extends React.Component{
       let res = await Axios.post('/api/user',userfrm, {
         headers: { "Content-Type": `application/json`}
           });
-
-
     }catch(err){
       console.log(err);
       alert('ertawehfl')
@@ -37,13 +34,12 @@ class Join extends React.Component{
     }
 
     handleChange = async(e)=>{
-      if(this.state.ID.length<6 || this.state.ID.length>12){
+      if(e.target.value.length<6 | e.target.value.length>12){
        this.setState({IDCheck : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});    
       }
       else{
         try{
           await this.setState({ID:e.target.value});
-
           let res = await Axios.get('/api/user?id='+this.state.ID); 
           await this.setState({IDCheck : "해당아이디는"+res.data});
           console.log(res);
@@ -94,6 +90,9 @@ class Join extends React.Component{
         </div>
         <div>
             생년월일<input type = 'date' name = 'BT'/>
+        </div>
+        <div>
+            Mobile-Number<input type = 'number' name = 'MN'/>
         </div>
      <button>회원 가입</button>
     </form>
