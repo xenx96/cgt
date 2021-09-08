@@ -5,25 +5,35 @@ import java.sql.Date;
 import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.ToString;
-/*@AllArgsConstructor
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+/*@AllArgsConstructor*/
 @Getter
 @Setter
-@ToString //exclude 로 제외시킬수 있음.*/
-@ToString
+@ToString //exclude 로 제외시킬수 있음.
 @Document(collection = "User")
 public class UserDTO {
-     // private Boolean AH;
+
+    // private Boolean AH;
     @Id
     @NonNull
     private String _id;
     @NonNull
+    @NotBlank
     private String NM;
+    @NotBlank
     @NonNull
     private String PW;
+    @NotBlank
     @NonNull
     private String EA;
     @Nullable
@@ -37,8 +47,6 @@ public class UserDTO {
     @NonNull
     private Date CA;
     //private Date UA;
-
-
 
     
     public UserDTO(String _id, String PW, String NM, String EA, Number MN, Number SX, String ADR,Date CA, Date BT){

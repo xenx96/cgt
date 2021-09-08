@@ -1,52 +1,81 @@
-import React from 'react';
+import React, { useState,Component } from 'react';
 import Axios from "axios";
-const Join = () =>{
+class Join extends React.Component{
+    state = {ID:'', IDCheck:''};
 
-  const handleSubmit = async(event) => {
+  handleSubmit = async(e) => {
+    const {ID, PW, SX, BT, NM, ADR, EA, MN, PW2} = e.target;
+
+    const CA = new Date();
     try{  
-    event.preventDefault(); 
+       
     var userfrm = {
-    _id : event.target.ID.value,
-    PW : event.target.PW.value,
-    SX : event.target.SX.value,
-    BT : event.target.BT.value,
-    NM : event.target.NM.value,
-    ADR : event.target.ADR.value,
-    EA :  event.target.EA.value,
-    MN : event.target.MN.value,
-    CA : new Date(),
-
+      _id:ID.value ,
+      PW :PW.value ,
+      SX: SX.value ,
+      BT : BT.value ,
+      NM : NM.value,
+      ADR : ADR.value ,
+      EA : EA.value,
+      MN : MN.value,
+      CA 
   }
     
     userfrm = JSON.stringify(userfrm);
-    await alert(userfrm);
-     
+    alert(userfrm);
+    //alert(userfrm); 
  
-      await Axios.post('/api/join',userfrm,{
-      headers: { "Content-Type": `application/json`}
-      });
-      alert('Success.!')
+      let res = await Axios.post('/api/user',userfrm, {
+        headers: { "Content-Type": `application/json`}
+          });
+
+
     }catch(err){
       console.log(err);
+      alert('ertawehfl')
     }
     }
 
+    handleChange = async(e)=>{
+      if(this.state.ID.length<6 || this.state.ID.length>12){
+       this.setState({IDCheck : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});    
+      }
+      else{
+        try{
+          await this.setState({ID:e.target.value});
+
+          let res = await Axios.get('/api/user?id='+this.state.ID); 
+          await this.setState({IDCheck : "해당아이디는"+res.data});
+          console.log(res);
+        }catch(err){
+          console.error(err);
+        }
+
+      }
+
+    };
+    handlePasswordCheck = async(e)=>{
+      try{
+
+      }catch(err){
+        console.error(err);
+      }
+    };
+
+    render(){
   return (
-    
- 
-
-    <form onSubmit = {handleSubmit} id ="userfrm" method = "POST">
+    <form onSubmit = {this.handleSubmit} >
         <div>
-            아이디 <input type = "text" name = "ID"/>
+            아이디 <input type = "text" name = "ID" onChange={this.handleChange} /> <span>아이디는 = {this.state.IDCheck}</span>
         </div>
         <div>
             이름 <input type = "text" name = "NM"/>
         </div>
         <div>
-            비밀번호 <input type = "password" name = "PW"/>
+            비밀번호 <input type = "password" name = "PW" placeholder = '영문자+숫자+특수문자 조합'/>
         </div>
         <div>
-            비밀번호 확인 <input type = "password" name = "PW2"/>
+            비밀번호 확인 <input type = "password" name = "PW2" onChange={this.handlePasswordCheck} />
         </div>
         <div>
             주소 <input type = "text" name = "ADR"/>
@@ -55,7 +84,7 @@ const Join = () =>{
             이메일 <input type = "text" name = "EA"/>
         </div>
         <div>
-            전화 번호<input type = 'number' name = 'MN'/>
+            전화 번호<input type = 'text' name = 'MN'/>
         </div>
         <div>
             성별<select name = 'SX'>
@@ -70,6 +99,7 @@ const Join = () =>{
     </form>
 
   )
+    }
 }
 
 export default Join;
