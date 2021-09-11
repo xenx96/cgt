@@ -1,7 +1,7 @@
 import React, {Component } from 'react';
 import Axios from "axios";
 class Join extends React.Component{
-    state = { //~Check : 요청값 확인, 최종 3개 모두 확인완료시 Submit가능.
+    state = { //~Check : 요청값 확인, 최종 3개 모두 확인완료시 Submit가능. ||
     IDNotice:'',
     IDCheck: false,
     emailNotice:'',
@@ -35,7 +35,7 @@ class Join extends React.Component{
           headers: { "Content-Type": `application/json`}
             });
         alert(res.data?'회원가입이 되었습니다!': '다시 시도해 주세요!');
-        Window.location.href(res.data?'redirect:/':'redirect:/join');
+        Window.location.href(res.data?'redirect:/login':'redirect:/join');
       }catch(err){
         console.log(err);
       }
