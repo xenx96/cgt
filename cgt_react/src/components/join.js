@@ -54,7 +54,7 @@ class Join extends React.Component{
 
         try{
           let res = await Axios.get('/api/user?id='+e.target.value); 
-          await this.setState({IDNotice :res.data? "사용 가능한 아이디입니다.":"아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다."});
+          await this.setState({IDNotice :res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."});
           await this.setState({IDCheck: res.data? true : false});
           console.log(res);
         }catch(err){
