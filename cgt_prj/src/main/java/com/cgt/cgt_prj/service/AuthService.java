@@ -11,14 +11,14 @@ public class AuthService {
     UserRepository userRepository;
 
     // 로그인 로직
-    public Boolean userLogin(UserDTO loginUser){
+    public JSONObject userLogin(UserDTO loginUser){
         JSONObject userData= userRepository.findBy_id(loginUser.get_id());
         if (userData == null) {
-            return false;
+            return null;
         }
         else{
             Boolean resultPasswordCheck = passwordCheck(loginUser.getPW(), (String) userData.get("PW"));
-            return resultPasswordCheck;
+            return jsonWebTokenMake(userData);
         }
     }
 
