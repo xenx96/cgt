@@ -3,24 +3,24 @@
 @import url(https://fonts.googleapis.com/css2?family=Felipa&display=swap);
 
 *{
-    font-family: Felipa, Gowun Batang;
     margin: 0;
     border: 0;
     padding: 0;
-    font: rgba(255, 255, 255, 0.95);
-    text-decoration: none;
     background-color: rgba(0, 0, 0, 1);
+    font-family: Felipa, Gowun Batang;
+    font : rgba(255, 255, 255, 0.95);
+    text-decoration: none;
 }
 
 body{
     display: flex;
-    flex-direction: row;
     overflow: hidden;
+    flex-direction: row;
 }
 
 a,input,nav,div,header,.mainsearch,article{
-    color: rgba(255, 255, 255, 0.95);
     background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .mainvideo{
@@ -34,15 +34,15 @@ a,input,nav,div,header,.mainsearch,article{
 nav{
     flex-direction: column;
     position: relative;
+    width: 10%; /*hover 해도 글씨 고정시킴 왜?*/
     margin-top: 15%;
     margin-left: 3%;
-    width: 10%; /*hover 해도 글씨 고정시킴 왜?*/
     font-size: 1.3rem;
 }
 
 nav div{
-    margin-bottom: 70%;
     height: 0%; /*고정 시키려면 이것도 추가해야 됨*/
+    margin-bottom: 70%;
 }
 
 .search a:after{
@@ -77,16 +77,16 @@ nav div{
 }
 
 .container{
-    position: absolute;
     display: flex;
     flex-direction: column;
+    position: absolute;
     margin-top: 4%;
     margin-left: 44%;
 }
 
 .title{
-    font-size: 3rem;
     font: lighter;
+    font-size: 3rem;
 }
 
 .mainsearch{
@@ -101,11 +101,11 @@ nav div{
 }
 
 .searchbar{
-    background-color: rgba(206, 180, 255, 0.8);
     float: left;
-    font-size: 2rem;
-    padding: 2%;
     width: 60%;
+    padding: 2%;
+    background-color: rgba(206, 180, 255, 0.8);
+    font-size: 2rem;
 }
 
 ::placeholder, .searchbar{
@@ -113,12 +113,12 @@ nav div{
 }
 
 .searchbutton{
-    background-color: black;
+    width: 6%;
     margin-left: -7%;
     margin-top: 1%;
     padding: 1%;
+    background-color: black;
     font-size: 2rem;
-    width: 6%;
 }
 
 @media screen and (min-width:0\0){
@@ -139,9 +139,9 @@ nav div{
     }
 
     .searchbutton{
-        padding: 0.6%;
         width: 4%;
         margin-left: -5%;
         margin-top: 0.7%;
+        padding: 0.6%;
     }
 }
