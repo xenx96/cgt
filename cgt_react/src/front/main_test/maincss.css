@@ -18,7 +18,7 @@ body{
     overflow: hidden;
 }
 
-a{
+a,input{
     color: rgba(255, 255, 255, 0.95);
     background-color: rgba(0, 0, 0, 0);
 }
@@ -45,7 +45,7 @@ nav{
 }
 
 nav div{
-    margin-bottom: 25%;
+    margin-bottom: 40%;
     height: 0%;
 }
 
@@ -87,8 +87,9 @@ nav div{
 .container{
     display: flex;
     flex-direction: column;
-    margin-left: 15%;
+    margin-left: 20%;
     margin-top: 2%;
+    width: 100%;
 }
 
 .title{
@@ -99,8 +100,26 @@ nav div{
 
 .mainsearch{
     position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: -25%;
+    margin-top: 25%;
 }
 
-.mainsearch input{
-    
+.searchbar{
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 70%;
+    height: 110%;
+    padding: 3%;
+}
+
+::placeholder, .searchbar{
+    color: black;
+    font-size: 1.5rem;
+}
+
+.searchbutton{
+    background-color: black;
+    padding: 1.5% 2%;
+    margin-left: -9%;
+    font-size: 1.5rem;
 }
