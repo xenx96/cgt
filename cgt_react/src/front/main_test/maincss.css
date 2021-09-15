@@ -15,7 +15,7 @@
 body{
     display: flex;
     flex-direction: row;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 a,input,nav,div,header,.mainsearch,article{
@@ -41,7 +41,7 @@ nav{
 }
 
 nav div{
-    margin-bottom: 55%;
+    margin-bottom: 70%;
     height: 0%; /*고정 시키려면 이것도 추가해야 됨*/
 }
 
