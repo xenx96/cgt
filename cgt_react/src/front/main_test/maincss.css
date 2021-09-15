@@ -15,7 +15,7 @@
 body{
     display: flex;
     flex-direction: row;
-    overflow: hidden;
+   /* overflow: hidden; */
 }
 
 a,input{
@@ -39,14 +39,13 @@ nav{
     flex-direction: column;
     position: relative;
     background-color: rgba(0, 0, 0, 0);
-    margin-top: 16%; margin-left: 5%;
+    margin-top: 8%; margin-left: 2%;
     width: 20%;
     font-size: 1.3rem;
 }
 
 nav div{
     margin-bottom: 40%;
-    height: 0%;
 }
 
 .search a:after{
@@ -85,30 +84,44 @@ nav div{
 }
 
 .container{
+    position: relative;
     display: flex;
     flex-direction: column;
-    margin-left: 20%;
-    margin-top: 2%;
-    width: 100%;
+}
+
+
+header{
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .title{
-    position: relative;
     font-size: 3rem;
     font: lighter;
+    margin-left: 20%;
+    margin-top: 2%;
 }
 
 .mainsearch{
-    position: relative;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(0, 0, 0, 0);
-    margin-left: -25%;
-    margin-top: 25%;
+    margin-left: 10%;
+    margin-top: 7%;
+}
+
+article{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.searchimg{
+    width: 60%;
+    background-size: cover;
 }
 
 .searchbar{
     background-color: rgba(255, 255, 255, 0.8);
-    width: 70%;
-    height: 110%;
+    width: 60%;
+    height: 20%;
     padding: 3%;
 }
 
@@ -119,7 +132,7 @@ nav div{
 
 .searchbutton{
     background-color: black;
-    padding: 1.5% 2%;
     margin-left: -9%;
-    font-size: 1.5rem;
+    padding: 0.5% 2%;
+    font-size: 1rem;
 }
