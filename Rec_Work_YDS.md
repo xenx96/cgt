@@ -43,9 +43,9 @@
     + Font-End에서 `Axios.get`으로 아이디 등록되어있는지 Server로 전달 및 응답 확인. `(Response? true:false)`
 
 - 2021-09-13
-    + PW중복체크 및 정규표현식 이용하여, true:false State에 반환.
+    + PW중복체크 및 정규표현식 이용하여, `true:false State에 반환.`
     + 이메일 또한 정규표현식이용하여 작업.
-    +  React에서 Onchange 및  Submmit과 같이 html에서 사용될 함수명은 handle~으로 작성하는 것으로 규정.
+    +  React에서 `Onchange` 및  `Submmit`과 같이 html에서 사용될 함수명은 handle~으로 작성하는 것으로 규정.
     +  ID중복확인 및 이메일 정규식 확인, 비밀번호 재입력 동일 여부 확인하여 `3중 확인 완료시` Submit 가능하게 만듬. 
 
 
