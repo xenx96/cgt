@@ -32,7 +32,6 @@ a,input,nav,div,header,.mainsearch,article{
 }
 
 nav{
-    flex-direction: column;
     position: relative;
     width: 10%; /*hover 해도 글씨 고정시킴 왜?*/
     margin-top: 15%;
