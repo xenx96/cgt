@@ -13,7 +13,7 @@
     + html과 JavaSpringBoot연결에 관하여, GetMapping 으로 연결 가능하다.
     + 연결 방식은 HomeController.Java 참고.
     + @RestController === @Controller + @Responsebody 이다. 따라서 RestController 사용 지향.(우리는 RestFulAPI 개발.)
-    + 해당 차이는 https://devham76.github.io/spring/Spring-controllerRestController/ 참고.
+    + 해당 차이는 `https://devham76.github.io/spring/Spring-controllerRestController/` 참고.
     + Return 되는 ClassPath는 resource/templates/... 으로 할당된다. 따라서 View파일은 Templates밑으로 할당 할 것.
 
 - 2021-08-16
@@ -36,11 +36,11 @@
 
 - 2021-09-03 
     + ID 중복체크 비동기 통신 Logic 구현완료.
-    + Back-End Java에서 UserAPIContoller.java 생성. 
-    + 해당 메서드중 ID중복체크는 User에 관한 Service 항목이므로 UserService.java에서 메서드 호출하여 사용 및 실행.
+    + Back-End Java에서 `UserAPIContoller.java` 생성. 
+    + 해당 메서드중 ID중복체크는 User에 관한 Service 항목이므로 `UserService.java`에서 메서드 호출하여 사용 및 실행.
     + 현재 JSONObject로 findBy_id하여 받아오고 있음.
         - 추후 DTO 객체로 받아올 예정. (stram().ModelMapper() 사용예정)
-    + Font-End에서 Axios.get으로 아이디 등록되어있는지 Server로 전달 및 응답 확인. (Response? true:false)
+    + Font-End에서 `Axios.get`으로 아이디 등록되어있는지 Server로 전달 및 응답 확인. `(Response? true:false)`
 
 - 2021-09-13
     + PW중복체크 및 정규표현식 이용하여, true:false State에 반환.
