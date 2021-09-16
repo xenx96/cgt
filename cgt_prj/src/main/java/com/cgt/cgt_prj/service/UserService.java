@@ -1,8 +1,10 @@
 package com.cgt.cgt_prj.service;
 
+import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.repositories.UserRepository;
 import net.minidev.json.JSONObject;
 import org.bson.json.JsonObject;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,12 +30,20 @@ public class UserService {
              return true;
          }
      }
+     public void  joinId(UserDTO userDTO){
+        String hashPassword = hashEncodePassword(userDTO.getPW());
+        userDTO.setPW(hashPassword);
+        userRepository.insert(userDTO);
+     }
 
    //PW 암호화 메서드
-    public String passwordEncodeSave(String pw){
-        String encodingPassword = (pw); //Encoding Method Bycrpt
-        return encodingPassword;
+    public String hashEncodePassword(String password){
+        return BCrypt.hashpw(password,BCrypt.gensalt());
     }
+    public boolean passwordMatch(String password, String hashedPassword){
+        return BCrypt.checkpw(password,hashedPassword);
+    }
+
 
 
 

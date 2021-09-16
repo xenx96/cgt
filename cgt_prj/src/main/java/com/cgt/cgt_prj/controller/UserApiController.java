@@ -7,7 +7,6 @@ import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.service.UserService;
 import com.cgt.cgt_prj.repositories.UserRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,7 +19,8 @@ import javax.validation.Valid;
 
 @RestController
 public class UserApiController {
-    @Autowired
+
+    @Resource(name ="userRepository")
     UserRepository userRepository;
 
     @Resource(name = "userService")
@@ -28,20 +28,15 @@ public class UserApiController {
 
    //최종 회원가입.
     @PostMapping("/api/user")
-    public String registerUser(@RequestBody @Valid UserDTO form
-                               //UserDTO.UserDTO에 있는 입력값대로 Post로 받아온 RequestBody Data로 검증한다.(@Valid)어노테이션 사용.
-    ){
-        System.out.println(form);
-           userRepository.insert(form);
-
-        return null;
-
+    public Boolean registerUser(@RequestBody @Valid UserDTO form){
+        //UserDTO.UserDTO에 있는 입력값대로 Post로 받아온 RequestBody Data로 검증한다.(@Valid)어노테이션 사용.
+        userService.joinId(form);
+        return true;
     }
+
     //ID 중복 체크 매핑
     @GetMapping("api/user")
-    public Boolean checkUserId(@RequestParam("id") String id
-                              //UserDTO.UserDTO에 있는 입력값대로 Post로 받아온 RequestBody Data로 검증한다.(@Valid)어노테이션 사용.
-    ){
+    public Boolean checkUserId(@RequestParam("id") String id){
         return userService.registerIdCheck(id);
     }
 

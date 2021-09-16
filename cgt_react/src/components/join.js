@@ -83,7 +83,7 @@ class Join extends React.Component{
 
     render(){
   return (
-    <form onSubmit = {this.handleSubmit} >
+    <form onSubmit = {this.handleSubmit} method = "post">
         <div>
             아이디 <input type = "text"  name = "ID" onChange={this.handleIdCheck} minLength={6} maxLength = {12} /> <span>{this.state.IDNotice}</span>
         </div>

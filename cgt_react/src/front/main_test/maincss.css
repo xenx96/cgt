@@ -75,6 +75,10 @@ nav div{
 .source a:hover::after{
     content: "출처";
 }
+.search.div{
+ font-size : 10rem;
+
+}
 
 .container{
     display: flex;
