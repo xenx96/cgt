@@ -14,7 +14,7 @@
 
 body{
     display: flex;
-    overflow: hidden;
+    /* overflow: hidden; */
     flex-direction: row;
 }
 
@@ -27,16 +27,17 @@ a,input,nav,div,header,.mainsearch,article{
     position: absolute;
     width: auto;
     height: 100%;
-    top: 55%; left: 60%;
+    top: 55%; left: 63%;
     transform: translate(-55%, -55%);
 }
 
 nav{
+    flex-direction: column;
     position: relative;
     width: 10%; /*hover 해도 글씨 고정시킴 왜?*/
     margin-top: 15%;
     margin-left: 3%;
-    font-size: 1.3rem;
+    font-size: 1.5vw;
 }
 
 nav div{
@@ -85,11 +86,11 @@ nav div{
 
 .title{
     font: lighter;
-    font-size: 3rem;
+    font-size: 3.5vw;
 }
 
 .mainsearch{
-    display: flex; /*searchimg&searchbar 여백 없애기*/
+    display: flex;
     flex-direction: column;
     margin-left: -25%;
 }
@@ -104,7 +105,7 @@ nav div{
     width: 60%;
     padding: 2%;
     background-color: rgba(206, 180, 255, 0.8);
-    font-size: 2rem;
+    font-size: 2vw;
 }
 
 ::placeholder, .searchbar{
@@ -117,7 +118,7 @@ nav div{
     margin-top: 1%;
     padding: 1%;
     background-color: black;
-    font-size: 2rem;
+    font-size: 2vw;
 }
 
 @media screen and (min-width:0\0){
