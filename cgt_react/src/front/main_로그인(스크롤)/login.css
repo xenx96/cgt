@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Felipa&display=swap);
+
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background: rgba(255, 255, 255,0.3);
+    color: rgba(155, 15, 15, 0.85);
+    font-family: Felipa, Gowun Batang;
+    text-decoration: none;
+}
+
+/* 배경 옆 여백 색상 바꾸기 */
+
+body{
+    display: flex;
+    flex-direction: column;
+    /* overflow: hidden; */
+}
+label, a, input{
+    background: rgba(0, 0, 0, 0);
+}
+
+.loginvd{
+    position: absolute;
+    height: 100%;
+    top: 0; left: 0;
+    transform: translate(5.5%, 0%);
+}
+
+source{
+    background: black;
+}
+
+.login{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+}
+
+.id, .pw input{
+    position: relative;
+    background: rgb(255, 110, 110);
+}
+.id input[type=text]{
+    background: rgb(255, 110, 110);
+}
+
+.autologin  input[type=radio]{
+    display: none;
+}
+.autologin input[type=radio]+label{
+    display: flex;
+    cursor: pointer;
+    text-align: center;
+}
+.autologin input[type=radio]:checked+label{
+    background-color: white;
+}
+
+input:focus{
+    outline: none;
+}
+
+.joinbutton a::after{
+    content: "Join";
+}
+.joinbutton a:hover::after{
+    content: "회원가입";
+}
