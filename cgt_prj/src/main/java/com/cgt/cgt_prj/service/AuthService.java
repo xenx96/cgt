@@ -24,11 +24,12 @@ public class AuthService {
 
     //비밀번호 확인 로직
     public Boolean passwordCheck(String loginPassword,String savedPassword){
-        if(loginPassword == savedPassword) return true ;
+        if(passwordMatch(loginPassword,savedPassword)) return true ;
         else return false;
     }
 
     public JSONObject jsonWebTokenMake(JSONObject jwt){
-        return jwt;
+        Date now = new Date();
+        return Jwts.builder();
     }
 }
