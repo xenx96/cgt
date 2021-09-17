@@ -48,4 +48,12 @@
     +  React에서 `Onchange` 및  `Submmit`과 같이 html에서 사용될 함수명은 handle~으로 작성하는 것으로 규정.
     +  ID중복확인 및 이메일 정규식 확인, 비밀번호 재입력 동일 여부 확인하여 `3중 확인 완료시` Submit 가능하게 만듬. 
 
-
+- 2021-09-16
+    + `Java`
+    + PW Bcrypt 암호화 저장`UserService.hashEncodePassword` 및 비교 메서드`UserService.passwordMatch` 생성 완료. 
+    + UserApiContoller에서 사용될 계정등록 `UserService.joinId` 메서드 생성 완료.
+    + `React`
+    + 기본적인 로그인 form 전송시 Submit 메서드 `handleLoginSubmit` 생성. in `login.js`
+    + 회원가입 `Join.js` 테스트완료.
+    + `요청사항`
+    + 박보민에게 로그인과 회원가입 폼을 갖춘 디자인 시안 요청.(예상 기간 1~2일 소요)
