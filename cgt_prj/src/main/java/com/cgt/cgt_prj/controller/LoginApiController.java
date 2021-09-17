@@ -16,9 +16,10 @@ public class LoginApiController {
     private AuthService authService ;
 
     @PostMapping("/api/login")
-    public JSONObject loginUser(@RequestBody @Valid UserDTO userDTO){
+    public String loginUser(@RequestBody @Valid UserDTO userDTO){
+
         //ID Check & PW Check
-        JSONObject resultUserJWT = authService.userLogin(userDTO);
+        String resultUserJWT = authService.userLogin(userDTO);
 
         //JWT 생성 부문
         return resultUserJWT ;
