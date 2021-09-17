@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 class Login extends React.Component{
     state = {warningMessage : ""};
-    handleloginsubmit = async(e) =>{
+    handleLoginSubmit = async(e) =>{
         const {id, pw} = e.target ;
 
         const form = {ID : id.value,
@@ -19,7 +19,7 @@ class Login extends React.Component{
 
     render(){
         return(
-            <form submit = {this.handleloginsubmit}>
+            <form submit = {this.handleLoginSubmit}>
                     <div>아이디
                         <input type ='text' name = "id"/>
                         비밀번호
