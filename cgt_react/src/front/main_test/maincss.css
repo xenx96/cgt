@@ -1,0 +1,151 @@
+@import url(https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Felipa&display=swap);
+
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 1);
+    font-family: Felipa, Gowun Batang;
+    font : rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+}
+
+body{
+    display: flex;
+    /* overflow: hidden; */
+    flex-direction: row;
+}
+
+a,input,nav,div,header,.mainsearch,article{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.mainvideo{
+    position: absolute;
+    width: auto;
+    height: 100%;
+    top: 55%; left: 63%;
+    transform: translate(-55%, -55%);
+}
+
+nav{
+    flex-direction: column;
+    position: relative;
+    width: 10%; /*hover 해도 글씨 고정시킴 왜?*/
+    margin-top: 15%;
+    margin-left: 3%;
+    font-size: 1.5vw;
+}
+
+nav div{
+    height: 0%; /*고정 시키려면 이것도 추가해야 됨*/
+    margin-bottom: 70%;
+}
+
+.search a:after{
+    content: "Search";
+}
+.search a:hover::after{
+    content: "전적 검색";
+}
+.champion a:after{
+    content: "Champion";
+}
+.champion a:hover::after{
+    content: "챔피언 분석";
+}
+.community a::after{
+    content: "Community";
+}
+.community a:hover::after{
+    content: "게시판";
+}
+.login a::after{
+    content: "Log In";
+}
+.login a:hover::after{
+    content: "로그인";
+}
+.source a::after{
+    content: "Source";
+}
+.source a:hover::after{
+    content: "출처";
+}
+.search.div{
+ font-size : 10rem;
+
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 4%;
+    margin-left: 44%;
+}
+
+.title{
+    font: lighter;
+    font-size: 3.5vw;
+}
+
+.mainsearch{
+    display: flex;
+    flex-direction: column;
+    margin-left: -25%;
+}
+
+.searchimg{
+    width: 60%;
+    margin-top: 10%;
+}
+
+.searchbar{
+    float: left;
+    width: 60%;
+    padding: 2%;
+    background-color: rgba(206, 180, 255, 0.8);
+    font-size: 2vw;
+}
+
+::placeholder, .searchbar{
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.searchbutton{
+    width: 6%;
+    margin-left: -7%;
+    margin-top: 1%;
+    padding: 1%;
+    background-color: black;
+    font-size: 2vw;
+}
+
+@media screen and (min-width:0\0){
+    .container{
+        margin-left: 30%;
+    }
+    .mainsearch{
+        margin-left: -20%;
+    }
+    .searchimg{
+        width: 50%;
+        height: 46%;
+        margin-top: 6%;
+    }
+    .searchbar{
+        width: 50%;
+        padding: 1.2%;
+    }
+
+    .searchbutton{
+        width: 4%;
+        margin-left: -5%;
+        margin-top: 0.7%;
+        padding: 0.6%;
+    }
+}

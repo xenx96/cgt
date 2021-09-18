@@ -2,12 +2,14 @@ package com.cgt.cgt_prj.domain;
 
 import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
+import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.sql.Date;
 
+@Data
 @ToString
 @Document(collection = "Board")
 public class Board {

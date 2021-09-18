@@ -26,6 +26,7 @@
 - Back-End : Java(Spring Boot Framework)
 - Dev Tool : VSC(유대선)
 - Log Lib : logback
+- Issued Check From 'github/xenx96/cgt'
 ```   
 ***
 ## 2. 개발 회차별 계획
@@ -35,9 +36,7 @@
 - 세부 계획 및 기능 : 
   1. Riot API(React)추가 - 이동복 2021-08-25
   2. Riot API Components 분리 및 Async Function 변경 - 유대선 2021-08-26
-  3. JavaSpringBoot MongoDB 'User'Document Connection - 유대선 2021-08-26
-  4. MongoDB Schema 1차 작성 - 유대선 2021-08-26
-  5. Riot Search 페이지 추가 및 summoner_tier 이미지 추가 - 이동복 2021-08-31
+  3. Riot Search 페이지 추가 및 summoner_tier 이미지 추가 - 이동복 2021-08-31
 ```
 ### 2회차 : 챔피언, 아이템, 특성 정보 및 DB 구축
 ```
@@ -46,7 +45,11 @@
 ```
 -개발 기간 : 2021-08-29 ~
 -세부 계획 및 기능 :
-  1. ReactJS에서 Form Data로 UserCollection에 Insert기능 구현. - 유대선 2021-08-31
+  1. JavaSpringBoot MongoDB 'User'Document Connection - 유대선 2021-08-26
+  2. MongoDB Schema 1차 작성 - 유대선 2021-08-26
+  3. ReactJS에서 Form Data로 UserCollection에 Insert기능 구현. - 유대선 2021-08-31
+  4. 기본 회원가입 Logic(암호화 및 중복확인 포함) 구현. - 유대선 2021-09-16
+  5. 로그인 기본 logic 구현. - 유대선 2021-09-16 
 ```
 ### 4회차 : 배포 및 테스트
 ```
@@ -56,5 +59,5 @@
 ***
 
 
-> ## Create At 2021-08-01
- - start : 2021-08-03
+> #### Create : 2021-08-01
+> #### Start : 2021-08-03

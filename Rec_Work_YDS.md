@@ -13,7 +13,7 @@
     + html과 JavaSpringBoot연결에 관하여, GetMapping 으로 연결 가능하다.
     + 연결 방식은 HomeController.Java 참고.
     + @RestController === @Controller + @Responsebody 이다. 따라서 RestController 사용 지향.(우리는 RestFulAPI 개발.)
-    + 해당 차이는 https://devham76.github.io/spring/Spring-controllerRestController/ 참고.
+    + 해당 차이는 `https://devham76.github.io/spring/Spring-controllerRestController/` 참고.
     + Return 되는 ClassPath는 resource/templates/... 으로 할당된다. 따라서 View파일은 Templates밑으로 할당 할 것.
 
 - 2021-08-16
@@ -31,3 +31,29 @@
     + 현재 CRUD 몽고DB 테스팅과정중.
 
 
+- 2021-08-31
+    + ReactJS에서 Form Data로 UserCollection에 Insert기능 구현. 
+
+- 2021-09-03 
+    + ID 중복체크 비동기 통신 Logic 구현완료.
+    + Back-End Java에서 `UserAPIContoller.java` 생성. 
+    + 해당 메서드중 ID중복체크는 User에 관한 Service 항목이므로 `UserService.java`에서 메서드 호출하여 사용 및 실행.
+    + 현재 JSONObject로 findBy_id하여 받아오고 있음.
+        - 추후 DTO 객체로 받아올 예정. (stram().ModelMapper() 사용예정)
+    + Font-End에서 `Axios.get`으로 아이디 등록되어있는지 Server로 전달 및 응답 확인. `(Response? true:false)`
+
+- 2021-09-13
+    + PW중복체크 및 정규표현식 이용하여, `true:false State에 반환.`
+    + 이메일 또한 정규표현식이용하여 작업.
+    +  React에서 `Onchange` 및  `Submmit`과 같이 html에서 사용될 함수명은 handle~으로 작성하는 것으로 규정.
+    +  ID중복확인 및 이메일 정규식 확인, 비밀번호 재입력 동일 여부 확인하여 `3중 확인 완료시` Submit 가능하게 만듬. 
+
+- 2021-09-16
+    + `Java`
+    + PW Bcrypt 암호화 저장`UserService.hashEncodePassword` 및 비교 메서드`UserService.passwordMatch` 생성 완료. 
+    + UserApiContoller에서 사용될 계정등록 `UserService.joinId` 메서드 생성 완료.
+    + `React`
+    + 기본적인 로그인 form 전송시 Submit 메서드 `handleLoginSubmit` 생성. in `login.js`
+    + 회원가입 `Join.js` 테스트완료.
+    + `요청사항`
+    + 박보민에게 로그인과 회원가입 폼을 갖춘 디자인 시안 요청.(예상 기간 1~2일 소요)

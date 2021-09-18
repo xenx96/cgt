@@ -21,6 +21,7 @@ function Contents({ match }){
 
 useEffect(()=>{matchFirst();},[]);
 
+
 // useEffect 소환사의 해쉬값을 받아온후 진행해야 되므로 동기적으로 진행시키기 위해 useEffect사용
 //=>변경사항 콜백함수사용 초기 렌더링에만 실행하도록 useEffect(함수,[]) 두번쨰 인자에 빈 배열 부여
 
