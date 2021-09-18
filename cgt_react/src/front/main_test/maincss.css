@@ -6,29 +6,20 @@
     margin: 0;
     border: 0;
     padding: 0;
-    background-color: rgba(0, 0, 0, 1);
+    background: rgb(0, 0, 0);
     font-family: Felipa, Gowun Batang;
-    font : rgba(255, 255, 255, 0.95);
     text-decoration: none;
 }
 
 body{
     display: flex;
-    /* overflow: hidden; */
     flex-direction: row;
+    /* overflow: hidden; */
 }
 
 a,input,nav,div,header,.mainsearch,article{
-    background-color: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0);
     color: rgba(255, 255, 255, 0.95);
-}
-
-.mainvideo{
-    position: absolute;
-    width: auto;
-    height: 100%;
-    top: 55%; left: 63%;
-    transform: translate(-55%, -55%);
 }
 
 nav{
@@ -39,10 +30,21 @@ nav{
     margin-left: 3%;
     font-size: 1.5vw;
 }
-
 nav div{
     height: 0%; /*고정 시키려면 이것도 추가해야 됨*/
     margin-bottom: 70%;
+}
+
+input:focus{
+    outline: none;
+}
+
+.mainvideo{
+    position: absolute;
+    width: auto;
+    height: 100%;
+    top: 55%; left: 63%;
+    transform: translate(-55%, -55%);
 }
 
 .search a:after{
@@ -75,10 +77,6 @@ nav div{
 .source a:hover::after{
     content: "출처";
 }
-.search.div{
- font-size : 10rem;
-
-}
 
 .container{
     display: flex;
@@ -102,13 +100,14 @@ nav div{
 .searchimg{
     width: 60%;
     margin-top: 10%;
+    transition: 5s;
 }
 
 .searchbar{
     float: left;
     width: 60%;
     padding: 2%;
-    background-color: rgba(206, 180, 255, 0.8);
+    background: rgba(206, 180, 255, 0.8);
     font-size: 2vw;
 }
 
@@ -117,12 +116,19 @@ nav div{
 }
 
 .searchbutton{
-    width: 6%;
-    margin-left: -7%;
+    position: relative;
+    width: 9%;
+    margin-left: -11%;
     margin-top: 1%;
     padding: 1%;
-    background-color: black;
+    background: black;
     font-size: 2vw;
+}
+.searchbutton:hover{
+    color: black;
+    background-color: rgb(119, 46, 255);
+    box-shadow: 0 0 1vw rgb(119, 46, 255), 0 0 2vw rgb(119, 46, 255), 0 0 3vw rgb(119, 46, 255);
+    transition: 1s;
 }
 
 @media screen and (min-width:0\0){

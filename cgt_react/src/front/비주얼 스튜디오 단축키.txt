@@ -1,0 +1,14 @@
+자동 정렬하기 ctrl k f
+현재 라인 잘라내기 ctrl x
+주석 처리 ctrl k c
+주석 해제 ctrl k u
+다시 실행 ctrl y
+찾기 ctrl h
+
+전체 선택 : ctrl a
+자동 정렬 : ctrl k->ctrl f
+
+찾아 바꾸기
+ctrl shift f
+
+드래그 ctrl shift 화살표 / end>현재 줄부터 맨 밑에까지

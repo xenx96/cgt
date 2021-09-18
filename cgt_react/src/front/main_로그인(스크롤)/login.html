@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main_login</title>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<!-- 각 form의 id, value는 비워놓음 -->
+
+<body>
+    <div>
+        <video class="loginvd" autoplay muted loop>
+            <source src="./loginvideo.mp4">
+        </video>
+    </div>
+    <div class="login">
+        <h1 class="logintitle">Log In</h1>
+        <div class="id">
+            <label>ID :</label>
+            <input type="text">
+        </div>
+        <div class="pw">
+            <label>PW :</label>
+            <input type="password">
+        </div>
+        <div class="autologin">
+            <input type="radio" id="autologin2">
+            <label for="autologin2">자동 로그인</label>
+            <!--autologin 안의 요소는 id가 같아야 한다. 체크 해제는 js에서 해결-->
+        </div>
+        <div class="foundpw">
+            <a href="비밀번호 찾기">PW를 잊으셨습니까?</a>
+        </div>
+        <!-- 로그인 버튼은 hover 글자 변경이 안되므로 더 찾아보거나 jquery를 사용해야 할 듯 -->
+        <div class="loginbutton">
+            <input type="submit" value="Log In">
+        </div>
+        <div class="joinbutton">
+            <a href="회원가입">Join</a>
+        </div>
+    </div>
+</body>
+
+</html>
