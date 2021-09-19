@@ -12,6 +12,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends MongoRepository<UserDTO, String> {
-    JSONObject findBy_id(String _id);
+
+    Optional<UserDTO> findBy_id(String _id);
+
 
 }

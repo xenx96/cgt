@@ -24,7 +24,7 @@
 ```
 - Front-End : HTML, CSS, React.JS
 - Back-End : Java(Spring Boot Framework)
-- Dev Tool : VSC(유대선)
+- Dev Tool : VSC(유대선), IntelliJ(유대선)
 - Log Lib : logback
 - Issued Check From 'github/xenx96/cgt'
 ```   
@@ -54,7 +54,8 @@
 ### 4회차 : 배포 및 테스트
 ```
 - 배포 : 도메인(카페 24 예정), 서버(AWS LightSail 예정),
-- 테스트 : APM Monitoring, Slow Query, Big Traffic, Err Logging, Lock Management,locust, 장애 요인 파악
+- 개발 테스트 : JUnit(java)
+- 배포전 테스트 : APM Monitoring, Slow Query, Big Traffic, Err Logging, Lock Management,locust, 장애 요인 파악
 ```
 ***
 
