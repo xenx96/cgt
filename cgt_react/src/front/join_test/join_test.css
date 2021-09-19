@@ -17,9 +17,7 @@ body{
     background: black;
     /* overflow: hidden; */
 }
-div, a, input, button, .joinbutton{
-    /* background: rgba(0, 0, 0, 0); */
-}
+
 input:focus{
     outline: none;
 }
@@ -49,7 +47,7 @@ main{
     flex-direction: column;
     position: relative;
     width: 29vw; height: 43vw;
-    transform: translate(34.2vw, -1.2vw);
+    transform: translate(34.2vw, -1vw);
     border: 0.1vw solid rgba(255, 255, 255, 0.8);
     padding: 0.7vw;
     background: rgba(59, 193, 255, 0.2);
@@ -91,4 +89,5 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    font-size: 0.8vw;
 }
