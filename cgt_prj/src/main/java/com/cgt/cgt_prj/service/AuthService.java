@@ -10,21 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.Optional;
 
 public class AuthService {
 
     @Autowired
     UserRepository userRepository;
     UserService userService;
-
     // 로그인 로직
     public String userLogin(UserDTO loginUser){
-        JSONObject userData= userRepository.findBy_id(loginUser.get_id());
+        Optional<UserDTO> userData = userRepository.findBy_id(loginUser.get_id());
         if (userData == null) {
-            return null;
+            return "no Id";
         }
+        userData.stream().findAny("PW")
         else{
-            Boolean resultPasswordCheck = passwordCheck(loginUser.getPW(), (String) userData.get("PW"));
+            if (passwordCheck(loginUser.getPW(), (String) userData.get("PW"))) throw new IllegalArgumentException();
             return jsonWebTokenMake(userData);
         }
     }
