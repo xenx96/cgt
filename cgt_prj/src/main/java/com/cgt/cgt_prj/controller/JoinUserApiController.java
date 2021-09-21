@@ -18,17 +18,15 @@ import javax.validation.Valid;
 //User 관련 API
 
 @RestController
-public class UserApiController {
+public class JoinUserApiController {
 
-    @Resource(name ="userRepository")
-    UserRepository userRepository;
 
     @Resource(name = "userService")
     private UserService userService;
 
    //최종 회원가입.
     @PostMapping("/api/user")
-    public Boolean registerUser(@RequestBody @Valid UserDTO form){
+    public Boolean registerUser(@RequestBody UserDTO form){
         //UserDTO.UserDTO에 있는 입력값대로 Post로 받아온 RequestBody Data로 검증한다.(@Valid)어노테이션 사용.
         userService.joinId(form);
         return true;

@@ -13,7 +13,7 @@ class Join extends React.Component{
   handleSubmit = async(e) => {
     if(this.state.IDCheck & this.state.EACheck & this.state.PWCheck){
       const {ID, PW, SX, BT, NM, ADR, EA, MN} = e.target;
-      const CA = new Date();
+      const CA = new Date().getTime();
       try{  
         
       var userfrm = {
@@ -29,7 +29,6 @@ class Join extends React.Component{
     }
       
       userfrm = JSON.stringify(userfrm);
-      alert(userfrm);
       //alert(userfrm); 
         let res = await Axios.post('/api/user',userfrm, {
           headers: { "Content-Type": `application/json`}
@@ -83,7 +82,7 @@ class Join extends React.Component{
 
     render(){
   return (
-    <form onSubmit = {this.handleSubmit} method = "post">
+    <form onSubmit = {this.handleSubmit}>
         <div>
             아이디 <input type = "text"  name = "ID" onChange={this.handleIdCheck} minLength={6} maxLength = {12} /> <span>{this.state.IDNotice}</span>
         </div>

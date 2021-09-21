@@ -1,40 +1,45 @@
 package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.domain.UserDTO;
-import com.cgt.cgt_prj.repositories.UserRepository;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import net.minidev.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.time.Duration;
 import java.util.Date;
-import java.util.Optional;
 
-public class AuthService {
+@Service
+public class LoginService {
 
-    @Autowired
-    UserRepository userRepository;
-    UserService userService;
+    @Resource(name = "userService")
+    private UserService userService;
+
     // 로그인 로직
     public String userLogin(UserDTO loginUser){
-        JSONObject userData = userRepository.findBy_id(loginUser.get_id());
-        if (userData != null & passwordCheck(loginUser.getPW(), (String) userData.get("PW"))) {
+        JSONObject userData = userService.findBy_id(loginUser.get_id());
+
+        System.out.println(passwordMatch(loginUser.getPW(), (String) userData.get("PW")));
+        System.out.println("비밀번호 확인은 위에서");
+
+        if(userData != null && passwordMatch(loginUser.getPW(), (String) userData.get("PW"))) {
+            userData.putAll(userService.findBy_id(loginUser.get_id()));
             return jsonWebTokenMake(userData);
         }
         else{
+            System.out.println("failed");
             return "failed";
         }
     }
 
-    //비밀번호 확인 로직
-    public Boolean passwordCheck(String loginPassword,String savedPassword){
-
-        if(userService.passwordMatch(loginPassword,savedPassword)) return true;
-        else return false;
+    //비밀번호 매치 로직
+    public boolean passwordMatch(String password, String hashedPassword){
+        return BCrypt.checkpw(password,hashedPassword);
     }
-
+    //JWT 생성 로직.
     public String jsonWebTokenMake(JSONObject form){
 
         Date now = new Date();
