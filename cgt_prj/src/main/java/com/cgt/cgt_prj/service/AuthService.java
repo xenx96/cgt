@@ -19,21 +19,19 @@ public class AuthService {
     UserService userService;
     // 로그인 로직
     public String userLogin(UserDTO loginUser){
-        Optional<UserDTO> userData = userRepository.findBy_id(loginUser.get_id());
-        if (userData == null) {
-            return "no Id";
-        }
-        userData.stream().findAny("PW")
-        else{
-            if (passwordCheck(loginUser.getPW(), (String) userData.get("PW"))) throw new IllegalArgumentException();
+        JSONObject userData = userRepository.findBy_id(loginUser.get_id());
+        if (userData != null & passwordCheck(loginUser.getPW(), (String) userData.get("PW"))) {
             return jsonWebTokenMake(userData);
+        }
+        else{
+            return "failed";
         }
     }
 
     //비밀번호 확인 로직
     public Boolean passwordCheck(String loginPassword,String savedPassword){
 
-        if(userService.passwordMatch(loginPassword,savedPassword)) return true ;
+        if(userService.passwordMatch(loginPassword,savedPassword)) return true;
         else return false;
     }
 
