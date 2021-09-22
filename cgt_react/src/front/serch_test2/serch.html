@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serch</title>
+    <link rel="stylesheet" href="./search.css">
+</head>
+
+<body>
+    <header>
+        <h1><a href="메인 페이지">League Of Legend</a></h1>
+        <input type="text" placeholder="전적 검색">
+        <div>
+            <label>ID</label>
+            <input type="text" placeholder="ID 입력">
+            <label>PW</label>
+            <input type="password">
+            <input type="submit" value="Log In">
+        </div>
+        <button href="회원가입">Join</button>
+    </header>
+    <nav>
+        <ul>
+            <li class="navchampion">
+                <a href="챔피언 분석">
+                </a>
+            </li>
+            <li class="navmultisearch">
+                <a href="다중 전적 검색">
+                </a>
+            </li>
+            <li class="navcommunity">
+                <a href="커뮤니티">
+                </a>
+            </li>
+            <li class="navrank">
+                <a href="랭킹">
+                </a>
+            </li>
+            <li class="navchamprank">
+                <a href="장인 랭킹">
+                </a>
+            </li>
+            <li class="navprowatch">
+                <a href="프로 관전">
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <article class="profile">
+            <div class="profileimg">
+                <img src="./임시 이미지/profileimg.PNG">
+                <!--이미지 안에 프로필 사진&레벨&랭크테두리-->
+            </div>
+            <div class="profilemain">
+                <h2>도구 기능사</h2>
+                <span>솔로랭크 : n전 n승 n패</span>
+                <span>자유랭크 : n전 n승 n패</span>
+            </div>
+            <div class="profilebutton">
+                <label>n분 전 갱신</label>
+                <button>전적 갱신</button>
+                <span>n일 n시간</span>
+            </div>
+        </article>
+        <article class="winrate">
+            <dl class="winratemenu">
+                <dd>
+                    <a href="전체">전체</a>
+                </dd>
+                <dd>
+                    <a href="솔랭">솔로 랭크</a>
+                </dd>
+                <dd>
+                    <a href="자랭">자유 랭크</a>
+                </dd>
+            </dl>
+            <div class="winratemain">
+                <div class="winrateprofile">
+                    <img src="./임시 이미지/tear.PNG">
+                    <table>
+                        <tr>
+                            <td>랭킹</td>
+                            <td>1,000,00위</td>
+                        </tr>
+                        <tr>
+                            <td>상위</td>
+                            <td>50%</td>
+                        </tr>
+                        <tr>
+                            <td>등급</td>
+                            <td>Silver3</td>
+                        </tr>
+                        <tr>
+                            <td>포인트</td>
+                            <td>20Lp</td>
+                        </tr>
+                        <tr>
+                            <td>승급전</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <th>선호 포지션</th>
+                        <tr>
+                            <td>
+                                <img src="./임시 이미지/포지션/sup.png">
+                            </td>
+                            <td>
+                                <h5>서포터</h5>
+                                <b>90% |</b>
+                                <span>승률 60%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="./임시 이미지/포지션/bot.png">
+                            </td>
+                            <td>
+                                <h5>원딜</h5>
+                                <b>10% |</b>
+                                <span>승률 40%</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h5>n전 n승 n패</h5>
+                    <div class="wingraph">
+                        <img src="./임시 이미지/graph.png">
+                        <!-- 도넛 그래프로 만든 후, 삭제 예정 -->
+                        <!-- <span>
+                        50%
+                    </span> -->
+                        <ul>
+                            <li>
+                                K / D / A
+                            </li>
+                            <li>
+                                3.54(50%)
+                                <!--kda평균(킬관여율) css로 올려놓으면 정보 표시되도록-->
+                            </li>
+                            <li>
+                                <b>cs |</b>
+                                <span>40</span>
+                                <b>분당 |</b>
+                                <span>1.2</span>
+                            </li>
+                            <li>
+                                <b>가한 피해량 |</b>
+                                <span>7,000</span>
+                            </li>
+                            <li>
+                                <b>받은 피해량 |</b>
+                                <span>8,000</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <aside class="withplayer">
+            <dl>
+                <dt>전체</dt>
+                <dt>솔랭</dt>
+                <dt>자랭</dt>
+                <dt>일반</dt>
+                <dt>칼바람</dt>
+            </dl>
+        </aside>
+        <article class="teargraph"></article>
+        <article class="palychampion"></article>
+        <article class="playlist"></article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

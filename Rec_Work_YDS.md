@@ -57,3 +57,9 @@
     + 회원가입 `Join.js` 테스트완료.
     + `요청사항`
     + 박보민에게 로그인과 회원가입 폼을 갖춘 디자인 시안 요청.(예상 기간 1~2일 소요)
+  
+- 2021-09-18
+    + `Java`
+    + 로그인시 `JWT`생성 및 전송 기능 구현완료(`AuthService.java`)
+    + Unit Test를 통한 JWT생성 단위테스트 통과.
+    + `JSONObejct`로 현재 `findBy_id()` 구현되어있으나, `NullException` 문제로 인하여 `Optional<>` 적용중. 

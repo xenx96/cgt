@@ -50,7 +50,7 @@ public class UserDTO {
     //private Date UA;
 
     
-    public UserDTO(String _id, String PW, String NM, String EA, Number MN, Number SX, String ADR,Date CA, Date BT){
+    public UserDTO(){
         super();
         this._id = _id;
         this.PW = PW;

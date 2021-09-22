@@ -12,3 +12,10 @@
 ctrl shift f
 
 드래그 ctrl shift 화살표 / end>현재 줄부터 맨 밑에까지
+한 단어 드래그 ctrl alt 화살표
+한 단어씩 이동 ctrl 화살표
+
+화면 분할 ctrl \
+영역 펼치기 ctrl shift [
+	ctrl shift ]
+특정 문자열 변경 ctrl d 를 누르고 d를 n번 누른다
