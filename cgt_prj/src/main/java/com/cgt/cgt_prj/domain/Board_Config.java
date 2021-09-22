@@ -3,18 +3,19 @@ package com.cgt.cgt_prj.domain;
 import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.sql.Date;
 
 @Data
-@Document(collection = "Board_Config")
+@ToString
+@Document(collection = "BoardConfig")
 public class Board_Config {
     @Id
     @NonNull
     private String _id;
-    @Id
     @NonNull
     private String BN;
     @NonNull

@@ -42,7 +42,7 @@ public class HomeController{
     public String registerUser(@RequestBody @Valid UserDTO userfrm
     		 //UserDTO.UserDTO에 있는 입력값대로 Post로 받아온 RequestBody Data로 검증한다.(@Valid)어노테이션 사용.
     ){
-                userRepository.insert(userfrm);
+       userRepository.insert(userfrm);
 
         return null;
 

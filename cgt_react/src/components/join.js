@@ -14,8 +14,8 @@ class Join extends React.Component{
     if(this.state.IDCheck & this.state.EACheck & this.state.PWCheck){
       const {ID, PW, SX, BT, NM, ADR, EA, MN} = e.target;
       const CA = new Date();
-      try{  
-        
+      try{
+
       var userfrm = {
         _id:ID.value ,
         PW :PW.value ,
@@ -25,12 +25,12 @@ class Join extends React.Component{
         ADR : ADR.value ,
         EA : EA.value,
         MN : MN.value,
-        CA 
+        CA
     }
-      
+
       userfrm = JSON.stringify(userfrm);
       alert(userfrm);
-      //alert(userfrm); 
+      //alert(userfrm);
         let res = await Axios.post('/api/user',userfrm, {
           headers: { "Content-Type": `application/json`}
             });
@@ -46,14 +46,14 @@ class Join extends React.Component{
     }
 /*IDChecking Handler */
     handleIdCheck = async(e)=>{
-      var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*/ //패턴 
+      var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*/ //패턴
       if(e.target.value.length<6 | e.target.value.length>12 | !regExp.test(e.target.value)){
-      await this.setState({IDNotice : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});    
+      await this.setState({IDNotice : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});
       }
       else{
 
         try{
-          let res = await Axios.get('/api/user?id='+e.target.value); 
+          let res = await Axios.get('/api/user?id='+e.target.value);
           await this.setState({IDNotice :res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."});
           await this.setState({IDCheck: res.data? true : false});
           console.log(res);

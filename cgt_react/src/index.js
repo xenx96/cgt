@@ -6,6 +6,7 @@ import Contents from './components/contents';
 import {BrowserRouter, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Join from './components/join';
+import Board from './components/Board';
 
 
 
@@ -15,6 +16,9 @@ ReactDOM.render(
     {/*Search 컴포넌트 실행*/}
     <BrowserRouter>
     <Route path="/join" component={Join} />
+    </BrowserRouter>
+    <BrowserRouter>
+    <Route path="/board" component={Board} />
     </BrowserRouter>
     <BrowserRouter>
       <Route path="/:summoner" component={Contents} />

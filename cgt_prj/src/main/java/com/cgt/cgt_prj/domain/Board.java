@@ -33,25 +33,25 @@ public class Board {
 
     @Id
     @NonNull
-    private String _id;
+    private String _id; // 고유 id
     @NonNull
-    private String BID;
+    private String BID; // 게시판 아이디
     @NonNull
-    private String UI;
+    private String UI; // 유저 아이디
     @NonNull
-    private String CT;
+    private String CT; //컨텐츠 제목
     @NonNull
-    private String CS;
+    private String CS; // 내용
     @Nullable
-    private String RCI ;
+    private String RCI ; // 답글한 게시물 
     @NonNull
-    private short RA ;
+    private short RA ; // 댓글 및 답글여부
     @NonNull
-    private Date CA;
+    private Date CA; // 생성일자
     @Nullable
-    private Date UA;
+    private Date UA; // 수정일자
     @Nullable
-    private Date DA;
+    private Date DA; // 삭제일자
 
     public Board( String _id, String BID, String UI, String CT, String CS, String RCI, short RA, Date CA, Date UA, Date DA) {
         this._id = _id;
