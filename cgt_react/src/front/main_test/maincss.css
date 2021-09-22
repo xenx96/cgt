@@ -53,6 +53,12 @@ input:focus{
 .search a:hover::after{
     content: "전적 검색";
 }
+.allsearch a::after{
+    content: "Multi Search";
+}
+.allsearch a:hover::after{
+    content: "다중 전적 검색";
+}
 .champion a:after{
     content: "Champion";
 }
@@ -71,12 +77,12 @@ input:focus{
 .login a:hover::after{
     content: "로그인";
 }
-.source a::after{
+/* .source a::after{
     content: "Source";
 }
 .source a:hover::after{
     content: "출처";
-}
+} */
 
 .container{
     display: flex;
