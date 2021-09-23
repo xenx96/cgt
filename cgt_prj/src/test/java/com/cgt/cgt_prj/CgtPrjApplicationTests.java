@@ -4,12 +4,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 @SpringBootTest
 class CgtPrjApplicationTests {
 	@Test
 	public void testStart(){
-		System.out.println("Test를 시작합니다.");
+		Date now = new Date();
+		System.out.println("현재 시간은 "+now.toString()+"---------------------------Test를 시작합니다.-------------------------");
 	}
 
 

@@ -28,7 +28,7 @@ public class LoginService {
     public String userLogin(UserDTO loginUser){
         JSONObject userData = userService.findBy_id(loginUser.get_id());
 
-        if(userData != null && hashedMatch(loginUser.getPW(), (String) userData.get("PW"))) {
+        if(userData != null && userService.hashedMatch(loginUser.getPW(), (String) userData.get("PW"))) {
             return JWTMake(userData);
         }
         else{
@@ -36,10 +36,7 @@ public class LoginService {
         }
     }
 
-    //비밀번호 매치 로직
-    public boolean hashedMatch(String password, String hashedPassword){
-        return BCrypt.checkpw(password,hashedPassword);
-    }
+
     //JWT 생성 로직.
     public String JWTMake(JSONObject form){
 

@@ -6,6 +6,7 @@ import net.minidev.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 //User에 관한 비즈니스로직 짜는 부분
@@ -21,13 +22,32 @@ public class UserService {
 
     //아이디 조회
      public Boolean idCheck(String id){return findBy_id(id) == null; }
-    //
+
+    //회원 가입
      public void  insertUser(UserDTO userDTO){
         String hashPassword = hashEncodePassword(userDTO.getPW());
         userDTO.setPW(hashPassword);
-        userRepository.insert(userDTO);
+        userInsert(userDTO);
      }
 
+     // 회원 탈퇴
+    public void deleteUser(UserDTO user){
+        //PW 검증
+        JSONObject userData = findBy_id(user.get_id());
+        if (userData != null && hashedMatch(user.getPW(), (String) userData.get("PW"))){
+            deleteBy_id(user.get_id());
+            System.out.println("Delete Complete");
+        }else{
+            System.out.println("Password ERROR");
+            return;
+        }
+        //
+    }
+
+    //PW 매치 로직
+    public boolean hashedMatch(String password, String hashedPassword){
+        return BCrypt.checkpw(password,hashedPassword);
+    }
    //PW 암호화 메서드
     public String hashEncodePassword(String password){
         return BCrypt.hashpw(password,BCrypt.gensalt());
@@ -37,7 +57,17 @@ public class UserService {
     public JSONObject findBy_id(String id){
         return userRepository.findBy_id(id);
     }
+    //user 정보 삭제 method
+    @Transactional
+    public void deleteBy_id(String id){
+        userRepository.deleteById(id);
+    }
+    //user 정보 등록 method
+    @Transactional
+    public void userInsert(UserDTO user){
+        userRepository.insert(user);
 
+    }
 
 
 
