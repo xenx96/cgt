@@ -55,7 +55,7 @@
 ### 4회차 : 배포 및 테스트
 ```
 - 배포 : 도메인(카페 24 예정), 서버(AWS LightSail 예정),
-- 개발 테스트 : JUnit(java)
+- 개발 테스트 : JUnit(java) 및 Local Test
 - 배포전 테스트 : APM Monitoring, Slow Query, Big Traffic, Err Logging, Lock Management,locust, 장애 요인 파악
 ```
 ***
