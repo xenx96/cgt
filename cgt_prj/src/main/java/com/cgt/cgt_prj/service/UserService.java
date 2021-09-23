@@ -17,6 +17,7 @@ public class UserService {
 
     @Autowired
     public void UserRepository(UserRepository userRepository) {
+
         this.userRepository = userRepository;
     }
 
@@ -50,11 +51,13 @@ public class UserService {
     }
    //PW 암호화 메서드
     public String hashEncodePassword(String password){
+
         return BCrypt.hashpw(password,BCrypt.gensalt());
     }
 
     //findBy_id method 생성
     public JSONObject findBy_id(String id){
+
         return userRepository.findBy_id(id);
     }
     //user 정보 삭제 method
