@@ -5,7 +5,9 @@ import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import net.minidev.json.JSONObject;
+import org.apache.catalina.User;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,32 +17,31 @@ import java.util.Date;
 @Service
 public class LoginService {
 
-    @Resource(name = "userService")
     private UserService userService;
+
+    @Autowired
+    public LoginService(UserService userService){
+        this.userService = userService;
+    }
 
     // 로그인 로직
     public String userLogin(UserDTO loginUser){
         JSONObject userData = userService.findBy_id(loginUser.get_id());
 
-        System.out.println(passwordMatch(loginUser.getPW(), (String) userData.get("PW")));
-        System.out.println("비밀번호 확인은 위에서");
-
-        if(userData != null && passwordMatch(loginUser.getPW(), (String) userData.get("PW"))) {
-            userData.putAll(userService.findBy_id(loginUser.get_id()));
-            return jsonWebTokenMake(userData);
+        if(userData != null && hashedMatch(loginUser.getPW(), (String) userData.get("PW"))) {
+            return JWTMake(userData);
         }
         else{
-            System.out.println("failed");
             return "failed";
         }
     }
 
     //비밀번호 매치 로직
-    public boolean passwordMatch(String password, String hashedPassword){
+    public boolean hashedMatch(String password, String hashedPassword){
         return BCrypt.checkpw(password,hashedPassword);
     }
     //JWT 생성 로직.
-    public String jsonWebTokenMake(JSONObject form){
+    public String JWTMake(JSONObject form){
 
         Date now = new Date();
 

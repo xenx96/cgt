@@ -20,10 +20,9 @@ public class UserService {
     }
 
     //아이디 조회
-     public Boolean registerIdCheck(String id){
-         return findBy_id(id) == null;
-     }
-     public void  joinId(UserDTO userDTO){
+     public Boolean idCheck(String id){return findBy_id(id) == null; }
+    //
+     public void  insertUser(UserDTO userDTO){
         String hashPassword = hashEncodePassword(userDTO.getPW());
         userDTO.setPW(hashPassword);
         userRepository.insert(userDTO);
@@ -34,6 +33,7 @@ public class UserService {
         return BCrypt.hashpw(password,BCrypt.gensalt());
     }
 
+    //findBy_id method 생성
     public JSONObject findBy_id(String id){
         return userRepository.findBy_id(id);
     }

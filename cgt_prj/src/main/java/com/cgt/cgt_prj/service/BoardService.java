@@ -10,8 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BoardService {
 
+    private final BoardRepository boardRepository;
+
     @Autowired
-    private BoardRepository boardRepository;
+    public BoardService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
+    }
 
     @Transactional
     public void writePost(Board board){
