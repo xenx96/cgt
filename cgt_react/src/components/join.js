@@ -1,6 +1,9 @@
 import React, {Component } from 'react';
 import Axios from "axios";
-class Join extends React.Component{
+import  VideoTag  from "./video.js";
+import Head from "./head.js"
+
+class Join extends Component{
     state = { //~Check : 요청값 확인, 최종 3개 모두 확인완료시 Submit가능. ||
     IDNotice:'',
     IDCheck: false,
@@ -28,10 +31,8 @@ class Join extends React.Component{
         CA
     }
 
-      userfrm = JSON.stringify(userfrm);
-      alert(userfrm);
-      //alert(userfrm);
-        let res = await Axios.post('/api/user',userfrm, {
+      userfrm =  JSON.stringify(userfrm);
+      let res = await Axios.post('/api/user',userfrm, {
           headers: { "Content-Type": `application/json`}
             });
         alert(res.data?'회원가입이 되었습니다!': '다시 시도해 주세요!');
@@ -48,14 +49,14 @@ class Join extends React.Component{
     handleIdCheck = async(e)=>{
       var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*/ //패턴
       if(e.target.value.length<6 | e.target.value.length>12 | !regExp.test(e.target.value)){
-      await this.setState({IDNotice : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});
+        this.setState({IDNotice : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});
       }
       else{
 
         try{
           let res = await Axios.get('/api/user?id='+e.target.value);
-          await this.setState({IDNotice :res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."});
-          await this.setState({IDCheck: res.data? true : false});
+                this.setState({IDNotice :res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."});
+                this.setState({IDCheck: res.data? true : false});
           console.log(res);
         }catch(err){
           console.error(err);
@@ -70,55 +71,68 @@ class Join extends React.Component{
       this.setState({PW : e.target.value});
     };
     handlePasswordCheck = async(e)=>{
-        await this.setState({PWCheck: this.state.PW===e.target.value ?true:false})
-        await this.setState({PWNotice: this.state.PWCheck ? '비밀번호가 일치합니다.':'비밀번호가 일치하지 않습니다.'})
+         await this.setState({PWCheck: this.state.PW===e.target.value ?true:false})
+         await this.setState({PWNotice: this.state.PWCheck ? '비밀번호가 일치합니다.':'비밀번호가 일치하지 않습니다.'})
     };
 
 /*Email Frame Check Handler */
-    handleEmailFrame =(e)=> {
+    handleEmailFrame = async(e)=> {
       var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-      this.setState({EACheck : regExp.test(e.target.value) ? true : false}); //이메일 유효 여부 확인
-      this.setState({emailNotice : this.state.EACheck?'사용 가능한 형식입니다.':'사용 불가능한 형식 입니다.'}); // 멘트출력
+      await this.setState({EACheck : regExp.test(e.target.value) ? true : false}); //이메일 유효 여부 확인
+      await this.setState({emailNotice : this.state.EACheck?'사용 가능한 형식입니다.':'사용 불가능한 형식 입니다.'}); // 멘트출력
     };
 
     render(){
+
   return (
-    <form onSubmit = {this.handleSubmit}>
+    
+    <><Head/>
+    <VideoTag/>
+          
+      <header>
+        <a href="회원가입 링크"><p>회원가입</p></a>
+      </header>
+      
+      <main onSubmit={this.handleSubmit}>
         <div>
-            아이디 <input type = "text"  name = "ID" onChange={this.handleIdCheck} minLength={6} maxLength = {12} /> <span>{this.state.IDNotice}</span>
+          <label>아이디</label><br />
+          <input type="text" name="ID" onChange={this.handleIdCheck} minLength={6} maxLength={12} />
+          <p>{this.state.IDNotice}</p>
         </div>
         <div>
-            이름 <input type = "text" name = "NM"/>
+          <label>비밀번호</label><br />
+          <input type="password" name="PW" onChange={this.handlePassword} minLength={8} maxlength='17' placeholder="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요" />
+          <p>사용 불가</p>
         </div>
         <div>
-            비밀번호 <input type = "password" name = "PW" minLength = {8} onChange ={this.handlePassword} placeholder = '8자리 이상 입력하세요.'/>
+          <label>비밀번호 재확인</label><br />
+          <input type="password" name="PW2" onChange={this.handlePasswordCheck} />
+          <p>{this.state.PWNotice}</p>
         </div>
         <div>
-            비밀번호 확인 <input type = "password" name = "PW2" onChange={this.handlePasswordCheck} />{this.state.PWNotice}
+          <label>이름</label><br />
+          <input type="text" name="NM" />
+        </div>
+        <div> <label>생년월일</label><br />
+          <input type="date" name="BT" />
         </div>
         <div>
-            주소 <input type = "text" name = "ADR"/>
+          <label>본인 확인 이메일</label><br />
+          <input type="email" name="EA" onChange={this.handleEmailFrame} />
+          <input type="button" value="인증번호 받기" /><br />
+          <p>{this.state.emailNotice}</p>
+          <input type="text" placeholder="인증번호 입력하세요" />
+          <input type="button" value="인증번호 확인" />
+          <p>인증 번호가 일치하지 않습니다.</p>
         </div>
-        <div>
-            이메일 <input type = "text" name = "EA" onChange = {this.handleEmailFrame}/> <span>{this.state.emailNotice}</span>
-        </div>
-        <div>
-            전화 번호<input type = 'text' name = 'MN'/>
-        </div>
-        <div>
-            성별<select name = 'SX'>
-              <option value = '1' >남자 </option>
-              <option value = '2' >여자 </option>
-            </select>
-        </div>
-        <div>
-            생년월일<input type = 'date' name = 'BT'/>
-        </div>
-        <div>
-            Mobile-Number<input type = 'number' name = 'MN'/>
-        </div>
-     <button>회원 가입</button>
-    </form>
+        <input class="joinbutton" type="submit" value="가입하기" />
+
+
+      </main>
+      </>
+
+      
+      
 
   )
     }
