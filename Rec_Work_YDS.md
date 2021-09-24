@@ -63,3 +63,15 @@
     + 로그인시 `JWT`생성 및 전송 기능 구현완료(`AuthService.java`)
     + Unit Test를 통한 JWT생성 단위테스트 통과.
     + `JSONObejct`로 현재 `findBy_id()` 구현되어있으나, `NullException` 문제로 인하여 `Optional<>` 적용중. 
+
+- 2021-09-23
+    + `Java`
+    + JSONObject로 받아오던 객체를 UserDTO로 전환 완료.
+    + API부분 User를 Restful API로 구현완료.
+    + `GET,POST,PUT,DELETE`API로 Back-End작업 및 Test 완료.
+    + Field Injection부분 Constructor Injection으로 변경완료.
+
+- 2021-09-24
+    + `React`
+    + 박보민이 만든 html및 css 디자인으로 회원가입(join)부분 form 변경 완료.
+    + Join부분에서 Head(meta 부분), Footer, Video(영상 출력)부분, Main-Join Component로 분할 및 적용 완료.
