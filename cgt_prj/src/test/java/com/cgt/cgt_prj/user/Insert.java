@@ -36,7 +36,7 @@ public class Insert {
     }
 
     @Test
-    public void userInsertAndDelete(){
+    public void userInfoTest(){
 
         //<-- First Test -->
         System.out.println("UserInsert Test 입니다. ID는 testing123 입니다.");
@@ -46,11 +46,20 @@ public class Insert {
         userService.insertUser(user1);
         System.out.println("Insert 완료");
 
-        System.out.println("UserDelete Test 입니다. ID는 testing123입니다.");
+        System.out.println("UserUpdate Test입니다. ID는 testing123입니다.");
         UserDTO user2 = new UserDTO();
         user2.set_id("testing123");
-        user2.setPW("asdf1234");
-        userService.deleteUser(user2);
+        user2.setPW("aaaa1234");
+        user2.setMN("010-2222-2222");
+        userService.userUpdate(user2);
+        System.out.println(userService.findBy_id(user2.get_id()));
+        System.out.println("Update 완료.");
+
+        System.out.println("UserDelete Test 입니다. ID는 testing123입니다.");
+        UserDTO user3 = new UserDTO();
+        user3.set_id("testing123");
+        user3.setPW("aaaa1234");
+        userService.deleteUser(user3);
         System.out.println("Delete 완료.");
     }
 

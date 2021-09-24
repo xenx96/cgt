@@ -3,10 +3,13 @@ package com.cgt.cgt_prj.service;
 import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.repositories.UserRepository;
 import net.minidev.json.JSONObject;
+import org.jetbrains.annotations.NotNull;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 
 //User에 관한 비즈니스로직 짜는 부분
@@ -34,13 +37,12 @@ public class UserService {
      // 회원 탈퇴
     public void deleteUser(UserDTO user){
         //PW 검증
-        JSONObject userData = findBy_id(user.get_id());
-        if (userData != null && hashedMatch(user.getPW(), (String) userData.get("PW"))){
+        UserDTO userData = findBy_id(user.get_id());
+        if (userData != null && hashedMatch(user.getPW(), (String) userData.getPW())){
             deleteBy_id(user.get_id());
-            System.out.println("Delete Complete");
+            System.out.println("Delete User Complete");
         }else{
-            System.out.println("Password ERROR");
-            return;
+            System.out.println("Delete User Failed");
         }
         //
     }
@@ -56,7 +58,7 @@ public class UserService {
     }
 
     //findBy_id method 생성
-    public JSONObject findBy_id(String id){
+    public UserDTO findBy_id(String id){
 
         return userRepository.findBy_id(id);
     }
@@ -70,6 +72,20 @@ public class UserService {
     public void userInsert(UserDTO user){
         userRepository.insert(user);
 
+    }
+    @Transactional
+    public void userUpdate(UserDTO user) {
+        UserDTO userData = findBy_id(user.get_id());
+        //수정가능 인자 PW/MN/ADR/BT/UA
+        Date now = new Date();
+        userData.setPW(hashEncodePassword(
+                user.getPW()
+        ));
+        userData.setMN(user.getMN());
+        userData.setADR(user.getADR());
+        userData.setBT(user.getBT());
+        userData.setUA(now);
+        userRepository.save(userData);
     }
 
 

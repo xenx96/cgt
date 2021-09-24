@@ -5,15 +5,11 @@ package com.cgt.cgt_prj.controller;
 
 import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.service.UserService;
-import com.cgt.cgt_prj.repositories.UserRepository;
 
-import lombok.AllArgsConstructor;
-import org.apache.catalina.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import javax.validation.Valid;
 
 
 //Static에 있는 index.html === /하나만 붙인것과 동일하다.
@@ -21,12 +17,12 @@ import javax.validation.Valid;
 //User 관련 API
 
 @RestController
-public class JoinUserApiController {
+public class UserApiController {
 
     private UserService userService;
 
     @Autowired
-    public JoinUserApiController(UserService userService){
+    public UserApiController(UserService userService){
         this.userService = userService;
     }
 
@@ -44,6 +40,21 @@ public class JoinUserApiController {
         return userService.idCheck(id);
     }
 
+    //회원 탈퇴 Mapping
+    @DeleteMapping("api/user")
+    public Exception deleteUser(@RequestHeader String JWT) throws Exception {
+                String id = (String) Jwts.parser()
+                .setSigningKey("secret")
+                .parseClaimsJws(JWT)
+                .getBody().get("id");
 
+        userService.deleteBy_id(id);
+        return null;
+    }
+
+    @PutMapping("api/user")
+    public void updateUser(@RequestBody UserDTO form) throws JsonProcessingException {
+        userService.userUpdate(form);
+    }
 
 }

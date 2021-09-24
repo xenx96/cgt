@@ -24,9 +24,9 @@ public class Login {
     public void testJWT(){
 
         System.out.println("JWT생성 Test 입니다.");
-        JSONObject form = new JSONObject();
-        form.put("id","admin");
-        form.put("EA","admin@naver.com");
+        UserDTO form = new UserDTO();
+        form.set_id("admin");
+        form.setEA("admin@naver.com");
         String token = loginService.JWTMake(form);
 
         System.out.println(Jwts.parser()

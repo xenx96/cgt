@@ -26,9 +26,9 @@ public class LoginService {
 
     // 로그인 로직
     public String userLogin(UserDTO loginUser){
-        JSONObject userData = userService.findBy_id(loginUser.get_id());
+        UserDTO userData = userService.findBy_id(loginUser.get_id());
 
-        if(userData != null && userService.hashedMatch(loginUser.getPW(), (String) userData.get("PW"))) {
+        if(userData != null && userService.hashedMatch(loginUser.getPW(), (String) userData.getPW())) {
             return JWTMake(userData);
         }
         else{
@@ -38,17 +38,16 @@ public class LoginService {
 
 
     //JWT 생성 로직.
-    public String JWTMake(JSONObject form){
+    public String JWTMake(UserDTO form){
 
         Date now = new Date();
-
         return Jwts.builder()
                 .setHeaderParam(Header.TYPE,Header.JWT_TYPE)// Select Header Type
                 .setIssuer("CGT") //Who is the Maker?
                 .setIssuedAt(now)// when is created at?
                 .setExpiration(new Date(now.getTime() + Duration.ofHours(2).toMillis())) // when is expired time?
-                .claim("id",form.get("id")) // add clime; like key:value.
-                .claim("email", form.get("EA"))// if you want to add, Add .claim().
+                .claim("id",form.get_id()) // add clime; like key:value.
+                .claim("email", form.getEA())// if you want to add, Add .claim().
                 .signWith(SignatureAlgorithm.HS512,"secret")// Hashed Algorithm & Secret Key
                 .compact(); //Making.
     }

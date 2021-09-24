@@ -1,6 +1,6 @@
 package com.cgt.cgt_prj.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 import com.mongodb.lang.NonNull;
@@ -40,14 +40,15 @@ public class UserDTO {
     @Nullable
     private Number SX;
     @Nullable
-    private Number MN;
+    private String MN;
     @Nullable
     private Date BT;
     @Nullable
     private String ADR;
     @NonNull
     private Date CA;
-    //private Date UA;
+    @Nullable
+    private Date UA;
 
     
     public UserDTO(){
