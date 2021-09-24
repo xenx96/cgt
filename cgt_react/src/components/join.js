@@ -30,13 +30,13 @@ class Join extends Component{
         MN : MN.value,
         CA
     }
-
+      e.preventDefault();
       userfrm =  JSON.stringify(userfrm);
       let res = await Axios.post('/api/user',userfrm, {
           headers: { "Content-Type": `application/json`}
             });
-        alert(res.data?'회원가입이 되었습니다!': '다시 시도해 주세요!');
-        Window.location.href(res.data?'redirect:/login':'redirect:/join');
+        await alert(res.data?'회원가입이 되었습니다!': '다시 시도해 주세요!');
+        window.location.href = (res.data?'../login':'../join');
       }catch(err){
         console.log(err);
       }
@@ -61,7 +61,6 @@ class Join extends Component{
         }catch(err){
           console.error(err);
         }
-
       }
 
     };
@@ -85,15 +84,15 @@ class Join extends Component{
     render(){
 
   return (
-    
+
     <><Head/>
     <VideoTag/>
-          
+
       <header>
         <a href="회원가입 링크"><p>회원가입</p></a>
       </header>
-      
-      <main onSubmit={this.handleSubmit}>
+
+      <form onSubmit={this.handleSubmit}>
         <div>
           <label>아이디</label><br />
           <input type="text" name="ID" onChange={this.handleIdCheck} minLength={6} maxLength={12} />
@@ -116,6 +115,15 @@ class Join extends Component{
         <div> <label>생년월일</label><br />
           <input type="date" name="BT" />
         </div>
+        <div style={{display: "none"}}> <label>전화번호</label><br />
+          <input type="text" name="MN" />
+        </div>
+        <div style={{display: "none"}}> <label>성별</label><br />
+          <input type="text" name="SX" />
+        </div>
+        <div style={{display: "none"}}> <label>주소</label><br />
+          <input type="text" name="ADR" />
+        </div>
         <div>
           <label>본인 확인 이메일</label><br />
           <input type="email" name="EA" onChange={this.handleEmailFrame} />
@@ -126,13 +134,11 @@ class Join extends Component{
           <p>인증 번호가 일치하지 않습니다.</p>
         </div>
         <input class="joinbutton" type="submit" value="가입하기" />
-
-
-      </main>
+      </form>
       </>
 
-      
-      
+
+
 
   )
     }

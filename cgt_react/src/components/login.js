@@ -14,6 +14,7 @@ class Login extends React.Component{
         await res.data?alert("로그인 되었습니다."):this.setState({
             warnigMessage : "ID 혹은 PW를 다시 확인해주세요."
         })
+        res.data?localStorage.setItem('token',res.data):false;
         res.data?window.location.href("./main"):false;
     };
 

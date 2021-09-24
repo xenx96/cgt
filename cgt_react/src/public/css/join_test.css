@@ -31,7 +31,7 @@ input:focus{
 /* js로 joinvideo가 끝나면 joinvideo2가 이어서 재생하도록 추가 */
 /* joinvideo3나 joinvideo+joinvideo2 중에서 골라야 한다. 3로 할 경우, box가 지직 거리면서 나오는 걸로 */
 
-header *, main *, footer *{
+header *, form *, footer *{
     position: relative;
 }
 
@@ -42,7 +42,7 @@ header{
     transform: translate(18vw, 2.8vw);
 }
 
-main{
+form{
     display: flex;
     flex-direction: column;
     position: relative;
@@ -53,13 +53,13 @@ main{
     background: rgba(59, 193, 255, 0.2);
 }
 
-main *{
+form *{
     margin: 0.2vw;
 }
-main label{
+form label{
     font-size: 1.2vw;
 }
-main input{
+form input{
     width: 20vw;
     height: 1.5vw;
     padding: 0.3vw;
@@ -67,16 +67,16 @@ main input{
     background: rgba(0, 0, 0, 0.3);
     border: 0.1vw solid rgba(255, 255, 255, 0.8);
 }
-main input[type=button]{
+form input[type=button]{
     width: 6vw;
     height: 2vw;
 }
-main input[type=submit]{
+form input[type=submit]{
     width: 7vw;
     height: 3vw;
     font-size: 1.5vw;
 }
-main input[type=button], main p, main ::placeholder{
+form input[type=button], form p, form ::placeholder{
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.8vw;
 }

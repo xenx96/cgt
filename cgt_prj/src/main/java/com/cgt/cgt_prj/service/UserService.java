@@ -71,7 +71,6 @@ public class UserService {
     @Transactional
     public void userInsert(UserDTO user){
         userRepository.insert(user);
-
     }
     @Transactional
     public void userUpdate(UserDTO user) {
@@ -87,9 +86,4 @@ public class UserService {
         userData.setUA(now);
         userRepository.save(userData);
     }
-
-
-
-
-
 }
