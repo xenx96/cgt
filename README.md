@@ -48,10 +48,10 @@
   1. JavaSpringBoot MongoDB 'User'Document Connection - 유대선 2021-08-26
   2. MongoDB Schema 1차 작성 - 유대선 2021-08-26
   3. ReactJS에서 Form Data로 UserCollection에 Insert기능 구현. - 유대선 2021-08-31
-  4. 기본 회원가입 Logic(암호화 및 중복확인 포함) 구현. - 유대선 2021-09-16
+  4. 기본 회원가입 Logic '암호화 및 중복확인 포함' 구현. - 유대선 2021-09-16
   5. 로그인 기본 logic 구현. - 유대선 2021-09-16 
-  6. 게시판 기본 logic 틀 구현(생성 수정 삭제) - 이동복 2021-09-23
-  7. 유저부분 RestFul API 구현완료.(가입,탈퇴,수정,조회)
+  6. 게시판 기본 logic 틀 구현 '생성 수정 삭제' - 이동복 2021-09-23
+  7. 유저부분 RestFul API 구현완료. '가입,탈퇴,수정,조회'
 ```
 ### 4회차 : 배포 및 테스트
 ```
