@@ -30,7 +30,7 @@ class Join extends Component{
         MN : MN.value,
         CA
     }
-      e.preventDefault();
+
       userfrm =  JSON.stringify(userfrm);
       let res = await Axios.post('/api/user',userfrm, {
           headers: { "Content-Type": `application/json`}
@@ -92,7 +92,7 @@ class Join extends Component{
         <a href="회원가입 링크"><p>회원가입</p></a>
       </header>
 
-      <form onSubmit={this.handleSubmit}>
+      <form >
         <div>
           <label>아이디</label><br />
           <input type="text" name="ID" onChange={this.handleIdCheck} minLength={6} maxLength={12} />
@@ -133,7 +133,7 @@ class Join extends Component{
           <input type="button" value="인증번호 확인" />
           <p>인증 번호가 일치하지 않습니다.</p>
         </div>
-        <input class="joinbutton" type="submit" value="가입하기" />
+        <input class="joinbutton" type="submit" value="가입하기" onSubmit={this.handleSubmit} />
       </form>
       </>
 

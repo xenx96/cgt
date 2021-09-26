@@ -7,7 +7,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Join from './components/join';
 import Board from './components/Board';
-
+//import Login from './components/login';
 
 
 ReactDOM.render(
@@ -15,6 +15,7 @@ ReactDOM.render(
     {/*Search 컴포넌트 실행*/}
     <BrowserRouter>
     <Route path="/join" component={Join} />
+    {/*<Route path="/login" component={Login} />*/}
     <Route path="/board" component={Board} />
     <Route path="/summoner:summoner" component={Contents} />
     </BrowserRouter>
