@@ -16,6 +16,10 @@
 * DataBase
   - 테스트 서버
     + 3.37.221.165:9004 (MongoDB)
+* Email Auth
+  - Host : Google Mail
+  - Account : cgtproject0801
+  - Password : application.properties 참조 
 
 
    
