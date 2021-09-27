@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserApiController {
 
     private final UserService userService;
-    private final EmailService emailService;
 
    //최종 회원가입.
     @PostMapping("/api/user")
@@ -56,10 +55,6 @@ public class UserApiController {
         userService.userUpdate(form);
     }
 
-    @GetMapping("api/user/email")
-    public String emailAuth(){
-        return emailService.
-    }
 
     @GetMapping("api/user/nickname={NN}")
     public boolean checkNickName(@PathVariable String NN){

@@ -2,7 +2,6 @@ import React, {Component } from 'react';
 import Axios from "axios";
 import  VideoTag  from "./video.js";
 import Head from "./head.js"
-import axios from 'axios';
 
 class Join extends Component{
     state = { //~Check : 요청값 확인, 최종 3개 모두 확인완료시 Submit가능. ||
