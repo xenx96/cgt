@@ -89,7 +89,7 @@ class Join extends Component{
     };
 
     handleEmailSubmit = async(e)=>{
-      res = await Axios.get("/api/user/email",e.target.EA.value)
+      res = await Axios.get("/api/email",e.target.EA.value)
       await this.setState({emailAuth : res.data});
       if (this.state.emailAuth==null){ 
         alert("사용중인 이메일입니다.");
