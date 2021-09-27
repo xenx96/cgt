@@ -26,7 +26,8 @@ public class UserService {
 
     //아이디 조회
      public Boolean idCheck(String id){return findBy_id(id) == null; }
-
+    //닉네임
+    public Boolean  nNCheck(String NN){return userRepository.findByNN(NN) == null; }
     //회원 가입
      public void  insertUser(UserDTO userDTO){
         String hashPassword = hashEncodePassword(userDTO.getPW());
