@@ -57,4 +57,9 @@ public class UserApiController {
         userService.userUpdate(form);
     }
 
+    @GetMapping("api/user/email")
+    public String emailAuth(){
+
+    }
+
 }
