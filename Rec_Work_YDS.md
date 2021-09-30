@@ -75,3 +75,10 @@
     + `React`
     + 박보민이 만든 html및 css 디자인으로 회원가입(join)부분 form 변경 완료.
     + Join부분에서 Head(meta 부분), Footer, Video(영상 출력)부분, Main-Join Component로 분할 및 적용 완료.
+
+- 2021-09-28
+    + `Java`
+    + User NickName 인증 추가 및 E-mail 인증 API 추가
+    + E-mail 인증시 필요한 Google 계정 생성
+    + `React`
+    + E-mail 및 NickName API 호출 Axios 추가 완료.
