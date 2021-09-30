@@ -27,8 +27,9 @@
 ## 1. 개발 이용 스택
 ```
 - Front-End : HTML, CSS, React.JS
-- Back-End : Java(Spring Boot Framework)
+- Back-End : Java(Spring Boot Framework) 
 - Dev Tool : VSC(유대선), IntelliJ(유대선)
+- CodeStyle : Google-Code-Style-Intellij
 - Log Lib : logback
 - Issued Check From 'github/xenx96/cgt'
 ```   
