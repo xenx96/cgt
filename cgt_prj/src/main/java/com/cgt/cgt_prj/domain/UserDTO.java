@@ -7,6 +7,7 @@ import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -62,8 +63,7 @@ public class UserDTO {
     @Nullable
     private Date UA;
 
-    
-    public UserDTO(){
+    public UserDTO(String _id, String PW,String NM, String MN, Number SX, String EA, String ADR, Date CA, Date BT) {
         super();
         this._id = _id;
         this.PW = PW;
@@ -75,7 +75,6 @@ public class UserDTO {
         this.CA = CA;
         this.BT = BT;
     }
-
 
 
 }

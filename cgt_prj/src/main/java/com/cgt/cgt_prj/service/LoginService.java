@@ -20,35 +20,36 @@ public class LoginService {
     private UserService userService;
 
     @Autowired
-    public LoginService(UserService userService){
+    public LoginService(UserService userService) {
         this.userService = userService;
     }
 
     // 로그인 로직
-    public String userLogin(UserDTO loginUser){
+    public String userLogin(UserDTO loginUser) {
         UserDTO userData = userService.findBy_id(loginUser.get_id());
 
-        if(userData != null && userService.hashedMatch(loginUser.getPW(), (String) userData.getPW())) {
+        if (userData != null && userService.hashedMatch(loginUser.getPW(),
+            (String) userData.getPW())) {
             return JWTMake(userData);
-        }
-        else{
+        } else {
             return "failed";
         }
     }
 
 
     //JWT 생성 로직.
-    public String JWTMake(UserDTO form){
+    public String JWTMake(UserDTO form) {
 
         Date now = new Date();
         return Jwts.builder()
-                .setHeaderParam(Header.TYPE,Header.JWT_TYPE)// Select Header Type
-                .setIssuer("CGT") //Who is the Maker?
-                .setIssuedAt(now)// when is created at?
-                .setExpiration(new Date(now.getTime() + Duration.ofHours(2).toMillis())) // when is expired time?
-                .claim("id",form.get_id()) // add clime; like key:value.
-                .claim("email", form.getEA())// if you want to add, Add .claim().
-                .signWith(SignatureAlgorithm.HS512,"secret")// Hashed Algorithm & Secret Key
-                .compact(); //Making.
+            .setHeaderParam(Header.TYPE, Header.JWT_TYPE)// Select Header Type
+            .setIssuer("CGT") //Who is the Maker?
+            .setIssuedAt(now)// when is created at?
+            .setExpiration(
+                new Date(now.getTime() + Duration.ofHours(2).toMillis())) // when is expired time?
+            .claim("id", form.get_id()) // add clime; like key:value.
+            .claim("email", form.getEA())// if you want to add, Add .claim().
+            .signWith(SignatureAlgorithm.HS512, "secret")// Hashed Algorithm & Secret Key
+            .compact(); //Making.
     }
 }

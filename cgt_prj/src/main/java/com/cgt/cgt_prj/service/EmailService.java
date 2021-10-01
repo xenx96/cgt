@@ -25,7 +25,9 @@ public class EmailService {
 
 
     //이메일
-    public Boolean eMailCheck(String EA){return userRepository.findByEA(EA) == null; }
+    public Boolean eMailCheck(String EA) {
+        return userRepository.findByEA(EA) == null;
+    }
 
     //AuthKey 생성
     public static String createKey() {
@@ -39,21 +41,22 @@ public class EmailService {
     }
 
     @Async
-    public void sendEmail(SimpleMailMessage simpleMailMessage){
+    public void sendEmail(SimpleMailMessage simpleMailMessage) {
         javaMailSender.send(simpleMailMessage);
     }
 
-    public String eMailJWT(String authKey){
+    public String eMailJWT(String authKey) {
 
         Date now = new Date();
         return Jwts.builder()
-                .setHeaderParam(Header.TYPE,Header.JWT_TYPE)// Select Header Type
-                .setIssuer("CGT") //Who is the Maker?
-                .setIssuedAt(now)// when is created at?
-                .setExpiration(new Date(now.getTime() + Duration.ofMinutes(3).toMillis())) // when is expired time?
-                .claim("AuthString",authKey)
-                .signWith(SignatureAlgorithm.HS512,"secret")// Hashed Algorithm & Secret Key
-                .compact(); //Making.
+            .setHeaderParam(Header.TYPE, Header.JWT_TYPE)// Select Header Type
+            .setIssuer("CGT") //Who is the Maker?
+            .setIssuedAt(now)// when is created at?
+            .setExpiration(
+                new Date(now.getTime() + Duration.ofMinutes(3).toMillis())) // when is expired time?
+            .claim("AuthString", authKey)
+            .signWith(SignatureAlgorithm.HS512, "secret")// Hashed Algorithm & Secret Key
+            .compact(); //Making.
     }
 
 }

@@ -13,6 +13,7 @@ import java.sql.Date;
 @ToString
 @Document(collection = "BoardConfig")
 public class Board_Config {
+
     @Id
     @NonNull
     private String _id;

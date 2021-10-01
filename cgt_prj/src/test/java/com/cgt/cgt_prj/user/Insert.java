@@ -14,12 +14,12 @@ public class Insert {
     private UserService userService;
 
     @Autowired
-    public Insert(UserService userService){
+    public Insert(UserService userService) {
         this.userService = userService;
     }
 
     @Test
-    public void userFindTest(){
+    public void userFindTest() {
         System.out.println("ID중복조회 메서드 1차 Test입니다. ID = admin1234");
         String id1 = "admin1234";
         System.out.println(userService.idCheck(id1));
@@ -36,7 +36,7 @@ public class Insert {
     }
 
     @Test
-    public void userInfoTest(){
+    public void userInfoTest() {
 
         //<-- First Test -->
         System.out.println("UserInsert Test 입니다. ID는 testing123 입니다.");
@@ -62,8 +62,6 @@ public class Insert {
         userService.deleteUser(user3);
         System.out.println("Delete 완료.");
     }
-
-
 
 
 }

@@ -14,6 +14,7 @@ import java.sql.Date;
 @ToString
 @Document(collection = "Reply")
 public class Reply {
+
     @Id
     @NonNull
     private String _id;
@@ -34,7 +35,8 @@ public class Reply {
     @Nullable
     private Date DA;
 
-    public Reply(String _id, String UI, String CID, String CS, Number RCI, Number RA, Date CA, String UA, Date DA) {
+    public Reply(String _id, String UI, String CID, String CS, Number RCI, Number RA, Date CA,
+        String UA, Date DA) {
         this._id = _id;
         this.UI = UI;
         this.CID = CID;

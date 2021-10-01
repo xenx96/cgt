@@ -11,11 +11,11 @@ public class EmailApiController {
 
 
     @GetMapping("api/email")
-    public String emailAuth(String EA){
-        if (emailService.eMailCheck(EA)){
+    public String emailAuth(String EA) {
+        if (emailService.eMailCheck(EA)) {
             return null;
-        }else{
-            String authKey = emailService.createKey();
+        } else {
+            String authKey = EmailService.createKey();
 
             return emailService.eMailJWT(authKey);
 

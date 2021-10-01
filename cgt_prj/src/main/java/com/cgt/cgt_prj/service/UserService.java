@@ -25,59 +25,69 @@ public class UserService {
     }
 
     //아이디 조회
-     public Boolean idCheck(String id){return findBy_id(id) == null; }
+    public Boolean idCheck(String id) {
+        return findBy_id(id) == null;
+    }
+
     //닉네임
-    public Boolean  nNCheck(String NN){return userRepository.findByNN(NN) == null; }
+    public Boolean nNCheck(String NN) {
+        return userRepository.findByNN(NN) == null;
+    }
+
     //회원 가입
-     public void  insertUser(UserDTO userDTO){
+    public void insertUser(UserDTO userDTO) {
         String hashPassword = hashEncodePassword(userDTO.getPW());
         userDTO.setPW(hashPassword);
         userInsert(userDTO);
-     }
+    }
 
-     // 회원 탈퇴
-    public void deleteUser(UserDTO user){
+    // 회원 탈퇴
+    public void deleteUser(UserDTO user) {
         //PW 검증
         UserDTO userData = findBy_id(user.get_id());
-        if (userData != null && hashedMatch(user.getPW(), (String) userData.getPW())){
+        if (userData != null && hashedMatch(user.getPW(), (String) userData.getPW())) {
             deleteBy_id(user.get_id());
             System.out.println("Delete User Complete");
-        }else{
+        } else {
             System.out.println("Delete User Failed");
         }
         //
     }
 
     //PW 매치 로직
-    public boolean hashedMatch(String password, String hashedPassword){
-        return BCrypt.checkpw(password,hashedPassword);
+    public boolean hashedMatch(String password, String hashedPassword) {
+        return BCrypt.checkpw(password, hashedPassword);
     }
-   //PW 암호화 메서드
-    public String hashEncodePassword(String password){
-        return BCrypt.hashpw(password,BCrypt.gensalt());
+
+    //PW 암호화 메서드
+    public String hashEncodePassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     //findBy_id method 생성
-    public UserDTO findBy_id(String id){
+    public UserDTO findBy_id(String id) {
         return userRepository.findBy_id(id);
     }
+
     //user 정보 삭제 method
     @Transactional
-    public void deleteBy_id(String id){
+    public void deleteBy_id(String id) {
         userRepository.deleteById(id);
     }
+
     //user 정보 등록 method
     @Transactional
-    public void userInsert(UserDTO user){
+    public void userInsert(UserDTO user) {
         userRepository.insert(user);
     }
+
     @Transactional
     public void userUpdate(UserDTO user) {
         UserDTO userData = findBy_id(user.get_id());
         //수정가능 인자 PW/MN/ADR/BT/UA
         Date now = new Date();
         userData.setPW(hashEncodePassword(
-                user.getPW()
+            user.getPW()
         ));
         userData.setMN(user.getMN());
         userData.setADR(user.getADR());

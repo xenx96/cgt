@@ -43,9 +43,9 @@ public class Board {
     @NonNull
     private String CS; // 내용
     @Nullable
-    private String RCI ; // 답글한 게시물 
+    private String RCI; // 답글한 게시물
     @NonNull
-    private short RA ; // 댓글 및 답글여부
+    private short RA; // 댓글 및 답글여부
     @NonNull
     private Date CA; // 생성일자
     @Nullable
@@ -53,7 +53,8 @@ public class Board {
     @Nullable
     private Date DA; // 삭제일자
 
-    public Board( String _id, String BID, String UI, String CT, String CS, String RCI, short RA, Date CA, Date UA, Date DA) {
+    public Board(String _id, String BID, String UI, String CT, String CS, String RCI, short RA,
+        Date CA, Date UA, Date DA) {
         this._id = _id;
         this.BID = BID;
         this.UI = UI;

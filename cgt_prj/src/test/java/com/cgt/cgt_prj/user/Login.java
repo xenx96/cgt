@@ -16,12 +16,12 @@ public class Login {
     private LoginService loginService;
 
     @Autowired
-    public Login(UserService userService, LoginService loginService){
+    public Login(UserService userService, LoginService loginService) {
         this.loginService = loginService;
     }
 
     @Test
-    public void testJWT(){
+    public void testJWT() {
 
         System.out.println("JWT생성 Test 입니다.");
         UserDTO form = new UserDTO();
@@ -30,14 +30,13 @@ public class Login {
         String token = loginService.JWTMake(form);
 
         System.out.println(Jwts.parser()
-                .setSigningKey("secret")
-                .parseClaimsJws(token)
-                .getBody());
+            .setSigningKey("secret")
+            .parseClaimsJws(token)
+            .getBody());
     }
 
     @Test
-    public void testLogin(){
-
+    public void testLogin() {
 
         System.out.println("Login 1차 테스트입니다.");
         UserDTO user2 = new UserDTO();
@@ -46,15 +45,12 @@ public class Login {
         String loginTest2 = loginService.userLogin(user2);
         System.out.println(loginTest2);
 
-
         System.out.println("Login 2차 테스트입니다.");
         UserDTO user3 = new UserDTO();
         user3.set_id("xenx96");
         user2.setPW("ydsm1738");
         String loginTest3 = loginService.userLogin(user3);
         System.out.println(loginTest3);
-
-
 
 
     }

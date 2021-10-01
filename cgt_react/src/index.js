@@ -6,8 +6,8 @@ import Contents from './components/contents';
 import {BrowserRouter, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Join from './components/join';
-import Board from './components/board';
-import Login from './components/login'
+import Board from './components/Board';
+import Login from './components/login';
 
 
 
