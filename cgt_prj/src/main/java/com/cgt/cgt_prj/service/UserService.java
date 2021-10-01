@@ -59,7 +59,6 @@ public class UserService {
 
     //findBy_id method 생성
     public UserDTO findBy_id(String id){
-
         return userRepository.findBy_id(id);
     }
     //user 정보 삭제 method

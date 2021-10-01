@@ -42,7 +42,7 @@ class Join extends Component{
       }
     }else{
       alert('입력하신 정보를 다시 확인해주세요.')
-      e.preventDefault();
+      e.preventDefault(); // get방식으로 리디렉션하는것 방지
     }
     }
 /*IDChecking Handler */

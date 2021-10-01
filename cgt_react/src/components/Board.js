@@ -27,6 +27,7 @@ class Board extends React.Component {
           headers: { "Content-Type": `application/json`}
             });
         alert(res.data?'게시글이 작성 되었습니다!': '다시 시도해 주세요!');
+        console.log(res.data);
       }catch(err){
         console.log(err);
       }

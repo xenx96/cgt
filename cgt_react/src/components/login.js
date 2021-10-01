@@ -1,32 +1,42 @@
-import axios from 'axios';
-import React from 'react';
-class Login extends React.Component{
+import Axios from 'axios';
+import React, {Component } from 'react';
+class Login extends Component{
     state = {warningMessage : ""};
     handleLoginSubmit = async(e) =>{
-        const {id, pw} = e.target ;
+        const {ID, PW} = e.target;
+        const CA = new Date().getTime();
+        try{
 
-        const form = {ID : id.value,
-                    PW : pw.value
-        };
-        let res = await axios.post("/api/login",form,
+        var loginfrm = {
+          _id: ID.value,
+          PW: PW.value,
+          CA
+        }
+        e.preventDefault();
+        loginfrm =  JSON.stringify(loginfrm);
+        alert(loginfrm);
+        let res = await Axios.post('/api/login',loginfrm,
           {headers: { "Content-Type": `application/json`}}
         );
-        await res.data?alert("로그인 되었습니다."):this.setState({
-            warnigMessage : "ID 혹은 PW를 다시 확인해주세요."
-        })
-        res.data?localStorage.setItem('token',res.data):false;
-        res.data?window.location.href("./main"):false;
-    };
+        alert(res.data?'로그인 되었습니다!': '다시 시도해 주세요!');
+        res.data?localStorage.setItem('token',res.data):console.log('토큰저장실패');
+        window.location.href = (res.data?'../main':'../login');
+    }catch(err){
+    console.log(err);
+  }
+}
 
     render(){
         return(
-            <form submit = {this.handleLoginSubmit}>
+            <form onSubmit = {this.handleLoginSubmit}>
                     <div>아이디
-                        <input type ='text' name = "id"/>
+                        <input type ='text' name = "ID"/>
                         비밀번호
-                        <input type ='password' name = 'pw'/>{this.state.warningMessage}
+                        <input type ='password' name = "PW"/>{this.state.warningMessage}
                     </div>
+                    <input class="joinbutton" type="submit" value="로그인하기" />
             </form>
         )
     }
 }
+export default Login;
