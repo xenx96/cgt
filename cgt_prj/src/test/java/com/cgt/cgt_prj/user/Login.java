@@ -45,8 +45,8 @@ public class Login {
 
         System.out.println("Login 2차 테스트입니다.");
         UserDTO user3 = new UserDTO();
-        user3.set_id("xenx96");
-        user2.setPW("ydsm1738");
+        user3.set_id("logintest1");
+        user3.setPW("asdfasdf");
         String loginTest3 = loginService.userLogin(user3);
         System.out.println(loginTest3);
 

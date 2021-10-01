@@ -16,7 +16,7 @@ public class LoginApiController {
     private LoginService loginService;
 
     @PostMapping("/api/login")
-    public String loginUser(@RequestBody @Valid UserDTO userDTO) {
+    public String loginUser(@RequestBody /*@Valid*/ UserDTO userDTO) {
         //JWT 생성 부문
         return loginService.userLogin(userDTO);
     }
