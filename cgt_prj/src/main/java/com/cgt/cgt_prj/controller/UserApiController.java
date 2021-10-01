@@ -4,10 +4,12 @@ package com.cgt.cgt_prj.controller;
 
 
 import com.cgt.cgt_prj.domain.UserDTO;
+import com.cgt.cgt_prj.service.EmailService;
 import com.cgt.cgt_prj.service.UserService;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.jsonwebtoken.Jwts;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +19,10 @@ import org.springframework.web.bind.annotation.*;
 //User 관련 API
 
 @RestController
+@RequiredArgsConstructor
 public class UserApiController {
 
-    private UserService userService;
-
-    @Autowired
-    public UserApiController(UserService userService){
-        this.userService = userService;
-    }
+    private final UserService userService;
 
    //최종 회원가입.
     @PostMapping("/api/user")
@@ -55,6 +53,12 @@ public class UserApiController {
     @PutMapping("api/user")
     public void updateUser(@RequestBody UserDTO form) throws JsonProcessingException {
         userService.userUpdate(form);
+    }
+
+
+    @GetMapping("api/user/nickname={NN}")
+    public boolean checkNickName(@PathVariable String NN){
+        return userService.nNCheck(NN);
     }
 
 }

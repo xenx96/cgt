@@ -14,6 +14,8 @@ import java.util.Optional;
 public interface UserRepository extends MongoRepository<UserDTO, String> {
 
     UserDTO findBy_id(String _id);
+    UserDTO findByNN(String NN);
+    UserDTO findByEA(String EA);
 
 
 }

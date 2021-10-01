@@ -16,6 +16,7 @@ ReactDOM.render(
     {/*Search 컴포넌트 실행*/}
     <BrowserRouter>
     <Route path="/join" component={Join} />
+    {/*<Route path="/login" component={Login} />*/}
     <Route path="/board" component={Board} />
     <Route path="/login" component={Login} />
     <Route path="/summoner:summoner" component={Contents} />

@@ -28,25 +28,37 @@ public class UserDTO {
     @Id
     @NonNull
     private String _id;
+
     @NonNull
     @NotBlank
     private String NM;
+
+    @NotBlank
+    private String NN;
+
     @NotBlank
     @NonNull
     private String PW;
+
     @NotBlank
     @NonNull
     private String EA;
+
     @Nullable
     private Number SX;
+
     @Nullable
     private String MN;
+
     @Nullable
     private Date BT;
+
     @Nullable
     private String ADR;
+
     @NonNull
     private Date CA;
+
     @Nullable
     private Date UA;
 

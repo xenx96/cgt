@@ -39,7 +39,7 @@
     + Back-End Java에서 `UserAPIContoller.java` 생성. 
     + 해당 메서드중 ID중복체크는 User에 관한 Service 항목이므로 `UserService.java`에서 메서드 호출하여 사용 및 실행.
     + 현재 JSONObject로 findBy_id하여 받아오고 있음.
-        - 추후 DTO 객체로 받아올 예정. (stram().ModelMapper() 사용예정)
+        - 추후 DTO 객체로 받아올 예정. (stram().ModelMapper() 사용예정) - 사용 X DTO 객체 그대로 받아옴.
     + Font-End에서 `Axios.get`으로 아이디 등록되어있는지 Server로 전달 및 응답 확인. `(Response? true:false)`
 
 - 2021-09-13
@@ -75,3 +75,10 @@
     + `React`
     + 박보민이 만든 html및 css 디자인으로 회원가입(join)부분 form 변경 완료.
     + Join부분에서 Head(meta 부분), Footer, Video(영상 출력)부분, Main-Join Component로 분할 및 적용 완료.
+
+- 2021-09-28
+    + `Java`
+    + User NickName 인증 추가 및 E-mail 인증 API 추가
+    + E-mail 인증시 필요한 Google 계정 생성
+    + `React`
+    + E-mail 및 NickName API 호출 Axios 추가 완료.
