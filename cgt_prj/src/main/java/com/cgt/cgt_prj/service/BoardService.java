@@ -1,7 +1,6 @@
 package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.domain.Board;
-import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.repositories.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

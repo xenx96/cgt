@@ -1,4 +1,4 @@
-import React, {Component } from 'react';
+import React, { useEffect } from 'react';
 import Axios from "axios";
 import  VideoTag  from "./video.js";
 import Head from "./head.js"
@@ -12,14 +12,18 @@ class Join extends React.Component{
     PW :'',
     PWCheck:false,
     PWNotice : '',
-    emailTime : '',
+    EA : '',
+    emailTime : 0,
+    TimeString : "",
     emailAuth : '',
-    emailButton : "disable",
+    emailButton : true,
     emailnum : 0,
-    emailAuthCheck :true,
+    emailAuthCheck :false,
     NNCheck : false,
-    NNNotice :""};
+    NNNotice :"",
+    authInput : null};
 
+  
   handleSubmit = async(e) => {
     e.preventDefault();
     if(this.state.IDCheck & this.state.EACheck & this.state.PWCheck &this.state.emailAuthCheck){
@@ -86,41 +90,58 @@ class Join extends React.Component{
     handleEmailFrame = async(e)=> {
       var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
       await this.setState({EACheck : regExp.test(e.target.value) ? true : false}); //이메일 유효 여부 확인
-      await this.setState({emailNotice : this.state.EACheck?'사용 가능한 형식입니다.':'사용 불가능한 형식 입니다.'}); // 멘트출력
+      await this.setState({emailNotice : this.state.EACheck?'사용 가능한 형식입니다.':'사용 불가능한 형식 입니다.'});
+      await this.setState({EA : this.state.EACheck ? e.target.value:""}) // 멘트출력
     };
 
     handleEmailSubmit = async(e)=>{
-    let res = await Axios.get("/api/email",e.target.EA.value)
-      await this.setState({emailAuth : res.data});
-      if (this.state.emailAuth==null){ 
-        alert("사용중인 이메일입니다.");
-        e.preventDefault();
-      }else {
-        alert("사용가능한 이메일입니다. 인증 번호를 입력하세요.")
-        this.setstate({eamilButton : "enable"}) 
-         e.preventDefault();
+      e.preventDefault();
+      if(this.state.EA === ""){
+        alert("사용가능한 이메일이 아닙니다.");
+      }else{
+        const EA = await JSON.stringify({EA : this.state.EA});
+        let res = await Axios.post("/api/email",EA, {
+          headers: { "Content-Type": `application/json`}
+        });
+        if (this.state.emailAuth==null){ 
+          alert("사용중인 이메일입니다. 다시입력하세요.");
+        }else {
+          alert(" 인증 번호가 발송되었습니다. 인증번호를 입력하세요.")
+          this.setState({emailButton : false,emailAuth : res.data,emailTime : 180});
+
+          
+        }
       }
-
     }
-
+    
+    handleAuthInput = (e)=>{
+      this.setState({authInput : e.target.value})
+    }
     handleEmailAuth= async(e)=>{
-       
-      if(e.target.value === this.state.emailAuth){
+      if(this.state.authInput == this.state.emailAuth){
           alert("이메일 인증이 완료 되었습니다.")
-          await this.setstate({emailAuthCheck : true, emailButton : "disable", emailnum : 0});
+          await this.setState({emailAuthCheck : true, emailButton : "disable", emailnum : 0});
         }else{
           await this.setState({emailnum : this.state.emailnum+1 });  
           if(this.state.emailnum >=3){
             alert("시도횟수가 초과되었습니다. 다시 인증 받으세요.");
-            this.setstate({emailButton : "disable", emailAuth:"", emailnum : 0})
-          }else{await alert(3-this.state.emailnum+"번 남았습니다. 다시 시도해주세요")}
-            }
+            this.setState({emailButton : "none", emailAuth:"", emailnum : 0, emailTime : ""});
+          }else{
+            await alert(3-this.state.emailnum+"번 남았습니다. 다시 시도해주세요");
+          }
+        }
         
       }
+      emailTimeCheck = ()=>{
+         let min = parseInt(this.state.emailTime/60);
+        let sec = this.state.emailTime%60;
+        this.setState({TimeString : min+"분 "+sec+"초 남았습니다.", emailtime : this.state.emailTime-1});
+        };
+      
 
       handleNickNameCheck = async(e)=>{
         let res = await Axios.post("api/user/nickname="+e.target.NN.value)
-        await res.data? this.setstate({NNcheck : true, NNNotice : "사용가능한 별명 입니다." }) : 
+        await res.data? this.setState({NNcheck : true, NNNotice : "사용가능한 별명 입니다." }) : 
         this.setState({NNcheck :false, NNNotice : "사용불가능한 별명입니다." });
       }
 
@@ -175,11 +196,11 @@ class Join extends React.Component{
         <div>
           <label>본인 확인 이메일</label><br />
           <input type="email" name="EA" onChange={this.handleEmailFrame} />
-          <input type="button" value="인증번호 받기" onSubmit ={this.handleEmailSubmit} /><br />
+          <input type="button" value = "인증번호 전송" onClick ={this.handleEmailSubmit} /><br />
           <p>{this.state.emailNotice}</p>
-          <input type="text" name ="EACheck"placeholder="인증번호 입력하세요" />
-          <input type="button" value="인증번호 확인" onSubmit ={this.handleEmailAuth} disabled = {this.state.emailButton}/>
-          <p>{this.state.emailTime} +"남았습니다."</p>
+          <input type="text"  name ="EACheck" onChange = {this.handleAuthInput} placeholder="인증번호 입력하세요" />
+          <input type="button" value="인증번호 확인" onClick ={this.handleEmailAuth} disabled = {this.state.emailButton}/>
+          <p>{this.state.TimeString}</p>
         </div>
         <input class="joinbutton" type="submit" value="가입하기" />
       </form>

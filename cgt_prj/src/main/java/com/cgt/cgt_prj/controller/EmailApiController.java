@@ -2,23 +2,27 @@ package com.cgt.cgt_prj.controller;
 
 import com.cgt.cgt_prj.service.EmailService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
+import net.minidev.json.JSONObject;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
+@RestController
 public class EmailApiController {
 
     private final EmailService emailService;
 
 
-    @GetMapping("api/email")
-    public String emailAuth(String EA) {
+    @PostMapping("api/email")
+    public String emailAuth(@RequestBody JSONObject eMailAddress) {
+        String EA = eMailAddress.get("EA").toString();
         if (emailService.eMailCheck(EA)) {
             return null;
         } else {
-            String authKey = EmailService.createKey();
-
-            return emailService.eMailJWT(authKey);
-
+            String key = EmailService.createKey();
+            emailService.emailForm(EA, key);
+            return key;
         }
     }
 

@@ -2,14 +2,11 @@ package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.repositories.UserRepository;
-import net.minidev.json.JSONObject;
-import org.jetbrains.annotations.NotNull;
+import java.util.Date;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Date;
 
 
 //User에 관한 비즈니스로직 짜는 부분
