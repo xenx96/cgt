@@ -6,18 +6,16 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.time.Duration;
 import java.util.Date;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class LoginService {
 
-    private UserService userService;
-
-    @Autowired
-    public LoginService(UserService userService) {
-        this.userService = userService;
-    }
+    private final UserService userService;
 
     // 로그인 로직
     public String userLogin(UserDTO loginUser) {

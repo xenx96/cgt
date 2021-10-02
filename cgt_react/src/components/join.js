@@ -103,7 +103,8 @@ class Join extends React.Component{
         let res = await Axios.post("/api/email",EA, {
           headers: { "Content-Type": `application/json`}
         });
-        if (this.state.emailAuth==null){ 
+        alert(this.state.emailAuth);
+        if (this.state.emailAuth==""){ 
           alert("사용중인 이메일입니다. 다시입력하세요.");
         }else {
           alert(" 인증 번호가 발송되었습니다. 인증번호를 입력하세요.")

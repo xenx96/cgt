@@ -1,7 +1,9 @@
 package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.repositories.UserRepository;
+
 import java.util.Random;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -18,6 +20,7 @@ public class EmailService {
 
     //이메일
     public Boolean eMailCheck(String EA) {
+        System.out.println(userRepository.findByEA(EA));
         return userRepository.findByEA(EA) == null;
     }
 

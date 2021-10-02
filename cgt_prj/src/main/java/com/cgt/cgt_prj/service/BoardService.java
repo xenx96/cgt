@@ -2,19 +2,15 @@ package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.domain.Board;
 import com.cgt.cgt_prj.repositories.BoardRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
 
     private final BoardRepository boardRepository;
-
-    @Autowired
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
-    }
 
     @Transactional
     public void writePost(Board board) {

@@ -2,24 +2,21 @@ package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.repositories.UserRepository;
-import java.util.Date;
+import lombok.RequiredArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 
 //User에 관한 비즈니스로직 짜는 부분
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    public void UserRepository(UserRepository userRepository) {
-
-        this.userRepository = userRepository;
-    }
 
     //아이디 조회
     public Boolean idCheck(String id) {
@@ -42,7 +39,7 @@ public class UserService {
     public void deleteUser(UserDTO user) {
         //PW 검증
         UserDTO userData = findBy_id(user.get_id());
-        if (userData != null && hashedMatch(user.getPW(), (String) userData.getPW())) {
+        if (userData != null && hashedMatch(user.getPW(), userData.getPW())) {
             deleteBy_id(user.get_id());
             System.out.println("Delete User Complete");
         } else {
@@ -84,7 +81,7 @@ public class UserService {
         //수정가능 인자 PW/MN/ADR/BT/UA
         Date now = new Date();
         userData.setPW(hashEncodePassword(
-            user.getPW()
+                user.getPW()
         ));
         userData.setMN(user.getMN());
         userData.setADR(user.getADR());

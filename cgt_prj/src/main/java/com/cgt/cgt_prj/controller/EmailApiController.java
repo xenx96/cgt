@@ -18,11 +18,12 @@ public class EmailApiController {
     public String emailAuth(@RequestBody JSONObject eMailAddress) {
         String EA = eMailAddress.get("EA").toString();
         if (emailService.eMailCheck(EA)) {
-            return null;
-        } else {
             String key = EmailService.createKey();
             emailService.emailForm(EA, key);
             return key;
+        } else {
+            return null;
+
         }
     }
 
