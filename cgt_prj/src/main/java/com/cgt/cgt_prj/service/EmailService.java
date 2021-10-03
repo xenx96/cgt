@@ -20,7 +20,6 @@ public class EmailService {
 
     //이메일
     public Boolean eMailCheck(String EA) {
-        System.out.println(userRepository.findByEA(EA));
         return userRepository.findByEA(EA) == null;
     }
 

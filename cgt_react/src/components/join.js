@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Axios from "axios";
 import  VideoTag  from "./video.js";
 import Head from "./head.js"
@@ -103,8 +103,8 @@ class Join extends React.Component{
         let res = await Axios.post("/api/email",EA, {
           headers: { "Content-Type": `application/json`}
         });
-        alert(this.state.emailAuth);
-        if (this.state.emailAuth==""){ 
+
+        if (res.data==""){ 
           alert("사용중인 이메일입니다. 다시입력하세요.");
         }else {
           alert(" 인증 번호가 발송되었습니다. 인증번호를 입력하세요.")
