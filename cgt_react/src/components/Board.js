@@ -1,35 +1,45 @@
 import React, {Component } from 'react';
 import Axios from "axios";
+import AuthService from '../service/AuthService';
 class Board extends React.Component {
-  state = {
 
+  constructor(props){
+    super(props);
+    this.state = {
+    }
+    this.Auth = new AuthService();
   }
 
   handleSubmit = async(e) => {
       e.preventDefault();
       const {CT, CS, RA} = e.target;
       const CA = new Date();
-      try{
+      if(this.Auth.isLoggedIn()&&!this.Auth.isTokenExpired()){
+        try{
 
-      var boardfrm = {
-        _id: CT.value,
-        BID: "1",
-        UI: "user",
-        CT: CT.value,
-        CS : CS.value,
-        RA : RA.value,
-        CA
-    }
+        var boardfrm = {
+          _id: CT.value,
+          BID: "1",
+          UI: this.Auth.getProfile().id,
+          CT: CT.value,
+          CS : CS.value,
+          RA : RA.value,
+          CA
+      }
 
-      boardfrm = JSON.stringify(boardfrm);
-      alert(boardfrm);
-        let res = await Axios.post('/api/board',boardfrm, {
-          headers: { "Content-Type": `application/json`}
-            });
-        alert(res.data?'게시글이 작성 되었습니다!': '다시 시도해 주세요!');
-        console.log(res.data);
-      }catch(err){
-        console.log(err);
+        boardfrm = JSON.stringify(boardfrm);
+        alert(boardfrm);
+          let res = await Axios.post('/api/board',boardfrm, {
+            headers: { "Content-Type": `application/json`}
+              });
+          alert(res.data?'게시글이 작성 되었습니다!': '다시 시도해 주세요!');
+          console.log(res.data);
+        }catch(err){
+          console.log(err);
+        }
+      }
+      else{
+        alert(Date.now());
       }
     }
   render(){

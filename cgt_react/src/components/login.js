@@ -19,7 +19,7 @@ class Login extends Component{
           {headers: { "Content-Type": `application/json`}}
         );
         alert(res.data?'로그인 되었습니다!': '다시 시도해 주세요!');
-        res.data?localStorage.setItem('token',res.data):console.log('토큰저장실패');
+        res.data?localStorage.setItem('ACCESS_TOKEN',res.data):console.log('토큰저장실패');
         window.location.href = (res.data?'../main':'../login');
     }catch(err){
     console.log(err);
