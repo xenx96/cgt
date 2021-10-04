@@ -18,7 +18,6 @@ class Board extends React.Component {
         try{
 
         var boardfrm = {
-          _id: CT.value,
           BID: "1",
           UI: this.Auth.getProfile().id,
           CT: CT.value,
@@ -39,7 +38,8 @@ class Board extends React.Component {
         }
       }
       else{
-        alert(Date.now());
+        alert("글쓰기는 로그인된 사용자만 가능합니다.");
+          window.location.href = ('../login');
       }
     }
   render(){

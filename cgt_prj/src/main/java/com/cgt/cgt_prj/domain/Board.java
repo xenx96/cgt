@@ -6,6 +6,7 @@ import java.sql.Date;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -29,10 +30,11 @@ public class Board {
             () -> mongoTemplate.count(new Query().limit(-1).skip(-1), TestCollections.class));
     }*/
 
+    @Transient
+    public static final String SEQUENCE_NAME = "Board_sequence";
 
     @Id
-    @NonNull
-    private String _id; // 고유 id
+    private Long _id; // 고유 id
     @NonNull
     private String BID; // 게시판 아이디
     @NonNull
@@ -52,7 +54,7 @@ public class Board {
     @Nullable
     private Date DA; // 삭제일자
 
-    public Board(String _id, String BID, String UI, String CT, String CS, String RCI, short RA,
+    public Board(Long _id, String BID, String UI, String CT, String CS, String RCI, short RA,
         Date CA, Date UA, Date DA) {
         this._id = _id;
         this.BID = BID;
