@@ -34,6 +34,10 @@ public class EmailService {
         return key.toString();
     }
 
+    /*
+     *After Set the Message, Sending Email.(sendEmail)
+     *emailForm is Method of Setting Message
+     */
     @Async
     public void sendEmail(SimpleMailMessage simpleMailMessage) {
         javaMailSender.send(simpleMailMessage);

@@ -1,15 +1,26 @@
+/**
+ * 여기부터는 Lib 호출 부분
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
+
+/**
+ * 여기부터는 Component Import 부분
+ */
 import Header from './components/header';
 import Footer from './components/footer';
 import Contents from './components/contents';
-import {BrowserRouter, Route} from 'react-router-dom';
-import reportWebVitals from './reportWebVitals';
 import Join from './components/join';
-import Board from './components/board';
+import Board from './components/Board';
 import Login from './components/login';
 
-
+/**
+ * 경고! CSS부분은 전체 페이지의 공통 CSS 부분은
+ * Header나 Footer에 할당하여도 되지만, 한페이지에만 해당되는경우
+ * 절대! 그렇게하면 안됨. 대부분의 CSS는 합쳐지는 Componet쪽에만 할당 할것! 
+ */
 
 ReactDOM.render(
   <React.StrictMode>
