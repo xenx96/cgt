@@ -33,7 +33,7 @@ class Join extends React.Component{
       try{
 
       var userfrm = {
-        _id:ID.value ,
+        ID : ID.value ,
         PW :PW.value ,
         SX: SX.value ,
         BT : BT.value ,

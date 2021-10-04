@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends MongoRepository<UserDTO, String> {
 
-    UserDTO findBy_id(String _id);
+    UserDTO findByID(String _id);
 
     UserDTO findByNN(String NN);
 
     UserDTO findByEA(String EA);
 
-
+    void deleteByID(String id);
 }

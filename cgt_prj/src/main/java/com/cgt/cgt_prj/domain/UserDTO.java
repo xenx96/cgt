@@ -4,9 +4,8 @@ import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,6 +14,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @ToString //exclude 로 제외시킬수 있음.
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "User")
 public class UserDTO {
 
@@ -22,6 +23,9 @@ public class UserDTO {
     @Id
     @NonNull
     private String _id;
+
+    @NonNull
+    private String ID;
 
     @NonNull
     @NotBlank
@@ -55,7 +59,7 @@ public class UserDTO {
 
     @Nullable
     private Date UA;
-
+/*
     public UserDTO(String _id, String PW, String NM, String MN, Number SX, String EA, String ADR,
         Date CA, Date BT) {
         super();
@@ -69,6 +73,6 @@ public class UserDTO {
         this.CA = CA;
         this.BT = BT;
     }
-
+*/
 
 }

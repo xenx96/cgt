@@ -19,7 +19,7 @@ public class LoginService {
 
     // 로그인 로직
     public String userLogin(UserDTO loginUser) {
-        UserDTO userData = userService.findBy_id(loginUser.get_id());
+        UserDTO userData = userService.findByID(loginUser.getID());
 
         if (userData != null && userService.hashedMatch(loginUser.getPW(),
             (String) userData.getPW())) {
@@ -40,7 +40,7 @@ public class LoginService {
             .setIssuedAt(now)// when is created at?
             .setExpiration(
                 new Date(now.getTime() + Duration.ofHours(2).toMillis())) // when is expired time?
-            .claim("id", form.get_id()) // add clime; like key:value.
+            .claim("id", form.getID()) // add clime; like key:value.
             .claim("email", form.getEA())// if you want to add, Add .claim().
             .signWith(SignatureAlgorithm.HS512, "secret")// Hashed Algorithm & Secret Key
             .compact(); //Making.
