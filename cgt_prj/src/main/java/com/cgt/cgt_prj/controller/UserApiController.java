@@ -47,7 +47,7 @@ public class UserApiController {
             .parseClaimsJws(JWT)
             .getBody().get("id");
 
-        userService.deleteByID(id);
+        userService.deleteUser(id);
         return null;
     }
 

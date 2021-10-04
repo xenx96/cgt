@@ -21,7 +21,7 @@ public class UserService {
 
     //아이디 조회
     public Boolean idCheck(String id) {
-        return findByID(id) == null;
+        return findByID(id).isPresent();
     }
 
     //닉네임
@@ -33,15 +33,14 @@ public class UserService {
     public void insertUser(UserDTO userDTO) {
         String hashPassword = hashEncodePassword(userDTO.getPW());
         userDTO.setPW(hashPassword);
-        userInsert(userDTO);
+        userRepository.insert(userDTO);
     }
 
     // 회원 탈퇴
     public void deleteUser(UserDTO user) {
         //PW 검증
-        UserDTO userData = findByID(user.getID());
-        if (userData != null && hashedMatch(user.getPW(), userData.getPW())) {
-            deleteByID(user.getID());
+        if (idCheck(user.getID()),hashedMatch(user.getPW(), userData.getPW()) ) {
+            userRepository.deleteByID(user.getID());
             System.out.println("Delete User Complete");
         } else {
             System.out.println("Delete User Failed");
@@ -60,25 +59,15 @@ public class UserService {
     }
 
     //findByID method 생성
-    public UserDTO findByID(String id) {
+    public Optional<UserDTO> findByID(String id) {
         return userRepository.findByID(id);
     }
 
+
     //user 정보 삭제 method
     @Transactional
-    public void deleteByID(String id) {
-        userRepository.deleteByID(id);
-    }
-
-    //user 정보 등록 method
-    @Transactional
-    public void userInsert(UserDTO user) {
-        userRepository.insert(user);
-    }
-
-    @Transactional
     public void userUpdate(UserDTO user) {
-        UserDTO userData = findByID(user.getID());
+        userRepository.findByID(user.getID()).;
         //수정가능 인자 PW/MN/ADR/BT/UA
         Date now = new Date();
         userData.setPW(hashEncodePassword(

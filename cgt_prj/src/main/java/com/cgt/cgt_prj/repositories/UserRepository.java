@@ -5,10 +5,12 @@ import com.cgt.cgt_prj.domain.UserDTO;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends MongoRepository<UserDTO, String> {
 
-    UserDTO findByID(String _id);
+    Optional<UserDTO> findByID(String _id);
 
     UserDTO findByNN(String NN);
 

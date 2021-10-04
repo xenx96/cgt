@@ -19,7 +19,7 @@ public class LoginService {
 
     // 로그인 로직
     public String userLogin(UserDTO loginUser) {
-        UserDTO userData = userService.findByID(loginUser.getID());
+        userService.findByID(loginUser.getID()).isPresent().;
 
         if (userData != null && userService.hashedMatch(loginUser.getPW(),
             (String) userData.getPW())) {
