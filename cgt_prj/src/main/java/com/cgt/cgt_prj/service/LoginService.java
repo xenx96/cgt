@@ -6,9 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.time.Duration;
 import java.util.Date;
-
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,14 +17,10 @@ public class LoginService {
 
     // 로그인 로직
     public String userLogin(UserDTO loginUser) {
-<<<<<<< HEAD
-        userService.findByID(loginUser.getID()).isPresent().;
-=======
-        UserDTO userData = userService.findBy_id(loginUser.get_id());
->>>>>>> parent of 502b57c (_id를 ID로 변환)
 
+        UserDTO userData = userService.findBy_id(loginUser.get_id());
         if (userData != null && userService.hashedMatch(loginUser.getPW(),
-            (String) userData.getPW())) {
+            userData.getPW())) {
             return JWTMake(userData);
         } else {
             return "failed";

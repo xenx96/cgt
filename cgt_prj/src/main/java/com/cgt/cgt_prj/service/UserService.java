@@ -2,12 +2,11 @@ package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.repositories.UserRepository;
+import java.util.Date;
 import lombok.RequiredArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Date;
 
 
 //User에 관한 비즈니스로직 짜는 부분
@@ -20,11 +19,7 @@ public class UserService {
 
     //아이디 조회
     public Boolean idCheck(String id) {
-<<<<<<< HEAD
-        return findByID(id).isPresent();
-=======
         return findBy_id(id) == null;
->>>>>>> parent of 502b57c (_id를 ID로 변환)
     }
 
     //닉네임
@@ -42,14 +37,9 @@ public class UserService {
     // 회원 탈퇴
     public void deleteUser(UserDTO user) {
         //PW 검증
-<<<<<<< HEAD
-        if (idCheck(user.getID()),hashedMatch(user.getPW(), userData.getPW()) ) {
-            userRepository.deleteByID(user.getID());
-=======
         UserDTO userData = findBy_id(user.get_id());
         if (userData != null && hashedMatch(user.getPW(), userData.getPW())) {
             deleteBy_id(user.get_id());
->>>>>>> parent of 502b57c (_id를 ID로 변환)
             System.out.println("Delete User Complete");
         } else {
             System.out.println("Delete User Failed");
@@ -67,13 +57,7 @@ public class UserService {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-<<<<<<< HEAD
-    //findByID method 생성
-    public Optional<UserDTO> findByID(String id) {
-        return userRepository.findByID(id);
-    }
 
-=======
     //findBy_id method 생성
     public UserDTO findBy_id(String id) {
         return userRepository.findBy_id(id);
@@ -90,20 +74,16 @@ public class UserService {
     public void userInsert(UserDTO user) {
         userRepository.insert(user);
     }
->>>>>>> parent of 502b57c (_id를 ID로 변환)
 
     //user 정보 삭제 method
     @Transactional
     public void userUpdate(UserDTO user) {
-<<<<<<< HEAD
-        userRepository.findByID(user.getID()).;
-=======
+
         UserDTO userData = findBy_id(user.get_id());
->>>>>>> parent of 502b57c (_id를 ID로 변환)
         //수정가능 인자 PW/MN/ADR/BT/UA
         Date now = new Date();
         userData.setPW(hashEncodePassword(
-                user.getPW()
+            user.getPW()
         ));
         userData.setMN(user.getMN());
         userData.setADR(user.getADR());

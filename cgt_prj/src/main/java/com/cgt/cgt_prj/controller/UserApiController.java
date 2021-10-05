@@ -3,7 +3,6 @@ package com.cgt.cgt_prj.controller;
 
 import com.cgt.cgt_prj.domain.UserDTO;
 import com.cgt.cgt_prj.service.UserService;
-import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,17 +39,8 @@ public class UserApiController {
 
     //회원 탈퇴 Mapping
     @DeleteMapping("api/user")
-    public Exception deleteUser(@RequestHeader String JWT) throws Exception {
-        String id = (String) Jwts.parser()
-            .setSigningKey("secret")
-            .parseClaimsJws(JWT)
-            .getBody().get("id");
-
-<<<<<<< HEAD
-        userService.deleteUser(id);
-=======
-        userService.deleteBy_id(id);
->>>>>>> parent of 502b57c (_id를 ID로 변환)
+    public Exception deleteUser(@RequestBody UserDTO user) {
+        userService.deleteUser(user);
         return null;
     }
 
