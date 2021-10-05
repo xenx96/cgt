@@ -8,7 +8,7 @@ class Login extends Component{
         try{
 
         var loginfrm = {
-          ID : ID.value,
+          _id: ID.value,
           PW: PW.value,
           CA
         }

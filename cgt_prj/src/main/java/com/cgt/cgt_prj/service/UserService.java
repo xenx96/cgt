@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-import java.util.Optional;
 
 
 //User에 관한 비즈니스로직 짜는 부분
@@ -21,7 +20,11 @@ public class UserService {
 
     //아이디 조회
     public Boolean idCheck(String id) {
+<<<<<<< HEAD
         return findByID(id).isPresent();
+=======
+        return findBy_id(id) == null;
+>>>>>>> parent of 502b57c (_id를 ID로 변환)
     }
 
     //닉네임
@@ -39,8 +42,14 @@ public class UserService {
     // 회원 탈퇴
     public void deleteUser(UserDTO user) {
         //PW 검증
+<<<<<<< HEAD
         if (idCheck(user.getID()),hashedMatch(user.getPW(), userData.getPW()) ) {
             userRepository.deleteByID(user.getID());
+=======
+        UserDTO userData = findBy_id(user.get_id());
+        if (userData != null && hashedMatch(user.getPW(), userData.getPW())) {
+            deleteBy_id(user.get_id());
+>>>>>>> parent of 502b57c (_id를 ID로 변환)
             System.out.println("Delete User Complete");
         } else {
             System.out.println("Delete User Failed");
@@ -58,16 +67,39 @@ public class UserService {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
+<<<<<<< HEAD
     //findByID method 생성
     public Optional<UserDTO> findByID(String id) {
         return userRepository.findByID(id);
     }
 
+=======
+    //findBy_id method 생성
+    public UserDTO findBy_id(String id) {
+        return userRepository.findBy_id(id);
+    }
+
+    //user 정보 삭제 method
+    @Transactional
+    public void deleteBy_id(String id) {
+        userRepository.deleteById(id);
+    }
+
+    //user 정보 등록 method
+    @Transactional
+    public void userInsert(UserDTO user) {
+        userRepository.insert(user);
+    }
+>>>>>>> parent of 502b57c (_id를 ID로 변환)
 
     //user 정보 삭제 method
     @Transactional
     public void userUpdate(UserDTO user) {
+<<<<<<< HEAD
         userRepository.findByID(user.getID()).;
+=======
+        UserDTO userData = findBy_id(user.get_id());
+>>>>>>> parent of 502b57c (_id를 ID로 변환)
         //수정가능 인자 PW/MN/ADR/BT/UA
         Date now = new Date();
         userData.setPW(hashEncodePassword(

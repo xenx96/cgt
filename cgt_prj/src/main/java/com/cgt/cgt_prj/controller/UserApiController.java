@@ -47,7 +47,11 @@ public class UserApiController {
             .parseClaimsJws(JWT)
             .getBody().get("id");
 
+<<<<<<< HEAD
         userService.deleteUser(id);
+=======
+        userService.deleteBy_id(id);
+>>>>>>> parent of 502b57c (_id를 ID로 변환)
         return null;
     }
 

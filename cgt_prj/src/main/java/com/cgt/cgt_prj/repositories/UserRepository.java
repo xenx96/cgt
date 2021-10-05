@@ -10,11 +10,15 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends MongoRepository<UserDTO, String> {
 
+<<<<<<< HEAD
     Optional<UserDTO> findByID(String _id);
+=======
+    UserDTO findBy_id(String _id);
+>>>>>>> parent of 502b57c (_id를 ID로 변환)
 
     UserDTO findByNN(String NN);
 
     UserDTO findByEA(String EA);
 
-    void deleteByID(String id);
+
 }
