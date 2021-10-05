@@ -2,7 +2,8 @@ import React from 'react';
 import Axios from "axios";
 import  VideoTag  from "./video.js";
 import Head from "./head.js"
-
+import Joinstyle from "../public/css/join.module.css";
+import cn from "classnames";
 class Join extends React.Component{
     state = { //~Check : 요청값 확인, 최종 3개 모두 확인완료시 Submit가능. ||
     IDNotice:'',
@@ -153,8 +154,7 @@ class Join extends React.Component{
   return (
 
     <><Head/>
-    <VideoTag/>
-
+    <VideoTag videoName ="./Videos/join_video_3.mp4" videoClass={cn(Joinstyle.joinvideo2)}/>
       <header>
         <a href="회원가입 링크"><p>회원가입</p></a>
       </header>

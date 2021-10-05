@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 /**
  * 여기부터는 Component Import 부분
  */
-import Header from './components/header';
+//import Header from './components/header';
 import Footer from './components/footer';
 import Contents from './components/contents';
 import Join from './components/join';

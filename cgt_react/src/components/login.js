@@ -1,8 +1,14 @@
 import Axios from 'axios';
 import React, {Component } from 'react';
+import VideoTag from './video';
+import Head from './head';
+import style from '../public/css/login.module.css';
+import cn from 'classnames';
+
 class Login extends Component{
     state = {warningMessage : ""};
     handleLoginSubmit = async(e) =>{
+      e.preventDefault();
         const {ID, PW} = e.target;
         const CA = new Date().getTime();
         try{
@@ -28,14 +34,36 @@ class Login extends Component{
 
     render(){
         return(
-            <form onSubmit = {this.handleLoginSubmit}>
-                    <div>아이디
-                        <input type ='text' name = "ID"/>
-                        비밀번호
-                        <input type ='password' name = "PW"/>{this.state.warningMessage}
-                    </div>
-                    <input class="joinbutton" type="submit" value="로그인하기" />
-            </form>
+          <>
+            <Head/>
+            <body class={cn(style.body)}>
+              <VideoTag videoName="./Videos/loginvideo.mp4" videoClass={cn(style.loginvd)}/>
+              <form onSubmit = {this.handleLoginSubmit} class={cn(style.login)}>
+                <h1 class={cn(style.logintitle)}>Log In</h1>
+                <div class={cn(style.id)}>
+                    <label>ID :</label>
+                    <input type="text" name="ID"/>
+                </div>
+                <div class={cn(style.pw)}>
+                    <label>PW :</label>
+                    <input type="password" name="PW"/>
+                </div>
+                <div class={cn(style.autologin)}>
+                    <input type="radio" id="autologin2"/>
+                    <label for="autologin2">자동 로그인</label>
+                </div>
+                <div class={cn(style.foundpw)}>
+                    <a href="비밀번호 찾기">PW를 잊으셨습니까?</a>
+                </div>
+                <div class={cn(style.loginbutton)}>
+                    <input type="submit" value="Log In"/>
+                </div>
+                <div class={cn(style.joinbutton)}>
+                    <a href="/join" >Join</a>
+                </div>
+                </form>
+              </body>
+            </>
         )
     }
 }
