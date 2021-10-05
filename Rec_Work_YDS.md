@@ -82,3 +82,10 @@
     + E-mail 인증시 필요한 Google 계정 생성
     + `React`
     + E-mail 및 NickName API 호출 Axios 추가 완료.
+
+- 2021-10-05
+    + `Java`
+    + UserDTO NPE문제로 인하여 Optional 지향하여 변경 하였으나, Null 발생여부가 큰영향을 끼치지 않고, Null이 중요하므로 RollBack처리.
+    + `React`
+    + React.Component Class에서 SetInterval이 호출되지 않아, 해당 문제를 찾던중 Hooks를 이용하면 되는 것을 알게됨.
+    + Component Class에서 사용할 방법을 모색중.(이메일 인증 
