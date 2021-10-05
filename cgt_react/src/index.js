@@ -13,13 +13,14 @@ import reportWebVitals from './reportWebVitals';
 import Footer from './components/footer';
 import Contents from './components/contents';
 import Join from './components/join';
-import Board from './components/Board';
+import Board from './components/board';
+import Boardview from './components/boardview';
 import Login from './components/login';
 
 /**
  * 경고! CSS부분은 전체 페이지의 공통 CSS 부분은
  * Header나 Footer에 할당하여도 되지만, 한페이지에만 해당되는경우
- * 절대! 그렇게하면 안됨. 대부분의 CSS는 합쳐지는 Componet쪽에만 할당 할것! 
+ * 절대! 그렇게하면 안됨. 대부분의 CSS는 합쳐지는 Componet쪽에만 할당 할것!
  */
 
 ReactDOM.render(
@@ -30,6 +31,7 @@ ReactDOM.render(
     {/*<Route path="/login" component={Login} />*/}
     <Route path="/board" component={Board} />
     <Route path="/login" component={Login} />
+    <Route path="/boardview" component={Boardview}/>
     <Route path="/summoner:summoner" component={Contents} />
     </BrowserRouter>
     <Footer/>
