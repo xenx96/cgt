@@ -13,7 +13,8 @@ import reportWebVitals from './reportWebVitals';
 import Footer from './components/footer';
 import Contents from './components/contents';
 import Join from './components/join';
-import Board from './components/board';
+import Join2 from './components/join/join2';
+import Board from './components/Board';
 import Boardview from './components/boardview';
 import Login from './components/login';
 
@@ -28,6 +29,7 @@ ReactDOM.render(
     {/*Search 컴포넌트 실행*/}
     <BrowserRouter>
     <Route path="/join" component={Join} />
+    <Route path="/join2" component={Join2} />
     {/*<Route path="/login" component={Login} />*/}
     <Route path="/board" component={Board} />
     <Route path="/login" component={Login} />
