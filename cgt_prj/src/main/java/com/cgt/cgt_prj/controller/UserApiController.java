@@ -34,6 +34,7 @@ public class UserApiController {
     //ID 중복 체크 매핑
     @GetMapping("api/user")
     public Boolean checkUserId(@RequestParam("id") String id) {
+        System.out.println(id);
         return userService.idCheck(id);
     }
 

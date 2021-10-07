@@ -2,6 +2,7 @@ package com.cgt.cgt_prj.repositories;
 
 
 import com.cgt.cgt_prj.domain.UserDTO;
+import net.minidev.json.JSONObject;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,5 @@ public interface UserRepository extends MongoRepository<UserDTO, String> {
     UserDTO findByNN(String NN);
 
     UserDTO findByEA(String EA);
-
 
 }
