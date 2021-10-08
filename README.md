@@ -16,7 +16,7 @@
     + http://localhost:3000 (React.js-Front-Web)
 * DataBase
   - 테스트 서버
-    + 3.37.221.165:9004 (MongoDB)
+    + 54.180.92.113:9004 (MongoDB)
 * Email Auth
   - Host : Google Mail
   - Account : cgtproject0801
