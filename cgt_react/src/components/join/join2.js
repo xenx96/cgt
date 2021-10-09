@@ -79,16 +79,19 @@ const Join = ()=>{
   
   /*IDChecking Handler */
     const  handleIdCheck = async(e)=>{
+      const [IDNotice,setIDNotice]= useState('')
         var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*/ //패턴
         console.log(e.target.value);
         if(e.target.value.length<6 | e.target.value.length>12 | !regExp.test(e.target.value)){
-          setStates({IDNotice : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});
+          //setStates({IDNotice : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});
+          setIDNotice("아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. ");
         }
         else{
   
           try{
             let res = await Axios.get('/api/user?id='+e.target.value);
-                 await setStates({IDNotice :res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."});
+            await setIDNotice(res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."); 
+            //await setStates({IDNotice :res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."});
                  await setStates({IDCheck: res.data? true : false});
             console.log(res);
           }catch(err){
