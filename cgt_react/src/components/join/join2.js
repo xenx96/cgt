@@ -173,11 +173,12 @@ const Join = ()=>{
           }
     }
   };
+  /*
     useEffect(()=>{
       let T = setInterval(emailTimeCheck,1000)
       return ()=>clearInterval(T);
     });
-        
+    */    
   /**
    * NickName Check. 
    */
