@@ -30,7 +30,7 @@
 - Front-End : HTML, CSS, React.JS
 - Back-End : Java(Spring Boot Framework) 
 - Dev Tool : VSC(유대선), IntelliJ(유대선)
-- CodeStyle : Google-Code-Style-Intellij
+- CodeStyle : Google-Code-Style-Intellij / Prettier-VSC
 - Log Lib : logback
 - Issued Check From 'github/xenx96/cgt'
 ```   
