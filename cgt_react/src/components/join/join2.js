@@ -21,31 +21,33 @@ import cn from "classnames";
 
     
 const Join = ()=>{
-  let [States, setStates] = useState({ 
-    IDNotice:'',
-    IDCheck: false,
-    emailNotice:'',
-    EACheck : false,
-    PW :'',
-    PWCheck:false,
-    PWNotice : '',
-    EA : '',
-    emailTime : 0,
-    TimeString : "",
-    emailAuth : '',
-    emailButton : true,
-    emailnum : 0,
-    emailAuthCheck :false,
-    NNCheck : false,
-    NNNotice :"",
-    authInput : null});
 
+    const [IDCheck, setIDCheck] = useState(false);
+    const [IDNotice,setIDNotice]= useState('');
+    //PW
+    const [PW, setPW] = useState('');
+    const [PWCheck, setPWCheck] = useState(false);
+    const [PWNotice, setPWNotice] = useState('');
+    //EA
+    const [emailNotice, setEmailNoitce] = useState('');
+    const [EACheck, setEACheck] = useState(false);
+    const [EA, setEA] = useState('');
+    const [emailTime, setEmailTime] = useState(0);
+    const [TimeString, setTimeString] = useState('');
+    const [emailAuth, setEmailAuth] = useState('');
+    const [emailButton, setEmailButton] = useState(true);
+    const [emailnum, setEmailnum] = useState(0);
+    const [emailAuthCheck, setEmailAuthCheck] = useState(false);
+    //NicName
+    const [NNCheck, setNNCheck] = useState(false);
+    const [NNNotice, setNNNotice] = useState('');
+    const [authInput, setAuthInput] = useState(null);
 
     const handleSubmit = async(e) => {
     
     
       e.preventDefault();
-      if(States.IDCheck & States.EACheck & States.PWCheck &States.emailAuthCheck){
+      if(IDCheck & EACheck & PWCheck &emailAuthCheck){
         const {ID, PW, SX, BT, NM, ADR, EA, MN} = e.target;
   
         const CA = new Date().getTime();
@@ -79,11 +81,9 @@ const Join = ()=>{
   
   /*IDChecking Handler */
     const  handleIdCheck = async(e)=>{
-      const [IDNotice,setIDNotice]= useState('')
         var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*/ //패턴
         console.log(e.target.value);
         if(e.target.value.length<6 | e.target.value.length>12 | !regExp.test(e.target.value)){
-          //setStates({IDNotice : "아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. "});
           setIDNotice("아이디는 6~12자이상, 영어,숫자,_,-만 사용가능합니다. ");
         }
         else{
@@ -91,8 +91,7 @@ const Join = ()=>{
           try{
             let res = await Axios.get('/api/user?id='+e.target.value);
             await setIDNotice(res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."); 
-            //await setStates({IDNotice :res.data? "사용 가능한 아이디입니다.":"이미 등록된 아이디입니다."});
-                 await setStates({IDCheck: res.data? true : false});
+            await setIDCheck(res.data? true : false);
             console.log(res);
           }catch(err){
             console.error(err);
@@ -103,32 +102,31 @@ const Join = ()=>{
   
   /*Password Check handler */
     const handlePassword = (e)=>{
-        setStates({PW : e.target.value});
+        setPW(e.target.value);
       };
     const handlePasswordCheck = async(e)=>{
-           await setStates({PWCheck: States.PW===e.target.value ?true:false})
-           await setStates({PWNotice: States.PWCheck ? '비밀번호가 일치합니다.':'비밀번호가 일치하지 않습니다.'})
+          await console.log("PW : "+PW);
+          console.log("PW2 : "+e.target.value)
+           await setPWCheck(PW===e.target.value ?true:false)
+           await setPWNotice(PWCheck ? '비밀번호가 일치합니다.':'비밀번호가 일치하지 않습니다.'); 
       };
   
   /*Email Handler */
     const  handleEmailFrame = async(e)=> {  
       var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
       let regBool =  regExp.test(e.target.value);
-      await setStates({EACheck : regBool}); //이메일 유효 여부 확인
-      await setStates({emailNotice : regBool?'사용 가능한 형식입니다.':'사용 불가능한 형식 입니다.'});
-      await setStates({EA : States.EACheck? e.target.value:""}) // 멘트출력
-      alert(States.EACheck);
-
+      await setEACheck(regBool); //이메일 유효 여부 확인
+      await setEmailNoitce(regBool?'사용 가능한 형식입니다.':'사용 불가능한 형식 입니다.');
+      await setEA(EACheck? e.target.value:"") // 멘트출력
 
       };
   
     const  handleEmailSubmit = async(e)=>{
         e.preventDefault();
-        alert(States.EA);
-        if(States.EA === ""){
+        if(EA === ""){
           alert("사용가능한 이메일이 아닙니다.");
         }else{
-          const EA = await JSON.stringify({EA : States.EA});
+          const EA = await JSON.stringify({EA : EA});
           let res = await Axios.post("/api/email",EA, {
             headers: { "Content-Type": `application/json`}
           });
@@ -137,7 +135,9 @@ const Join = ()=>{
             alert("사용중인 이메일입니다. 다시입력하세요.");
           }else {
             alert(" 인증 번호가 발송되었습니다. 인증번호를 입력하세요.")
-            setStates({emailButton : false,emailAuth : res.data,emailTime : 180});
+            setEmailButton(false);
+            setEmailAuth(res.data); 
+            setEmailTime(180);
   
             
           }
@@ -145,30 +145,39 @@ const Join = ()=>{
       }
       
     const handleAuthInput = (e)=>{
-        setStates({authInput : e.target.value})
+        setAuthInput(e.target.value);
       }
     const handleEmailAuth= async(e)=>{
-        if(States.authInput == States.emailAuth){
+        if(authInput == emailAuth){
             alert("이메일 인증이 완료 되었습니다.")
-            await setStates({emailAuthCheck : true, emailButton : "disable", emailnum : 0});
+            await setEACheck(true);
+            await setEmailButton("disable");
+            await setEmailnum(0);
           }else{
-            await setStates({emailnum : States.emailnum+1 });  
-            if(States.emailnum >=3){
+            await setEmailnum(emailnum => emailnum+1 );  
+            if(emailnum >=3){
               alert("시도횟수가 초과되었습니다. 다시 인증 받으세요.");
-              setStates({emailButton : "none", emailAuth:"", emailnum : 0, emailTime : ""});
+              setEmailButton("none")
+              setEmailAuth("")
+              setEmailnum(0) 
+              setEmailTime("");
             }else{
-              await alert(3-States.emailnum+"번 남았습니다. 다시 시도해주세요");
+              alert(3-emailnum+"번 남았습니다. 다시 시도해주세요");
             }
           }
           
         }
-    const  emailTimeCheck = async()=>{
-      if(States.emailTime>0){
-          let min = parseInt(States.emailTime/60);
-          let sec = States.emailTime%60;
-          setStates({TimeString : min+"분 "+sec+"초 남았습니다.", emailtime : States.emailTime-1});
-          if(States.emailTime==0){
-            setStates({emailButton : "none", emailAuth:"", emailnum : 0, emailTime : ""});
+    const emailTimeCheck = async()=>{
+      if(emailTime>0){
+          let min = parseInt(emailTime/60);
+          let sec = emailTime%60;
+          setTimeString(min+"분 "+sec+"초 남았습니다.");
+          setEmailTime(emailTime => emailTime-1 );
+          if(emailTime==0){
+            setEmailButton("none");
+            setEmailAuth("");
+            setEmailnum(0);
+            setEmailTime("");
             alert('인증시간이 만료되었습니다!');
           }
     }
@@ -184,8 +193,8 @@ const Join = ()=>{
    */
     const  handleNickNameCheck = async(e)=>{
           let res = await Axios.post("api/user/nickname="+e.target.NN.value)
-          await res.data? setStates({NNcheck : true, NNNotice : "사용가능한 별명 입니다." }) : 
-          setStates({NNcheck :false, NNNotice : "사용불가능한 별명입니다." });
+          await setNNCheck(res.data?true:false);
+          await setNNNotice(res.data?"사용가능한 별명 입니다.":"사용불가능한 별명입니다.");
         }
 
   return (
@@ -199,23 +208,23 @@ const Join = ()=>{
       <form onSubmit={handleSubmit} >
         <div>
           <label>아이디</label><br />
-          <input type="text" name="ID" onChange={handleIdCheck} minLength={6} maxLength={12} />
-          <p>{States.IDNotice}</p>
+          <input type="text" name="ID" onChange={handleIdCheck} value={ID} minLength={6} maxLength={12} />
+          <p>{IDNotice}</p>
         </div>
         <div>
           <label>비밀번호</label><br />
-          <input type="password" name="PW" onChange={handlePassword} minLength={8} maxlength='17' placeholder="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요" />
+          <input type="password" name="PW" onChange={handlePassword} value={PW} minLength={8} maxlength='17' placeholder="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요" />
         </div>
         <div>
           <label>비밀번호 재확인</label><br />
-          <input type="password" name="PW2" onChange={handlePasswordCheck} />
-          <p>{States.PWNotice}</p>
+          <input type="password" name="PW2" value={PW2} onChange={handlePasswordCheck} />
+          <p>{PWNotice}</p>
         </div>
         <div>
           <label>이름</label><br />
           <input type="text" name="NM" />
         </div>
-        <div style={{display: "none"}} onchange ={handleNickNameCheck}> <label>별명{States.NNNotice}</label><br />
+        <div style={{display: "none"}} onChange ={handleNickNameCheck}> <label>별명{NNNotice}</label><br />
           <input type="text" name="NN" />
         </div>
         <div> <label>생년월일</label><br />
@@ -234,10 +243,10 @@ const Join = ()=>{
           <label>본인 확인 이메일</label><br />
           <input type="email" name="EA" onChange={handleEmailFrame} />
           <input type="button" value = "인증번호 전송" onClick ={handleEmailSubmit} /><br />
-          <p>{States.emailNotice}</p>
+          <p>{emailNotice}</p>
           <input type="text"  name ="EACheck" onChange = {handleAuthInput} placeholder="인증번호 입력하세요" />
-          <input type="button" value="인증번호 확인" onClick ={handleEmailAuth} disabled = {States.emailButton}/>
-          <p>{States.TimeString}</p>
+          <input type="button" value="인증번호 확인" onClick ={handleEmailAuth} disabled = {emailButton}/>
+          <p>{TimeString}</p>
         </div>
         <input class="joinbutton" type="submit" value="가입하기" />
       </form>
