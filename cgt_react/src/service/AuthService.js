@@ -1,33 +1,31 @@
-import React from 'react';
-import decode from 'jwt-decode';
+import React from "react";
+import decode from "jwt-decode";
 
-export default class AuthService{
+export default class AuthService {
+  getToken() {
+    return localStorage.getItem("ACCESS_TOKEN");
+  }
 
-  getToken(){return localStorage.getItem('ACCESS_TOKEN');}
-
-  isTokenExpired(){
+  isTokenExpired() {
     const token = this.getToken();
-      try {
-        const decoded = decode(token);
-        if (decoded.exp < Date.now() / 1000) {
-            return true;
-        }
-        else
-            return false;
-    }
-    catch (err) {
-        return false;
+    try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
+    } catch (err) {
+      return false;
     }
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token)
+    return !!token && !this.isTokenExpired(token);
   }
-  logout () {
-    localStorage.removeItem('id_token');
-}
-getProfile () {
+  logout() {
+    localStorage.removeItem("id_token");
+  }
+  getProfile() {
     return decode(this.getToken());
-}
+  }
 }
