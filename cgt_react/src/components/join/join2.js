@@ -116,9 +116,9 @@ const Join = () => {
     let regBool = regExp.test(e.target.value); //이메일 유효 여부 확인
     setEACheck(regBool); //유효여부 Save
   };
-  useEffect(async()=>{
-    await setEA(EACheck ? EAmem : ""); // EACheck==true 이면 EA에 Email Set.
-    await setEmailNoitce(
+  useEffect(()=>{
+    setEA(EACheck ? EAmem : ""); // EACheck==true 이면 EA에 Email Set.
+    setEmailNoitce(
       EACheck ? "사용 가능한 형식입니다." : "사용 불가능한 형식 입니다."
     );
 
