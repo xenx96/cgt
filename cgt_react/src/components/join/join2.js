@@ -15,12 +15,14 @@ const Join = () => {
   const [IDNotice, setIDNotice] = useState("");
   //PW
   const [PW, setPW] = useState("");
+  const [PW2, setPW2] = useState("");
   const [PWCheck, setPWCheck] = useState(false);
   const [PWNotice, setPWNotice] = useState("");
   //EA
   const [emailNotice, setEmailNoitce] = useState("");
   const [EACheck, setEACheck] = useState(false);
   const [EA, setEA] = useState("");
+  const [EAmem, setEAmem] = useState("");
   const [emailTime, setEmailTime] = useState(0);
   const [TimeString, setTimeString] = useState("");
   const [emailAuth, setEmailAuth] = useState("");
@@ -80,9 +82,6 @@ const Join = () => {
     } else {
       try {
         let res = await Axios.get("/api/user?id=" + e.target.value);
-        await setIDNotice(
-          res.data ? "사용 가능한 아이디입니다." : "이미 등록된 아이디입니다."
-        );
         await setIDCheck(res.data ? true : false);
         console.log(res);
       } catch (err) {
@@ -90,35 +89,42 @@ const Join = () => {
       }
     }
   };
+  useEffect(()=>{
+    setIDNotice(
+      IDCheck ? "사용 가능한 아이디입니다." : "이미 등록된 아이디입니다."
+    );
+  },[IDCheck])
 
   /*Password Check handler */
   const handlePassword = (e) => {
     setPW(e.target.value);
   };
-  const handlePasswordCheck = async (e) => {
-    await console.log("PW : " + PW);
-    console.log("PW2 : " + e.target.value);
-    await setPWCheck((PWCheck) => (PW === e.target.value ? true : false));
-    await setPWNotice((PWNotice) =>
-      PWCheck ? "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."
-    );
+  const handlePasswordCheck = (e) => {
+    setPW2(e.target.value);
   };
-  useEffect(handlePasswordCheck());
+  useEffect(()=>{
+    setPWCheck(PW == PW2 ? true : false);
+    setPWNotice( PW == PW2 ? "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."
+    );
+  },[PW,PW2]);
 
   /*Email Handler */
-  const handleEmailFrame = async (e) => {
+  const handleEmailFrame = (e) => {
+    setEAmem(e.target.value); // EACheck==true 이면 EA에 Email Set.
     var regExp =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    let regBool = regExp.test(e.target.value);
-    await setEACheck(regBool); //이메일 유효 여부 확인
-    await setEmailNoitce(
-      regBool ? "사용 가능한 형식입니다." : "사용 불가능한 형식 입니다."
-    );
-    await setEA(EACheck ? e.target.value : ""); // 멘트출력
+    let regBool = regExp.test(e.target.value); //이메일 유효 여부 확인
+    setEACheck(regBool); //유효여부 Save
   };
+  useEffect(async()=>{
+    await setEA(EACheck ? EAmem : ""); // EACheck==true 이면 EA에 Email Set.
+    await setEmailNoitce(
+      EACheck ? "사용 가능한 형식입니다." : "사용 불가능한 형식 입니다."
+    );
+
+  },[EACheck,EAmem]);
 
   const handleEmailSubmit = async (e) => {
-    e.preventDefault();
     if (EA === "") {
       alert("사용가능한 이메일이 아닙니다.");
     } else {
@@ -126,7 +132,6 @@ const Join = () => {
       let res = await Axios.post("/api/email", EAfrm, {
         headers: { "Content-Type": `application/json` },
       });
-
       if (res.data == "") {
         alert("사용중인 이메일입니다. 다시입력하세요.");
       } else {
@@ -144,9 +149,10 @@ const Join = () => {
   const handleEmailAuth = async (e) => {
     if (authInput == emailAuth) {
       alert("이메일 인증이 완료 되었습니다.");
-      await setEACheck(true);
-      await setEmailButton("disable");
-      await setEmailnum(0);
+       setEACheck(true);
+       setEmailButton("disable");
+       setEmailnum(0);
+      setEmailTime("")
     } else {
       await setEmailnum((emailnum) => emailnum + 1);
       if (emailnum >= 3) {
@@ -166,21 +172,18 @@ const Join = () => {
       let sec = emailTime % 60;
       setTimeString(min + "분 " + sec + "초 남았습니다.");
       setEmailTime((emailTime) => emailTime - 1);
-      if (emailTime == 0) {
+    }
+  };
+    useEffect(()=>{
+      setInterval(emailTimeCheck,1000)
+      if (emailTime == 0&& emailnum>0) {
         setEmailButton("none");
         setEmailAuth("");
         setEmailnum(0);
         setEmailTime("");
         alert("인증시간이 만료되었습니다!");
       }
-    }
-  };
-  /*
-    useEffect(()=>{
-      let T = setInterval(emailTimeCheck,1000)
-      return ()=>clearInterval(T);
-    });
-    */
+    },[emailTime]);
   /**
    * NickName Check.
    */
