@@ -23,7 +23,6 @@ const Join = () => {
   const [EACheck, setEACheck] = useState(false);
   const [EA, setEA] = useState("");
   const [EAmem, setEAmem] = useState("");
-  const [emailTime, setEmailTime] = useState(0);
   const [TimeString, setTimeString] = useState("");
   const [emailAuth, setEmailAuth] = useState("");
   const [emailButton, setEmailButton] = useState(true);
@@ -37,7 +36,7 @@ const Join = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (IDCheck & EACheck & PWCheck & emailAuthCheck) {
+    if (IDCheck & PWCheck & emailAuthCheck) {
       const { ID, PW, SX, BT, NM, ADR, EA, MN } = e.target;
 
       const CA = new Date().getTime();
@@ -126,7 +125,7 @@ const Join = () => {
   }, [EACheck, EAmem]);
 
   const handleEmailSubmit = async (e) => {
-    if (EA === "") {
+    if (EA === "" || EACheck) {
       alert("사용가능한 이메일이 아닙니다.");
     } else {
       const EAfrm = await JSON.stringify({ EA });
@@ -140,7 +139,6 @@ const Join = () => {
         alert(" 인증 번호가 발송되었습니다. 인증번호를 입력하세요.");
         setEmailButton(false);
         setEmailAuth(res.data);
-        setEmailTime(180);
         setEmailnum(3);
         checkTime.current = 180;
       }
@@ -153,7 +151,7 @@ const Join = () => {
   const handleEmailAuth = async (e) => {
     if (authInput == emailAuth) {
       alert("이메일 인증이 완료 되었습니다.");
-      setEACheck(true);
+      setEmailAuthCheck(true);
       setEmailButton("disable");
       setEmailnum(0);
       setEmailTime("");
