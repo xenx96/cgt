@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Axios from "axios";
 import VideoTag from "../video.js";
 import Head from "../head.js";
@@ -33,6 +33,7 @@ const Join = () => {
   const [NNCheck, setNNCheck] = useState(false);
   const [NNNotice, setNNNotice] = useState("");
   const [authInput, setAuthInput] = useState(null);
+  const checkTime = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,11 +90,11 @@ const Join = () => {
       }
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     setIDNotice(
       IDCheck ? "사용 가능한 아이디입니다." : "이미 등록된 아이디입니다."
     );
-  },[IDCheck])
+  }, [IDCheck]);
 
   /*Password Check handler */
   const handlePassword = (e) => {
@@ -102,11 +103,12 @@ const Join = () => {
   const handlePasswordCheck = (e) => {
     setPW2(e.target.value);
   };
-  useEffect(()=>{
+  useEffect(() => {
     setPWCheck(PW == PW2 ? true : false);
-    setPWNotice( PW == PW2 ? "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."
+    setPWNotice(
+      PW == PW2 ? "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."
     );
-  },[PW,PW2]);
+  }, [PW, PW2]);
 
   /*Email Handler */
   const handleEmailFrame = (e) => {
@@ -116,19 +118,19 @@ const Join = () => {
     let regBool = regExp.test(e.target.value); //이메일 유효 여부 확인
     setEACheck(regBool); //유효여부 Save
   };
-  useEffect(()=>{
+  useEffect(() => {
     setEA(EACheck ? EAmem : ""); // EACheck==true 이면 EA에 Email Set.
     setEmailNoitce(
       EACheck ? "사용 가능한 형식입니다." : "사용 불가능한 형식 입니다."
     );
-
-  },[EACheck,EAmem]);
+  }, [EACheck, EAmem]);
 
   const handleEmailSubmit = async (e) => {
     if (EA === "") {
       alert("사용가능한 이메일이 아닙니다.");
     } else {
       const EAfrm = await JSON.stringify({ EA });
+      alert("이메일 전송중입니다. 잠시만 기다려주세요");
       let res = await Axios.post("/api/email", EAfrm, {
         headers: { "Content-Type": `application/json` },
       });
@@ -139,6 +141,8 @@ const Join = () => {
         setEmailButton(false);
         setEmailAuth(res.data);
         setEmailTime(180);
+        setEmailnum(3);
+        checkTime.current = 180;
       }
     }
   };
@@ -149,13 +153,13 @@ const Join = () => {
   const handleEmailAuth = async (e) => {
     if (authInput == emailAuth) {
       alert("이메일 인증이 완료 되었습니다.");
-       setEACheck(true);
-       setEmailButton("disable");
-       setEmailnum(0);
-      setEmailTime("")
+      setEACheck(true);
+      setEmailButton("disable");
+      setEmailnum(0);
+      setEmailTime("");
     } else {
-      await setEmailnum((emailnum) => emailnum + 1);
-      if (emailnum >= 3) {
+      await setEmailnum((emailnum) => emailnum - 1);
+      if (emailnum == -1) {
         alert("시도횟수가 초과되었습니다. 다시 인증 받으세요.");
         setEmailButton("none");
         setEmailAuth("");
@@ -166,24 +170,26 @@ const Join = () => {
       }
     }
   };
-  const emailTimeCheck = async () => {
-    if (emailTime > 0) {
-      let min = parseInt(emailTime / 60);
-      let sec = emailTime % 60;
-      setTimeString(min + "분 " + sec + "초 남았습니다.");
-      setEmailTime((emailTime) => emailTime - 1);
-    }
-  };
-    useEffect(()=>{
-      setInterval(emailTimeCheck,1000)
-      if (emailTime == 0&& emailnum>0) {
+
+  useEffect(() => {
+    let Interval = setInterval(() => {
+      if (checkTime.current > 0) {
+        checkTime.current -= 1;
+        let min = parseInt(checkTime.current / 60);
+        let sec = checkTime.current % 60;
+        setTimeString(min + "분 " + sec + "초 남았습니다.");
+      } else if (emailnum > -1 && checkTime.current == 0) {
+        clearInterval(Interval);
+        alert("인증시간이 만료되었습니다! 다시 인증받아주세요!");
         setEmailButton("none");
         setEmailAuth("");
         setEmailnum(0);
-        setEmailTime("");
-        alert("인증시간이 만료되었습니다!");
+        setTimeString("");
+        checkTime.current = null;
       }
-    },[emailTime]);
+    }, 1000);
+  }, []);
+
   /**
    * NickName Check.
    */
