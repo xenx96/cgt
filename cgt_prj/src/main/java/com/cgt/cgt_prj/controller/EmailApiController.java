@@ -18,14 +18,7 @@ public class EmailApiController {
     public String emailAuth(@RequestBody JSONObject eMailAddress) {
         String EA = eMailAddress.get("EA").toString();
         System.out.println(EA);
-        if (emailService.eMailCheck(EA)) {
-            String key = EmailService.createKey();
-            emailService.emailForm(EA, key);
-            return key;
-        } else {
-            return null;
-
-        }
+        return emailService.emailService(EA);
     }
 
 }

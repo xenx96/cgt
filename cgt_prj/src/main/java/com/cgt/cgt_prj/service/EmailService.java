@@ -50,5 +50,14 @@ public class EmailService {
         mailMessage.setText("인증키는" + key + "입니다. 3분이내로 입력을 완료해주세요.");
         sendEmail(mailMessage);
     }
+    public String emailService(String EA){
+        if (eMailCheck(EA)) {
+            String key = EmailService.createKey();
+            emailForm(EA, key);
+            return key;
+        } else {
+            return null;
+        }
+    }
 
 }
