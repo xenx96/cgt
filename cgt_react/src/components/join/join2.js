@@ -125,7 +125,7 @@ const Join = () => {
   }, [EACheck, EAmem]);
 
   const handleEmailSubmit = async (e) => {
-    if (EA === "" || EACheck) {
+    if (EA === "" || !EACheck) {
       alert("사용가능한 이메일이 아닙니다.");
     } else {
       const EAfrm = await JSON.stringify({ EA });
@@ -154,7 +154,6 @@ const Join = () => {
       setEmailAuthCheck(true);
       setEmailButton("disable");
       setEmailnum(0);
-      setEmailTime("");
     } else {
       await setEmailnum((emailnum) => emailnum - 1);
       if (emailnum == -1) {
@@ -162,7 +161,6 @@ const Join = () => {
         setEmailButton("none");
         setEmailAuth("");
         setEmailnum(0);
-        setEmailTime("");
       } else {
         alert(3 - emailnum + "번 남았습니다. 다시 시도해주세요");
       }

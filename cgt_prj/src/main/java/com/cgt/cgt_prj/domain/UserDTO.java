@@ -4,7 +4,9 @@ import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
 import java.util.Date;
 import javax.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
@@ -16,6 +18,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @ToString //exclude 로 제외시킬수 있음.
 @Document(collection = "User")
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
 
     // private Boolean AH;

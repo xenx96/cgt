@@ -25,12 +25,13 @@ public class EmailService {
 
     //AuthKey 생성
     public static String createKey() {
-        StringBuffer key = new StringBuffer();
+        StringBuilder key = new StringBuilder();
         Random rnd = new Random();
 
         for (int i = 0; i < 6; i++) { // 인증코드 6자리
             key.append((rnd.nextInt(10)));
         }
+
         return key.toString();
     }
 
@@ -38,7 +39,6 @@ public class EmailService {
      *After Set the Message, Sending Email.(sendEmail)
      *emailForm is Method of Setting Message
      */
-    @Async
     public void sendEmail(SimpleMailMessage simpleMailMessage) {
         javaMailSender.send(simpleMailMessage);
     }
@@ -50,14 +50,13 @@ public class EmailService {
         mailMessage.setText("인증키는" + key + "입니다. 3분이내로 입력을 완료해주세요.");
         sendEmail(mailMessage);
     }
+    @Async
     public String emailService(String EA){
-        if (eMailCheck(EA)) {
-            String key = EmailService.createKey();
-            emailForm(EA, key);
-            return key;
-        } else {
-            return null;
-        }
+        String key = EmailService.createKey();
+        emailForm(EA, key);
+        return key;
+
     }
+
 
 }
