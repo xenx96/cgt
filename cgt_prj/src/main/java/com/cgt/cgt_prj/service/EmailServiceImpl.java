@@ -61,13 +61,13 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     @Transactional
-    public void emailCertificate(String EA, String ip){
+    public void emailCertificate(String EA, String ip) throws Exception {
         Email email = new Email();
         String key = createKey();
         email.setCA(new Date());
         email.setEA(EA);
         if (emailRepository.findAllByIp(ip).stream().count()>=3)
-            throw new IllegalArgumentException("최근 시도횟수가 많습니다.");
+            throw new Exception("최근 시도횟수가 많습니다.");
 
         email.setNum(Long.parseLong(key));
         email.setNM(ip);
