@@ -1,7 +1,7 @@
 package com.cgt.cgt_prj.user;
 
 import com.cgt.cgt_prj.domain.UserDTO;
-import com.cgt.cgt_prj.service.UserService;
+import com.cgt.cgt_prj.service.UserServiceImpl;
 import java.util.Date;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class Insert {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
     @Autowired
-    public Insert(UserService userService) {
+    public Insert(UserServiceImpl userService) {
         this.userService = userService;
 
     }

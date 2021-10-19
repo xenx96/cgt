@@ -2,7 +2,7 @@ package com.cgt.cgt_prj.controller;
 
 
 import com.cgt.cgt_prj.domain.UserDTO;
-import com.cgt.cgt_prj.service.UserService;
+import com.cgt.cgt_prj.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserApiController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     //최종 회원가입.
     @PostMapping("/api/user")

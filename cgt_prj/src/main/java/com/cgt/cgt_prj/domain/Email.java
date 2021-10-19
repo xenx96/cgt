@@ -15,7 +15,7 @@ import org.springframework.data.annotation.Id;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmailEntity {
+public class Email {
 
     @Id
     String _id;
@@ -23,9 +23,15 @@ public class EmailEntity {
     @NonNull
     @NotBlank
     String NM;//요청자 주소
+
     @NonNull
     @NotBlank
     String EA;//이메일 주소
+
+    @NonNull
+    @NotBlank
+    Long num;//인증키
+
     @NonNull
     @NotBlank
     Date CA;// 요청(생성) 시간

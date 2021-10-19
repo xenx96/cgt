@@ -4,6 +4,7 @@ import VideoTag from "../video.js";
 import Head from "../head.js";
 import Joinstyle from "../../public/css/join.module.css";
 import cn from "classnames";
+import axios from "axios";
 
 /**
  *
@@ -24,7 +25,6 @@ const Join = () => {
   const [EA, setEA] = useState("");
   const [EAmem, setEAmem] = useState("");
   const [TimeString, setTimeString] = useState("");
-  const [emailAuth, setEmailAuth] = useState("");
   const [emailButton, setEmailButton] = useState(true);
   const [emailnum, setEmailnum] = useState(0);
   const [emailAuthCheck, setEmailAuthCheck] = useState(false);
@@ -110,18 +110,21 @@ const Join = () => {
   }, [PW, PW2]);
 
   /*Email Handler */
-  const handleEmailFrame = (e) => {
+  const handleEmailFrame = async (e) => {
     setEAmem(e.target.value); // EACheck==true 이면 EA에 Email Set.
+    setEmailAuthCheck(false);
     var regExp =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    let regBool = regExp.test(e.target.value); //이메일 유효 여부 확인
-    setEACheck(regBool); //유효여부 Save
+    let regBool = await regExp.test(e.target.value); //이메일 유효 여부 확인
+    let res = regBool
+      ? await axios.get("api/email?EA=" + e.target.value)
+      : false;
+    setEACheck(regBool ? res.data : false); //유효여부 Save
   };
+
   useEffect(() => {
     setEA(EACheck ? EAmem : ""); // EACheck==true 이면 EA에 Email Set.
-    setEmailNoitce(
-      EACheck ? "사용 가능한 형식입니다." : "사용 불가능한 형식 입니다."
-    );
+    setEmailNoitce(EACheck ? "사용 가능합니다." : "사용 불가능합니다.");
   }, [EACheck, EAmem]);
 
   const handleEmailSubmit = async (e) => {
@@ -129,19 +132,13 @@ const Join = () => {
       alert("사용가능한 이메일이 아닙니다.");
     } else {
       const EAfrm = await JSON.stringify({ EA });
-      alert("이메일 전송중입니다. 잠시만 기다려주세요");
-      let res = await Axios.post("/api/email", EAfrm, {
+      Axios.post("/api/email", EAfrm, {
         headers: { "Content-Type": `application/json` },
       });
-      if (res.data == "") {
-        alert("사용중인 이메일입니다. 다시입력하세요.");
-      } else {
-        alert(" 인증 번호가 발송되었습니다. 인증번호를 입력하세요.");
-        setEmailButton(false);
-        setEmailAuth(res.data);
-        setEmailnum(3);
-        checkTime.current = 180;
-      }
+      alert(" 인증 번호가 발송되었습니다. 인증번호를 입력하세요.");
+      setEmailButton(false);
+      setEmailnum(3);
+      checkTime.current = 180;
     }
   };
 
@@ -149,7 +146,8 @@ const Join = () => {
     setAuthInput(e.target.value);
   };
   const handleEmailAuth = async (e) => {
-    if (authInput == emailAuth) {
+    let res = axios.get("api/email/auth?num=" + e.target.value + "&EA=" + EA);
+    if (res.data) {
       alert("이메일 인증이 완료 되었습니다.");
       setEmailAuthCheck(true);
       setEmailButton("disable");
@@ -159,7 +157,6 @@ const Join = () => {
       if (emailnum == -1) {
         alert("시도횟수가 초과되었습니다. 다시 인증 받으세요.");
         setEmailButton("none");
-        setEmailAuth("");
         setEmailnum(0);
       } else {
         alert(3 - emailnum + "번 남았습니다. 다시 시도해주세요");
@@ -178,7 +175,6 @@ const Join = () => {
         clearInterval(Interval);
         alert("인증시간이 만료되었습니다! 다시 인증받아주세요!");
         setEmailButton("none");
-        setEmailAuth("");
         setEmailnum(0);
         setTimeString("");
         checkTime.current = null;

@@ -1,8 +1,8 @@
 package com.cgt.cgt_prj.user;
 
 import com.cgt.cgt_prj.domain.UserDTO;
-import com.cgt.cgt_prj.service.LoginService;
-import com.cgt.cgt_prj.service.UserService;
+import com.cgt.cgt_prj.service.LoginServiceImpl;
+import com.cgt.cgt_prj.service.UserServiceImpl;
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,11 @@ import java.util.Date;
 @SpringBootTest
 public class Login {
 
-    private LoginService loginService;
+    private LoginServiceImpl loginServiceImpl;
 
     @Autowired
-    public Login(UserService userService, LoginService loginService) {
-        this.loginService = loginService;
+    public Login(UserServiceImpl userService, LoginServiceImpl loginServiceImpl) {
+        this.loginServiceImpl = loginServiceImpl;
     }
 
     @Test
@@ -35,7 +35,7 @@ public class Login {
         Date BT = new Date();
         UserDTO user1;
         user1 = new UserDTO(id,PW,NM,MN,SX,EA,ADR,CA,BT);
-        String token = loginService.JWTMake(user1);
+        String token = loginServiceImpl.JWTMake(user1);
 
         System.out.println(Jwts.parser()
             .setSigningKey("secret")
@@ -58,7 +58,7 @@ public class Login {
         Date BT = new Date();
         UserDTO user1;
         user1 = new UserDTO(id,PW,NM,MN,SX,EA,ADR,CA,BT);
-        String loginTest2 = loginService.userLogin(user1);
+        String loginTest2 = loginServiceImpl.userLogin(user1);
         System.out.println(loginTest2);
 
         System.out.println("Login 2차 테스트입니다.");
@@ -73,7 +73,7 @@ public class Login {
         Date BT1 = new Date();
         UserDTO user2;
         user2 = new UserDTO(id1,PW1,NM1,MN1,SX1,EA1,ADR1,CA1,BT1);
-        String loginTest3 = loginService.userLogin(user2);
+        String loginTest3 = loginServiceImpl.userLogin(user2);
         System.out.println(loginTest3);
 
 

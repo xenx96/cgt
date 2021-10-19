@@ -1,94 +1,40 @@
 package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.domain.UserDTO;
-import com.cgt.cgt_prj.repositories.UserRepository;
 import java.util.Date;
-import lombok.RequiredArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-//User에 관한 비즈니스로직 짜는 부분
-@Service
-@RequiredArgsConstructor
-public class UserService {
-
-    private final UserRepository userRepository;
-
-
+public interface UserService {
     //아이디 조회
-    public Boolean idCheck(String id) {
-        return findBy_id(id) == null;
-    }
+    public abstract Boolean idCheck(String id);
 
     //닉네임
-    public Boolean nNCheck(String NN) {
-        return userRepository.findByNN(NN) == null;
-    }
+    public abstract Boolean nNCheck(String NN);
 
     //회원 가입
-    public void insertUser(UserDTO userDTO) {
-        String hashPassword = hashEncodePassword(userDTO.getPW());
-        userDTO.setPW(hashPassword);
-        userRepository.insert(userDTO);
-    }
+    public abstract void insertUser(UserDTO userDTO);
 
     // 회원 탈퇴
-    public void deleteUser(UserDTO user) {
-        //PW 검증
-        UserDTO userData = findBy_id(user.get_id());
-        if (userData != null && hashedMatch(user.getPW(), userData.getPW())) {
-            deleteBy_id(user.get_id());
-            System.out.println("Delete User Complete");
-        } else {
-            System.out.println("Delete User Failed");
-        }
-        //
-    }
+    public abstract void deleteUser(UserDTO user) ;
 
     //PW 매치 로직
-    public boolean hashedMatch(String password, String hashedPassword) {
-        return BCrypt.checkpw(password, hashedPassword);
-    }
+    public abstract boolean hashedMatch(String password, String hashedPassword);
 
     //PW 암호화 메서드
-    public String hashEncodePassword(String password) {
-        return BCrypt.hashpw(password, BCrypt.gensalt());
-    }
+    public abstract String hashEncodePassword(String password);
 
 
     //findBy_id method 생성
-    public UserDTO findBy_id(String id) {
-        return userRepository.findBy_id(id);
-    }
+    public abstract UserDTO findBy_id(String id) ;
 
     //user 정보 삭제 method
-    @Transactional
-    public void deleteBy_id(String id) {
-        userRepository.deleteById(id);
-    }
+    public abstract void deleteBy_id(String id);
 
     //user 정보 등록 method
-    @Transactional
-    public void userInsert(UserDTO user) {
-        userRepository.insert(user);
-    }
+    public abstract void userInsert(UserDTO user);
 
     //user 정보 삭제 method
-    @Transactional
-    public void userUpdate(UserDTO user) {
+    public abstract void userUpdate(UserDTO user);
 
-        UserDTO userData = findBy_id(user.get_id());
-        //수정가능 인자 PW/MN/ADR/BT/UA
-        Date now = new Date();
-        userData.setPW(hashEncodePassword(
-            user.getPW()
-        ));
-        userData.setMN(user.getMN());
-        userData.setADR(user.getADR());
-        userData.setBT(user.getBT());
-        userData.setUA(now);
-        userRepository.save(userData);
-    }
 }
