@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmailRepository extends MongoRepository<Email, Long> {
     Email findOne(Email email);
-    List<Email> findAllByIp(String ip);
+    List<Email> findEmailsByIp();
 
 }

@@ -61,18 +61,21 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     @Transactional
-    public void emailCertificate(String EA, String ip) throws Exception {
+    public Boolean emailCertificate(String EA, String ip){
+        Date now = new Date();
+        int A = emailRepository.findEmailsByIp("ip" : ip, "CA":{$lte :now.toString();};);
+        if (A > 3){
+            return false;
+        }
         Email email = new Email();
         String key = createKey();
-        email.setCA(new Date());
+        email.setCA(now);
         email.setEA(EA);
-        if (emailRepository.findAllByIp(ip).stream().count()>=3)
-            throw new Exception("최근 시도횟수가 많습니다.");
-
         email.setNum(Long.parseLong(key));
         email.setNM(ip);
         emailRepository.insert(email);
         emailSend(EA, key);
+        return true;
     }
     //AuthKey 생성
     public static String createKey() {

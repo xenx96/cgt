@@ -20,11 +20,11 @@ public class EmailApiController {
 
 
     @PostMapping("api/email")
-    public void emailSendAuth(@RequestBody JSONObject eMailAddress) throws Exception {
+    public Boolean emailSendAuth(@RequestBody JSONObject eMailAddress) throws Exception {
         String EA = eMailAddress.get("EA").toString();
         HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         String ip = req.getHeader("X-FORWARD-FOR");
-        emailService.emailCertificate(EA, ip);
+        return emailService.emailCertificate(EA, ip);
     }
 
     @GetMapping("api/email")
