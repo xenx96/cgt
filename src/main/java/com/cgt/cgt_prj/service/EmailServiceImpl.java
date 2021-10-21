@@ -6,8 +6,10 @@ import com.cgt.cgt_prj.repositories.UserRepository;
 import com.cgt.cgt_prj.domain.Email;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Random;
 import lombok.RequiredArgsConstructor;
+import net.minidev.json.JSONObject;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -63,7 +65,8 @@ public class EmailServiceImpl implements EmailService {
     @Transactional
     public Boolean emailCertificate(String EA, String ip){
         Date now = new Date();
-        int A = emailRepository.findEmailsByIp("ip" : ip, "CA":{$lte :now.toString();};);
+        HashMap<String,String> form = new HashMap<>(); //"ip" : ip, "CA":{$lte :now.toString()};
+        int A = emailRepository.findEmailsByIp(form);
         if (A > 3){
             return false;
         }
