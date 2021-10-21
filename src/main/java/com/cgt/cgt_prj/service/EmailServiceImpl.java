@@ -65,7 +65,7 @@ public class EmailServiceImpl implements EmailService {
     @Transactional
     public Boolean emailCertificate(String EA, String ip){
         Date now = new Date();
-        HashMap<String,String> form = new HashMap<>(); //"ip" : ip, "CA":{$lte :now.toString()};
+        HashMap<String,String> form = new HashMap<>(); //"ip" : ip, "CA":{$lte :now.toString()};.
         int A = emailRepository.findEmailsByIp(form);
         if (A > 3){
             return false;
