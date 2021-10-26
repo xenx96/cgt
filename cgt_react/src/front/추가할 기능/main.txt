@@ -1,2 +1,0 @@
-1. hover
-2. animation : picture
