@@ -22,7 +22,7 @@ public class Email {
 
     @NonNull
     @NotBlank
-    String NM;//요청자 주소
+    String ip;//요청자 주소
 
     @NonNull
     @NotBlank

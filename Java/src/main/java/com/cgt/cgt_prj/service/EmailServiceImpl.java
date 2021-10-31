@@ -1,13 +1,16 @@
 package com.cgt.cgt_prj.service;
 
 import com.cgt.cgt_prj.repositories.EmailRepository;
+import com.cgt.cgt_prj.repositories.EmailRepositoryImpl;
 import com.cgt.cgt_prj.repositories.UserRepository;
 
 import com.cgt.cgt_prj.domain.Email;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Random;
 import lombok.RequiredArgsConstructor;
+import net.minidev.json.JSONObject;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -20,7 +23,7 @@ public class EmailServiceImpl implements EmailService {
 
     private final UserRepository userRepository;
     private final JavaMailSender javaMailSender;
-    private final EmailRepository emailRepository;
+    private final EmailRepositoryImpl emailRepository;
     private static String Email_Title = "CGT 이메일 인증입니다.";
 
     //이메일
@@ -53,7 +56,7 @@ public class EmailServiceImpl implements EmailService {
     public Boolean authNumCheck(String EA,String ip, Long num){
         Email email = new Email();
         email.setEA(EA);
-        email.setNM(ip);
+        email.setIp(ip);
         Email emailData = emailRepository.findOne(email);
         if (emailData == null) return false;
         return emailData.getNum() == num;
@@ -63,7 +66,8 @@ public class EmailServiceImpl implements EmailService {
     @Transactional
     public Boolean emailCertificate(String EA, String ip){
         Date now = new Date();
-        int A = emailRepository.findEmailsByIp("ip" : ip, "CA":{$lte :now.toString();};);
+        HashMap<String,String> form = new HashMap<>(); //"ip" : ip, "CA":{$lte :now.toString()};..
+        int A = emailRepository.findEmailsByIp(ip).size();
         if (A > 3){
             return false;
         }
@@ -72,7 +76,7 @@ public class EmailServiceImpl implements EmailService {
         email.setCA(now);
         email.setEA(EA);
         email.setNum(Long.parseLong(key));
-        email.setNM(ip);
+        email.setIp(ip);
         emailRepository.insert(email);
         emailSend(EA, key);
         return true;
