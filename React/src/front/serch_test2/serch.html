@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serch</title>
+    <link rel="stylesheet" href="./search.css">
+</head>
+
+<!-- 모든 이미지는 jpg -->
+
+<body>
+    <header>
+        <h1><a href="메인 페이지">League Of Legend</a></h1>
+        <div>
+            <label>전적 검색</label>
+            <input type="text" placeholder="닉네임 입력">
+            <button>search</button>
+        </div>
+        <div>
+            <label>ID</label>
+            <input type="text" placeholder="ID 입력">
+            <label>PW</label>
+            <input type="password" placeholder="PW 입력">
+            <input type="submit" value="Log In">
+        </div>
+        <button href="회원가입">Join</button>
+    </header>
+    <nav>
+        <ul>
+            <li class="navchampion">
+                <a href="챔피언 분석">
+                </a>
+            </li>
+            <li class="navmultisearch">
+                <a href="다중 전적 검색">
+                </a>
+            </li>
+            <li class="navcommunity">
+                <a href="커뮤니티">
+                </a>
+            </li>
+            <li class="navrank">
+                <a href="랭킹">
+                </a>
+            </li>
+            <li class="navchamprank">
+                <a href="장인 랭킹">
+                </a>
+            </li>
+            <li class="navprowatch">
+                <a href="프로 관전">
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="mainaside">
+        <main>
+            <article class="profile">
+                <div class="profileimg">
+                    <img src="./임시 이미지/profileimg.PNG">
+                    <!--이미지 안에 프로필 사진&레벨&랭크테두리-->
+                </div>
+                <div class="profilemain">
+                    <h2>도구 기능사</h2>
+                    <span>솔로랭크 : n전 n승 n패</span>
+                    <span>자유랭크 : n전 n승 n패</span>
+                </div>
+                <div class="profilebutton">
+                    <label>n분 전 갱신</label>
+                    <button>전적 갱신</button>
+                    <span>n일 n시간</span>
+                </div>
+            </article>
+            <article class="winrate">
+                <dl class="winratemenu">
+                    <dd>
+                        <a href="전체">전체</a>
+                    </dd>
+                    <dd>
+                        <a href="솔랭">솔로랭크</a>
+                    </dd>
+                    <dd>
+                        <a href="자랭">자유랭크</a>
+                    </dd>
+                </dl>
+                <div class="winratemain">
+                    <div class="winrateprofile">
+                        <img src="./임시 이미지/tear.PNG">
+                        <table>
+                            <tr>
+                                <th>랭킹 |</th>
+                                <td>1,000,00위</td>
+                            </tr>
+                            <tr>
+                                <th>상위 |</th>
+                                <td>50%</td>
+                            </tr>
+                            <tr>
+                                <th>티어 |</th>
+                                <td>Silver3</td>
+                            </tr>
+                            <tr>
+                                <th>포인트 |</th>
+                                <td>20Lp</td>
+                            </tr>
+                            <tr>
+                                <th>승급전 |</th>
+                                <td>-</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <table>
+                            <th>선호 포지션(최근 20게임)</th>
+                            <tr>
+                                <td>
+                                    <img src="./임시 이미지/포지션/sup.png">
+                                </td>
+                                <td>
+                                    <h5>서포터</h5>
+                                    <b>90% |</b>
+                                    <span>승률 60%</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="./임시 이미지/포지션/bot.png">
+                                </td>
+                                <td>
+                                    <h5>원딜</h5>
+                                    <b>10% |</b>
+                                    <span>승률 40%</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <h5>n전 n승 n패</h5>
+                        <!--이번 시즌 기준-->
+                        <div class="wingraph">
+                            <img src="./임시 이미지/graph.png">
+                            <!-- 도넛 그래프로 만든 후, 삭제 예정 -->
+                            <!-- <span>
+                            50%
+                        </span> -->
+                            <ul>
+                                <li>
+                                    <b>K / D / A</b>
+                                </li>
+                                <li>
+                                    3.54(50%)
+                                    <!--kda평균(킬관여율) css로 올려놓으면 정보 표시되도록-->
+                                </li>
+                                <li>
+                                    <span>40 cs</span>
+                                    <b>|</b>
+                                    <span>분당 1.2cs</span>
+                                </li>
+                                <li>
+                                    <b>가한 피해량 |</b>
+                                    <span>7,000</span>
+                                </li>
+                                <li>
+                                    <b>받은 피해량 |</b>
+                                    <span>8,000</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="teargraph">
+                <h3>티어 그래프</h3>
+                <dl>
+                    <dd>
+                        <a href="일별">일별</a>
+                    </dd>
+                    <dd>
+                        <a href="주별">주별</a>
+                    </dd>
+                    <dd>
+                        <a href="월별">월별</a>
+                    </dd>
+                </dl>
+                <!-- <svg></svg> -->
+                <img src="./임시 이미지/teargraph.JPG">
+            </article>
+            <article class="playchampion">
+                <h3>챔피언(최근 20게임)</h3>
+                <dl>
+                    <dd><a href="전체">전체</a></dd>
+                    <dd><a href="솔로랭크">솔로랭크</a></dd>
+                    <dd><a href="자유랭크">자유랭크</a></dd>
+                </dl>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="./임시 이미지/champion.JPG">
+                        </td>
+                        <td>
+                            <h5>라칸</h5>
+                            <br>
+                            <span>(80%)</span>
+                        </td>
+                        <td>
+                            <span>승률 | 50%</span>
+                            <br>
+                            <!-- <svg></svg> -->
+                            <img src="./임시 이미지/승률 그래프.JPG">
+                        </td>
+                        <td>
+                            <h5>KDA평균</h5>
+                            <span>K/D/A</span>
+                        </td>
+                        <td>
+                            <b>CS |</b>
+                            <span>50.6</span>
+                            <br>
+                            <b>GOLD |</b>
+                            <span>7,000</span>
+                        </td>
+                        <td>
+                            <b>가한 피해량 |</b>
+                            <span>7,000</span>
+                            <br>
+                            <b>받은 피해량 |</b>
+                            <span>8,000</span>
+                        </td>
+                        <td>
+                            <b>제어와드 |</b>
+                            <span>7.5</span>
+                            <br>
+                            <span>설치</span>
+                            <b>|</b>
+                            <span>15</span>
+                            <span /span>제거</span>
+                            <b>|</b>
+                            <span>5</span>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="./임시 이미지/champion.JPG">
+                        </td>
+                        <td>
+                            <h5>라칸</h5>
+                            <br>
+                            <span>(80%)</span>
+                        </td>
+                        <td>
+                            <span>승률 | 50%</span>
+                            <br>
+                            <!-- <svg></svg> -->
+                            <img src="./임시 이미지/승률 그래프.JPG">
+                        </td>
+                        <td>
+                            <h5>KDA평균</h5>
+                            <span>K/D/A</span>
+                        </td>
+                        <td>
+                            <b>CS |</b>
+                            <span>50.6</span>
+                            <br>
+                            <b>GOLD |</b>
+                            <span>7,000</span>
+                        </td>
+                        <td>
+                            <b>가한 피해량 |</b>
+                            <span>7,000</span>
+                            <br>
+                            <b>받은 피해량 |</b>
+                            <span>8,000</span>
+                        </td>
+                        <td>
+                            <b>제어와드 |</b>
+                            <span>7.5</span>
+                            <br>
+                            <span>설치</span>
+                            <b>|</b>
+                            <span>15</span>
+                            <span /span>제거</span>
+                            <b>|</b>
+                            <span>5</span>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="./임시 이미지/champion.JPG">
+                        </td>
+                        <td>
+                            <h5>라칸</h5>
+                            <br>
+                            <span>(80%)</span>
+                        </td>
+                        <td>
+                            <span>승률 | 50%</span>
+                            <br>
+                            <!-- <svg></svg> -->
+                            <img src="./임시 이미지/승률 그래프.JPG">
+                        </td>
+                        <td>
+                            <h5>KDA평균</h5>
+                            <span>K/D/A</span>
+                        </td>
+                        <td>
+                            <b>CS |</b>
+                            <span>50.6</span>
+                            <br>
+                            <b>GOLD |</b>
+                            <span>7,000</span>
+                        </td>
+                        <td>
+                            <b>가한 피해량 |</b>
+                            <span>7,000</span>
+                            <br>
+                            <b>받은 피해량 |</b>
+                            <span>8,000</span>
+                        </td>
+                        <td>
+                            <b>제어와드 |</b>
+                            <span>7.5</span>
+                            <br>
+                            <span>설치</span>
+                            <b>|</b>
+                            <span>15</span>
+                            <span /span>제거</span>
+                            <b>|</b>
+                            <span>5</span>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+            </article>
+            <article class="playlist">
+                <dl>
+                    <dd><a href="전적검색">전적</a></dd>
+                    <dd><a href="다중전적">다중 전적</a></dd>
+                    <dd><a href="인게임">인게임</a></dd>
+                    <dd><a href="챔피언">챔피언</a></dd>
+                </dl>
+                <div>
+                    <input type="text" placeholder="챔피언 검색">
+                    <button>검색</button>
+                </div>
+                <dl>
+                    <dd><a href="전체">전체</a></dd>
+                    <dd><a href="솔랭">솔로랭크</a></dd>
+                    <dd><a href="자랭">자유랭크</a></dd>
+                    <dd><a href="일반">일반</a></dd>
+                    <dd><a href="칼바람">칼바람</a></dd>
+                </dl>
+                <table>
+                </table>
+                <button>더보기</button>
+    </div>
+    </article>
+    </main>
+    <aside>
+        <div class="withplayer">
+            <dl>
+                <dd><a href="전체">전체</a></dd>
+                <dd><a href="솔랭">솔랭</a></dd>
+                <dd><a href="자랭">자랭</a></dd>
+                <dd><a href="일반">일반</a></dd>
+                <dd><a href="칼바람">칼바람</a></dd>
+            </dl>
+            <table>
+                <caption>
+                    같은 팀으로 게임한 소환사들(최근 20게임)
+                </caption>
+                <tr>
+                    <th>소환사</th>
+                    <th>게임수</th>
+                    <th>승률</th>
+                    <th>포지션</th>
+                </tr>
+                <tr>
+                    <td>닉네임1</td>
+                    <td>n전n승n패</td>
+                    <td>50%</td>
+                    <td>원딜(90%)</td>
+                </tr>
+                <tr>
+                    <td>닉네임2</td>
+                    <td>n전n승n패</td>
+                    <td>80%</td>
+                    <td>미드(60%)</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </div>
+        <div class="asidechampion">
+            <dl>
+                <dd><a href="전체">전체</a></dd>
+                <dd><a href="솔랭">솔랭</a></dd>
+                <dd><a href="자랭">자랭</a></dd>
+            </dl>
+            <table>
+                <caption>챔피언</caption>
+                <tr>
+                    <td>
+                        <img src="./임시 이미지/champion.JPG">
+                        <br>
+                        <span>라칸</span>
+                    </td>
+                    <td>
+                        <span>200판</span>
+                        <br>
+                        <img src="./임시 이미지/승률 그래프.JPG">
+                    </td>
+                    <td>
+                        <span>CS | 50</span>
+                        <br>
+                        <span>GOLD | 7,000</span>
+                    </td>
+                    <td>
+                        <b>KDA평균</b>
+                        <br>
+                        <span>K / D / A<Adr></Adr></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="./임시 이미지/champion.JPG">
+                        <br>
+                        <span>라칸</span>
+                    </td>
+                    <td>
+                        <span>200판</span>
+                        <br>
+                        <img src="./임시 이미지/승률 그래프.JPG">
+                    </td>
+                    <td>
+                        <span>CS | 50</span>
+                        <br>
+                        <span>GOLD | 7,000</span>
+                    </td>
+                    <td>
+                        <b>KDA평균</b>
+                        <br>
+                        <span>K / D / A<Adr></Adr></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="./임시 이미지/champion.JPG">
+                        <br>
+                        <span>라칸</span>
+                    </td>
+                    <td>
+                        <span>200판</span>
+                        <br>
+                        <img src="./임시 이미지/승률 그래프.JPG">
+                    </td>
+                    <td>
+                        <span>CS | 50</span>
+                        <br>
+                        <span>GOLD | 7,000</span>
+                    </td>
+                    <td>
+                        <b>KDA평균</b>
+                        <br>
+                        <span>K / D / A<Adr></Adr></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="./임시 이미지/champion.JPG">
+                        <br>
+                        <span>라칸</span>
+                    </td>
+                    <td>
+                        <span>200판</span>
+                        <br>
+                        <img src="./임시 이미지/승률 그래프.JPG">
+                    </td>
+                    <td>
+                        <span>CS | 50</span>
+                        <br>
+                        <span>GOLD | 7,000</span>
+                    </td>
+                    <td>
+                        <b>KDA평균</b>
+                        <br>
+                        <span>K / D / A<Adr></Adr></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="./임시 이미지/champion.JPG">
+                        <br>
+                        <span>라칸</span>
+                    </td>
+                    <td>
+                        <span>200판</span>
+                        <br>
+                        <img src="./임시 이미지/승률 그래프.JPG">
+                    </td>
+                    <td>
+                        <span>CS | 50</span>
+                        <br>
+                        <span>GOLD | 7,000</span>
+                    </td>
+                    <td>
+                        <b>KDA평균</b>
+                        <br>
+                        <span>K / D / A<Adr></Adr></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </aside>
+    </div>
+    <footer></footer>
+</body>
+
+</html>

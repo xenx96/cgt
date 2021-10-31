@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="./search.css">
+</head>
+
+<body>
+    <!-- 직관적인 게 1순위 -->
+    <header>
+        <h1>League Of Legend</h1>
+        <div class="searchbar">
+            <input type="text" placeholder="닉네임 입력">
+            <button>검색</button>
+        </div>
+        <div class="login">
+            <label>ID</label>
+            <input type="text">
+            <label>PW</label>
+            <input type="password">
+        </div>
+        <a href="회원가입">Join</a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="챔피언 분석">Champion</a></li>
+            <li><a href="랭킹">Lanking</a></li>
+            <li><a href="장인 랭킹">Master Lanking</a></li>
+            <li><a href="다중 전적 검색">Muti Search</a></li>
+            <li><a href="커뮤니티">Community</a></li>
+            <li><a href="프로 관전">Pro</a></li>
+        </ul>
+    </nav>
+
+    <!--일단 5명으로 만들어놓고 10명까지 추가-->
+    <aside>
+        <caption>최근 같은 팀으로 게임한 소환사들</caption>
+        <table>
+            <tr>
+                <th>순위</th>
+                <th>소환사</th>
+                <th>포지션</th>
+                <th>승률</th>
+                <th>게임수</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </aside>
+    <aside>
+        <!--a시즌 클릭하면 a시즌 통계 페이지로 이동/추후 작업/접기-->
+        <nav>
+            <li>솔로랭크</li>
+            <li>자유랭크</li>
+        </nav>
+        <table>
+            <tr>
+                <th>시즌</th>
+                <th>티어</th>
+                <th>포지션</th>
+                <th>승률</th>
+                <th>게임 수(n전n승n패)</th>
+            </tr>
+            <tr>
+                <a href="11시즌">
+                    <td>시즌11</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="프리시즌">
+                    <td>프리시즌</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌10">
+                    <td>시즌10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌9">
+                    <td>시즌9</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌8">
+                    <td>시즌8</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌7">
+                    <td>시즌7</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌6">
+                    <td>시즌6</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌5">
+                    <td>시즌5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌4">
+                    <td>시즌4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+            <tr>
+                <a href="시즌3">
+                    <td>시즌3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </a>
+            </tr>
+        </table>
+    </aside>
+    <section 프로필>
+        
+        <table>
+            <tr>
+                <td>
+                    <img src="프로필 이미지">
+                </td>
+                <td>
+                    <img src="티어 이미지">
+                </td>
+                <td>n위 상위 n%</td>
+                <td>승률</td>
+                <td><button>전적 갱신</button></td>
+            </tr>
+            <tr>
+                <td>닉네임</td>
+                <td>레벨</td>
+                <td>포인트,승급전</td>
+                <td>n승n패</td>
+                <td>롤 몇 시간?</td>
+            </tr>
+        </table>
+    </section>
+    <section 선호 포지션></section>
+    <section 챔피언 순위>
+        <nav 시즌별></nav>
+        <nav 랭크별></nav>
+    </section>
+    <section 최근 30경기 요약></section>
+    <main>
+        <section>
+            <nav 전체 솔랭 자랭 일반 칼바람 챔피언검색창></nav>
+            <section 전적 간단히></section>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+main{
+    width: 70%;
+}
+aside{
+    width: 30%;
+}
+
+.navchampion a::after{
+    content: "Champion";
+}
+.navchampion a:hover::after{
+    content: "챔피언 분석";
+}
+.navmultisearch a::after{
+    content: "Muti Search";
+}
+.navmultisearch a:hover::after{
+    content: "다중 전적 검색";
+}
+.navcommunity a::after{
+    content: "Community";
+}
+.navcommunity a:hover::after{
+    content: "게시판";
+}
+.navrank a::after{
+    content: "Ranking";
+}
+.navrank a:hover::after{
+    content: "랭킹";
+}
+.navchamprank a::after{
+    content: "Champion Ranking";
+}
+.navchamprank a:hover::after{
+    content: "장인 랭킹";
+}
+.navprowatch a::after{
+    content: "Pro";
+}
+.navprowatch a:hover::after{
+    content: "프로 관전";
+}
+
+.mainaside{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+}
+
+.profilemain{
+    display: flex;
+    flex-direction: column;
+}
+
+.profilebutton{
+    display: flex;
+    flex-direction: column;
+}
+
+.winrate{
+    display: flex;
+    flex-direction: column;
+}
+.winratemenu{
+    display: flex;
+    flex-direction: row;
+}
+.winratemain{
+    display: flex;
+    flex-direction: row;
+}
+.winrateprofile{
+    display: flex;
+    flex-direction: row;
+}
+.winrate table{
+    width: 20vw;
+}
+.winrate img:not(.wingraph img){
+    width: 7vw;
+    object-fit: contain;
+}
+
+.teargraph{
+    display: flex;
+    flex-direction: column;
+}
+.teargraph dl{
+    display: flex;
+    flex-direction: row;
+}
+.teargraph svg{
+    width: 100%;
+    height: 8vw;
+    background-color: rgb(100, 100, 100);
+}
+.teargraph img{
+    width: 100%;
+}
+
+.playchampion{
+    display: flex;
+    flex-direction: column;
+}
+.playchampion dl{
+    display: flex;
+    flex-direction: row;
+}
+
+.playlist{
+    display: flex;
+    flex-direction: column;
+}
+.playlist dl{
+    display: flex;
+    flex-direction: row;
+}
+
+.withplayer{
+    display: flex;
+    flex-direction: column;
+}
+.withplayer dl{
+    display: flex;
+    flex-direction: row;
+}
+.withplayer caption{
+    caption-side: top;
+}
+
+.asidechampion{
+    display: flex;
+    flex-direction: column;
+}
+.asidechampion dl{
+    display: flex;
+    flex-direction: row;
+}
+.asidechampion img{
+    width: 4vw;
+}
