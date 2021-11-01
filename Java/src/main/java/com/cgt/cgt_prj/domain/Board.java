@@ -2,12 +2,14 @@ package com.cgt.cgt_prj.domain;
 
 import com.mongodb.lang.NonNull;
 import com.mongodb.lang.Nullable;
-import java.sql.Date;
+import java.util.Date;
 import lombok.Data;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+
 
 @Data
 @ToString

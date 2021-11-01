@@ -6,9 +6,9 @@ import style from "../public/css/login.module.css";
 import cn from "classnames";
 
 const Login = () => {
-  [warningMessage, setWarningMessage] = useState("");
+  const [warningMessage, setWarningMessage] = useState("");
 
-  handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     const { ID, PW } = e.target;
     const CA = new Date().getTime();

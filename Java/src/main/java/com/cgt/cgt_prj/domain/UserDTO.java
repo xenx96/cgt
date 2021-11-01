@@ -73,6 +73,4 @@ public class UserDTO {
         this.CA = CA;
         this.BT = BT;
     }
-
-
 }

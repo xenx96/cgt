@@ -20,12 +20,12 @@ public class BoardService {
     }
 
     @Transactional
-    public void deletePost(String id) {
+    public void deletePost(Long id) {
         boardRepository.deleteById(id);
     }
 
     @Transactional
-    public void editPost(String id, Board requestBoard) {
+    public void editPost(Long id, Board requestBoard) {
         Board board = boardRepository.findById(id)
             .orElseThrow(() -> {
                 return new IllegalArgumentException("글 찾기 실패: 아이디를 찾을 수 없습니다.");
@@ -36,7 +36,7 @@ public class BoardService {
     }
 
     @Transactional
-    public Board getPost(String id, Board requestBoard){
+    public Board getPost(Long id){
         Board board = boardRepository.findById(id)
                 .orElseThrow(() -> {
                     return new IllegalArgumentException("글 찾기 실패: 아이디를 찾을 수 없습니다.");

@@ -18,7 +18,7 @@ public class EmailRepositoryImpl implements EmailRepository {
 
     @Override
     public List<HashMap> findEmailsByIp(String ip) {
-        return findAll({ip : ip});
+        return null;/*findAll({ip : ip});*/
     }
 
     @Override
